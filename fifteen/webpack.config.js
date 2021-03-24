@@ -1,11 +1,18 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-    entry: "./src/index.js",
+    mode: "development",
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
+    entry: {
+        index: "./src/index.js"
+    },
     output: {
-        filename: "bundle.js",
+        filename: '[name].bundle_[chunkhash].js',
         path: path.resolve(__dirname + "/build")
     },
     devServer: {
@@ -13,30 +20,38 @@ module.exports = {
         index: "index.html",
         port: 3000
     },
-    mode: "none",
+    devtool: false,
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: "/node_modules",
-                use: ['babel-loader'],
-            },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: "html-loader",
-                        options: {minimize: true}
-                    }
-                ]
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        ['@babel/preset-env', {
+                            targets: {"browsers": ["last 2 versions", ">= 5% in KR"]},
+                            useBuiltIns: 'usage'
+                        }],
+                        '@babel/preset-react'
+                    ]
+                }
             },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
+            }, {
+                test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url-loader',
+                options: {
+                    name: '[hash].[ext]',
+                    limit: 10000,
+                },
             }
         ]
     },
     plugins: [
+        new webpack.ProgressPlugin(),
         new HtmlWebPackPlugin({
             template: './public/index.html', // public/index.html 파일을 읽는다.
             filename: 'index.html' // output으로 출력할 파일은 index.html 이다.
