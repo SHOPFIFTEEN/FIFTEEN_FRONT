@@ -45,11 +45,11 @@
 .header__box__right__search {
     width: 25px;
     height: 25px;
-    background-image: url("public/search.svg");
+    background-image: url("public/img/search.svg");
 }
 
 .header__box__right__menu {
     width: 34px;
     height: 24px;
-    background-image: url("public/menu.svg");
+    background-image: url("public/img/menu.svg");
 }
