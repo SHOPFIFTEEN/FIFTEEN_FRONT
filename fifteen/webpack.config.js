@@ -11,6 +11,10 @@ module.exports = {
     entry: {
         index: "./src/index.js"
     },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
+    },
     output: {
         filename: '[name].bundle_[chunkhash].js',
         path: path.resolve(__dirname + "/build")
@@ -28,10 +32,14 @@ module.exports = {
                 exclude: "/node_modules",
                 loader: 'babel-loader',
                 options: {
+                    compact: true,
                     presets: [
                         ['@babel/preset-env', {
                             targets: {"browsers": ["last 2 versions", ">= 5% in KR"]},
+                            modules: false,
+                            "corejs": "2",
                             useBuiltIns: 'usage'
+
                         }],
                         '@babel/preset-react'
                     ]
@@ -39,7 +47,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                use: ["style-loader", 'css-loader']
             }, {
                 test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'url-loader',
@@ -50,11 +58,14 @@ module.exports = {
             }
         ]
     },
+
+
     plugins: [
         new webpack.ProgressPlugin(),
         new HtmlWebPackPlugin({
             template: './public/index.html', // public/index.html 파일을 읽는다.
-            filename: 'index.html' // output으로 출력할 파일은 index.html 이다.
+            filename: 'index.html', // output으로 출력할 파일은 index.html 이다.
+            inject: 'body'
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css'

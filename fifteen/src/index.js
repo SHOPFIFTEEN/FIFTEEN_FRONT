@@ -5,7 +5,8 @@ import App from './App';
 
 ReactDOM.render(
     <div>
-        <App/>
+        this is index !
+
     </div>,
     document.getElementById('root')
 );

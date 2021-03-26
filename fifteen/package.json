@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "webpack serve"
+    "dev": "webpack serve --open --hot"
   },
   "eslintConfig": {
     "extends": [
@@ -44,15 +44,20 @@
     "@babel/preset-react": "^7.12.13",
     "@webpack-cli/serve": "^1.3.0",
     "babel-loader": "^8.2.2",
+    "babel-preset-es2015": "^7.0.0-beta.3",
     "clean-webpack-plugin": "^2.0.1",
+    "core-js": "^2.6.5",
     "css-loader": "^5.1.4",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.3.9",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
+    "react-scripts": "4.0.3",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
+    "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.5.0",
