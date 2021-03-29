@@ -56,7 +56,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    height: 100%;
     padding: 0;
 }
 
@@ -65,9 +64,8 @@
     flex-direction: column;
     align-items: flex-start;
     box-sizing: border-box;
-    padding: 50px;
-    height: 1000px;
-    width: 450px;
+    padding : 50px 10px 0 25px;
+    width: 500px;
     margin-left : auto;
 }
 
