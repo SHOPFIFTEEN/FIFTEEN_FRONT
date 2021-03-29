@@ -1,7 +1,26 @@
 import React, {Component} from 'react';
-import styles from '../../../public/css/header.module.css';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import styles from './header.module.css';
+import Menu from '../../img/menu.svg';
+import Search from '../../img/search.svg';
+import Heart from '../../img/heart.svg';
+import Bucket from '../../img/bucket.svg';
 
 class Header extends Component {
+    constructor(p) {
+        super(p);
+        this.state={
+            modal : false
+        }
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
+
     render() {
         return (
             <div>
@@ -17,8 +36,32 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
-                            <div className={styles.header__box__right__search}></div>
-                            <div className={styles.header__box__right__menu}></div>
+                            <img src={Search} className={styles.header__box__right__search}/>
+                            <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()}/>
+                            <div className={styles.header__box__right__menu__modal__box}>
+                                <Modal isOpen={this.state.modal} toggle={this.toggle} contentClassName={styles.header__box__right__menu__modal} >
+                                        <div>
+                                            <div className={styles.header__box__right__menu__modal__title}>
+                                                <div>SHOP</div>
+                                                <div>ORDER</div>
+                                                <div>BOARD</div>
+                                            </div>
+                                            <div className={styles.header__box__right__menu__modal__auth}>
+                                                <div>Login</div>
+                                                <div>Join</div>
+                                                <div>My Page</div>
+                                                <div></div>
+                                                <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
+                                                <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
+                                            </div>
+                                            <div className={styles.header__box__right__menu__modal__hr}></div>
+                                            <div className={styles.header__box__right__menu__modal__contact}>
+                                                <div>Instargram</div>
+                                                <div>Kakao 1:1</div>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            </div>
                         </div>
                     </div>
                 </div>

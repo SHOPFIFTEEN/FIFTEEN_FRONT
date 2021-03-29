@@ -1,0 +1,118 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+}
+
+.header__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 60px;
+    width: 1000px;
+}
+
+.header__box__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header__box__left__title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.header__box__left__category {
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 380px;
+}
+
+.header__box__right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75px;
+    margin-top: 50px;
+}
+
+.header__box__right__search {
+    width: 25px;
+    height: 25px;
+}
+
+.header__box__right__menu {
+    width: 34px;
+    height: 24px;
+}
+
+.header__box__right__menu__modal__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+    padding: 0;
+}
+
+.header__box__right__menu__modal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 50px;
+    height: 1000px;
+    width: 450px;
+}
+
+.header__box__right__menu__modal__title {
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header__box__right__menu__modal__auth {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: space-between;
+    width: 350px;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+
+.header__box__right__menu__modal__heart {
+    height: 21px;
+}
+
+.header__box__right__menu__modal__bucket {
+    height: 21px;
+    margin-left: 45px;
+}
+
+.header__box__right__menu__modal__hr {
+    width: 350px;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0;
+}
+
+.header__box__right__menu__modal__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 15px;
+    color: #828282;
+    margin-top: 50px;
+}
+
+
+
