@@ -5,6 +5,7 @@ import Menu from '../../img/menu.svg';
 import Search from '../../img/search.svg';
 import Heart from '../../img/heart.svg';
 import Bucket from '../../img/bucket.svg';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 class Header extends Component {
     constructor(p) {
@@ -37,9 +38,9 @@ class Header extends Component {
                         </div>
                         <div className={styles.header__box__right}>
                             <img src={Search} className={styles.header__box__right__search}/>
-                            <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()}/>
+                            <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()} />
                             <div className={styles.header__box__right__menu__modal__box}>
-                                <Modal isOpen={this.state.modal} toggle={this.toggle} contentClassName={styles.header__box__right__menu__modal} >
+                                <MDBModal isOpen={this.state.modal} toggle={this.toggle} contentClassName={(styles.header__box__right__menu__modal)} fullHeight position="right" >
                                         <div>
                                             <div className={styles.header__box__right__menu__modal__title}>
                                                 <div>SHOP</div>
@@ -60,7 +61,7 @@ class Header extends Component {
                                                 <div>Kakao 1:1</div>
                                         </div>
                                     </div>
-                                </Modal>
+                                </MDBModal>
                             </div>
                         </div>
                     </div>
