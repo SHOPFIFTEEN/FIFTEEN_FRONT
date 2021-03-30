@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 180px;
 }
 
 .header__box {
@@ -11,7 +11,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding-top: 60px;
-    width: 1000px;
+    width: 80%;
 }
 
 .header__box__left {
@@ -39,7 +39,6 @@
     flex-direction: row;
     justify-content: space-between;
     width: 75px;
-    margin-top: 50px;
 }
 
 .header__box__right__search {
