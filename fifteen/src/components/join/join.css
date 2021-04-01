@@ -1,0 +1,123 @@
+.join {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    align-items: flex-start;
+    height: 900px;
+}
+
+.join__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 800px;
+}
+
+.header__bar {
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+.join__title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.join__form__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 200px;
+    width: 500px;
+}
+
+.join__from__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input__box {
+    color: #8C8C8C;
+    width: 600px;
+    height: 55px;
+    background-color: white;
+    font-size: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input__box__just {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 580px;
+}
+
+.input__box__alin {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 15px;
+}
+
+.input__box .input {
+    border-radius: 10px;
+    color: #8C8C8C;
+    border : solid 1px #8C8C8C;
+    font-size: 20px;
+    width: 400px;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.input__box .input:focus {
+    outline : none;
+}
+
+.input__box span {
+    color: #FD371C;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.agree__box {
+    color: #8C8C8C;
+    font-weight: bold;
+    font-size: 17px;
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    justify-content: space-between;
+    margin: 10px 100px 10px 0;
+}
+
+.agree__btn {
+    width: 20px;
+    height: 20px;
+    border: solid 1px #8C8C8C;
+    margin-top: 4px;
+}
+
+.join__btn {
+    width: 300px;
+    height: 65px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 50px 0 100px 0;
+}
