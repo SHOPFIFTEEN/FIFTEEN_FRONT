@@ -1,3 +1,10 @@
+button{
+    all: unset;
+}
+button:focus{
+    border: none;
+    outline:none;
+}
 .sidenav{
     display: flex;
     flex-direction: row;
@@ -12,20 +19,20 @@
     margin-top: 100px;
     right: 30px;
 }
-.sidenav__box__text1{
+.sidenav__box_instargram{
     font-size: 18px;
     display: flex;
     flex-direction: row;
     margin: 20px;
 }
-.sidenav__box__text2{
+.sidenav__box_back{
     font-size: 18px;
     display: flex;
     flex-direction: row;
     margin: 20px;
 
 }
-.sidenav__box__text__bar{
+.sidenav__box__bar{
     width: 60px;
     height: 1px;
     margin-top: 32px;

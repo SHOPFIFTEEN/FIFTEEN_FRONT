@@ -7,9 +7,9 @@ class Sidenav extends Component {
             <div>
                 <div className={styles.sidenav}>
                     <div className={styles.sidenav__box}>
-                        <div className={styles.sidenav__box__text1}>INSTARGRAM</div>
-                        <div className={styles.sidenav__box__text__bar} />
-                        <div className={styles.sidenav__box__text2}>BACK</div>
+                        <button className={styles.sidenav__box_instargram}>INSTARGRAM</button>
+                        <div className={styles.sidenav__box__bar} />
+                        <button className={styles.sidenav__box_back}>BACK</button>
                     </div>
                 </div>
             </div>
