@@ -1,0 +1,40 @@
+button{
+    all: unset;
+}
+button:focus{
+    border: none;
+    outline:none;
+}
+.sidenav{
+    display: flex;
+    flex-direction: row;
+    height: 250px;
+}
+
+.sidenav__box{
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    transform: rotate(-90deg);
+    margin-top: 100px;
+    right: 30px;
+}
+.sidenav__box_instargram{
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+.sidenav__box_back{
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+
+}
+.sidenav__box__bar{
+    width: 60px;
+    height: 1px;
+    margin-top: 32px;
+    border: 0.5px solid #5E5E5E;
+}
