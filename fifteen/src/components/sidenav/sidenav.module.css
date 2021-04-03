@@ -13,7 +13,7 @@ button:focus{
 
 .sidenav__box{
     display: flex;
-    position: fixed;
+    position: absolute;
     flex-direction: row;
     transform: rotate(-90deg);
     margin-top: 100px;
