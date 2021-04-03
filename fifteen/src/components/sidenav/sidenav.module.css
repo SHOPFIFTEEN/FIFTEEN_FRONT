@@ -7,17 +7,18 @@ button:focus{
 }
 .sidenav{
     display: flex;
+    position: absolute;
     flex-direction: row;
     height: 250px;
+
 }
 
 .sidenav__box{
     display: flex;
-    position: absolute;
+    position: fixed;
     flex-direction: row;
     transform: rotate(-90deg);
     margin-top: 100px;
-    right: 30px;
 }
 .sidenav__box_instargram{
     font-size: 18px;
