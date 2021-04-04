@@ -11,7 +11,7 @@ class Header extends Component {
     constructor(p) {
         super(p);
         this.state={
-            modal : false
+            modal : false,
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -37,6 +37,7 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
+                            <input type="text" className={styles.header__box__right__search__click}/>
                             <img src={Search} className={styles.header__box__right__search}/>
                             <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()} />
                             <div className={styles.header__box__right__menu__modal__box}>
