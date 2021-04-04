@@ -38,13 +38,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75px;
+    width: 500px;
     margin-top: 50px;
 }
 
 .header__box__right__search {
     width: 25px;
     height: 25px;
+}
+
+.header__box__right__search__click {
+    width : 400px;
+    height: 30px;
+    border-bottom: solid 2px #8C8C8C;
+    border-right: 0;
+    border-left: 0;
+    border-top : 0;
+}
+
+
+.header__box__right__search__click:focus {
+    border-bottom: solid 2px black;
+    border-right: 0;
+    border-left: 0;
+    border-top : 0;
+    outline: none;
 }
 
 .header__box__right__menu {
