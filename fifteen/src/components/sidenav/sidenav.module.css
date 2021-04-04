@@ -9,6 +9,7 @@ button:focus{
     display: flex;
     flex-direction: row;
     height: 250px;
+    color: black;
 }
 
 .sidenav__box{
@@ -20,13 +21,13 @@ button:focus{
     right: 30px;
 }
 .sidenav__box_instargram{
-    font-size: 18px;
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     margin: 20px;
 }
 .sidenav__box_back{
-    font-size: 18px;
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     margin: 20px;
@@ -36,5 +37,5 @@ button:focus{
     width: 60px;
     height: 1px;
     margin-top: 32px;
-    border: 0.5px solid #5E5E5E;
+    border: 0.5px solid black;
 }
