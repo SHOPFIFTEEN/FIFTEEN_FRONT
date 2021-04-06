@@ -1,18 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from "./components/header/Header";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import Footer from './components/footer/Footer';
-import Sidenav from './components/sidenav/Sidenav';
+import {Route} from 'react-router-dom';
+import Index from './pages/index/index';
+import Login from './pages/login/login_page';
+import Join from './pages/join/join_page';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Sidenav />
-      <Footer/>
+        <Route path='/' component={Index} exact/>
+        <Route path='/login' component={Login}/>
+        <Route path='/join' component={Join}/>
     </div>
   );
 }

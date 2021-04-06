@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from './login.module.css';
+import {Link} from 'react-router-dom';
 
 class Login extends Component {
     render() {
@@ -13,7 +14,9 @@ class Login extends Component {
                             <div className={styles.login__form__content}>
                                 <div className={styles.id__box}>ID <input type="text" className={styles.input}/> </div>
                                 <div className={styles.pw__box}>Password <input type="password" className={styles.input}/></div>
-                                <div className={styles.join}>회원가입</div>
+                                <Link to="/join">
+                                    <div className={styles.join}>회원가입</div>
+                                </Link>
                                 <div className={styles.login__btn}>Log in</div>
                             </div>
                         </div>
