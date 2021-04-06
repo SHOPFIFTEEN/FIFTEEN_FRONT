@@ -6,6 +6,7 @@ import Search from '../../img/search.svg';
 import Heart from '../../img/heart.svg';
 import Bucket from '../../img/bucket.svg';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { Link} from "react-router-dom";
 
 class Header extends Component {
     constructor(p) {
@@ -28,7 +29,9 @@ class Header extends Component {
                 <div className={styles.header}>
                     <div className={styles.header__box}>
                         <div className={styles.header__box__left}>
-                            <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                            <Link to="/" >
+                                <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                            </Link>
                             <div className={styles.header__box__left__category}>
                                 <div>국내 도서</div> <div>&#47;</div>
                                 <div>외국 도서</div> <div>&#47;</div>
@@ -49,8 +52,8 @@ class Header extends Component {
                                                 <div>BOARD</div>
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__auth}>
-                                                <div>Login</div>
-                                                <div>Join</div>
+                                                <Link to="/login"><div>Login</div></Link>
+                                                <Link to ="/join"><div>Join</div></Link>
                                                 <div>My Page</div>
                                                 <div></div>
                                                 <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
