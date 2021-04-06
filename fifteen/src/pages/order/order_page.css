@@ -1,0 +1,15 @@
+.orderPage{
+    display: flex;
+    flex-direction: column;
+}
+.orderPage__title{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 90px 100px;
+    font-weight: bold;
+    font-size: 35px;
+}
+.orderPage__main{
+    display: flex;;
+    flex-direction: row;
+}

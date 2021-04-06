@@ -6,6 +6,7 @@ import {Route} from 'react-router-dom';
 import Index from './pages/index/index';
 import Login from './pages/login/login_page';
 import Join from './pages/join/join_page';
+import OrderPage from './pages/order/order_page';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' component={Index} exact/>
         <Route path='/login' component={Login}/>
         <Route path='/join' component={Join}/>
+        <Route path='/order_page' component={OrderPage} exact/>
     </div>
   );
 }
