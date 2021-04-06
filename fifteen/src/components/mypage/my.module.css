@@ -1,0 +1,101 @@
+.my{
+    display: flex;
+}
+.my__box{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 500px;
+}
+.my__box_info{
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+    border: 2px solid #E6E6E6;
+}
+.my__box__info__left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    padding: 35px 40px 40px 40px;
+}
+.my__box__info__right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    padding: 35px 30px 40px 30px;
+}
+.my_box__info__bar{
+    margin-top: 20px;
+    width: 2px;
+    height: 111px;
+    background: #E5E5E5;
+}
+.my__box__info__box{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 40px;
+    width: 430px;
+    margin-bottom: 25px;
+}
+.my__box__info__box__text{
+    display: flex;
+    align-items: flex-start;
+    font-size: 18px;
+    width: 370px;
+}
+.my__box__info__box__cnt{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 300px;
+    width: 30px;
+}
+
+.my__box_order{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 200px;
+    margin-top: 35px;
+    border: 2px solid #B0B0B0;
+}
+.my__box_order__title{
+    display: flex;
+    align-items: flex-start;
+    height: 60px;
+    padding: 17px 0 17px 44px;
+    font-weight: bold;
+    font-size: 18px;
+
+    background: #F5F5F5;
+}
+.my__box_order_stage{
+    display: flex;
+    flex-direction: row;
+}
+.my_box__stage__bar{
+    margin-top: 20px;
+    width: 2px;
+    height: 100px;
+    background: #E5E5E5;
+}
+.my__box_order_stage__box{
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    height: 140px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.my__box_order_stage__box__text{
+
+    font-weight: bold;
+    font-size: 18px;
+}
+.my__box_order_stage__box__cnt{
+    font-weight: bold;
+    font-size: 36px;
+}
