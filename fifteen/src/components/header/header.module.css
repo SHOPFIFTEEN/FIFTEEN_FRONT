@@ -1,3 +1,9 @@
+a:link, a:visited, a:hover, a:focus, a:active{
+    text-decoration : none;
+    color : black;
+    text-decoration-color: black;
+}
+
 .header {
     display: flex;
     flex-direction: column;
