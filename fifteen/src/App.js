@@ -14,7 +14,7 @@ function App() {
         <Route path='/' component={Index} exact/>
         <Route path='/login' component={Login}/>
         <Route path='/join' component={Join}/>
-        <Route path='/order_page' component={OrderPage} exact/>
+        <Route path='/order_page' component={OrderPage} />
     </div>
   );
 }

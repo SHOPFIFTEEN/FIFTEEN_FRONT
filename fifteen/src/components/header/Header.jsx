@@ -48,7 +48,7 @@ class Header extends Component {
                                         <div>
                                             <div className={styles.header__box__right__menu__modal__title}>
                                                 <div>SHOP</div>
-                                                <div>ORDER</div>
+                                                <Link to="/order_page"><div>ORDER</div></Link>
                                                 <div>BOARD</div>
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__auth}>

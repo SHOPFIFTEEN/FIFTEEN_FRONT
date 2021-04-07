@@ -10,11 +10,12 @@ class OrderPage extends Component{
         return(
             <div>
                 <div className="orderPage">
-                    <div className="orderPage__title">Order</div>
                     <Header />
+                    <div className="orderPage_line" />
+                    <div className="orderPage__title">Order</div>
                     <div className="orderPage__main">
                         <MyPage_side />
-                        <Order/>
+                        <Order />
                     </div>
                     <Footer />
                 </div>
