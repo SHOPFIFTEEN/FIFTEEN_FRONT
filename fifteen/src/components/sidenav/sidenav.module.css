@@ -10,6 +10,7 @@ button:focus{
     flex-direction: row;
     height: 250px;
     color: black;
+    position: fixed;
 }
 
 .sidenav__box{
