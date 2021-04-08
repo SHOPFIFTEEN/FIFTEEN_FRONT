@@ -3,3 +3,9 @@
     margin-bottom: 100px;
     display: flex;
 }
+
+.indexBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
