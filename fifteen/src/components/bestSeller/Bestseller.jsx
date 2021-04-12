@@ -15,9 +15,10 @@ class Bestseller extends Component {
         let result =await axios ({
             method : 'GET',
             url : 'http://3.34.126.33:8080/product/select_all',
+            data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
-                'Content-Type' : 'application/json'
+                "Content-Type" : 'application/json'
             },
         })
         this.setState({products : result.data});
