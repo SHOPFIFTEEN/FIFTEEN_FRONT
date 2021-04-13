@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './join.css';
+import { Link} from "react-router-dom";
 
 class Join extends Component {
     render() {
@@ -43,7 +44,7 @@ class Join extends Component {
                             <input type="checkbox" className="agree__btn"/>
                             <div>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</div>
                         </div>
-                        <div className="join__btn">Join</div>
+                        <Link to='/login'><div className="join__btn">Join</div></Link>
                     </div>
                 </div>
             </div>

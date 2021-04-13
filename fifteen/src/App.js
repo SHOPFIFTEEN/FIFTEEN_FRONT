@@ -10,6 +10,7 @@ import OrderPage from './pages/order/order_page';
 import Mypage from './pages/mypage/my_page';
 import Profile from './pages/profile/profile_page';
 import Wishlist from "./pages/wishlist/wishlist_page";
+import Coupon from './pages/coupon/coupon_page';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/mypage' component={Mypage}/>
         <Route path='/profile' component={Profile}/>
         <Route path='/wishlist' component={Wishlist}/>
+        <Route path='/coupon' component={Coupon}/>
     </div>
   );
 }

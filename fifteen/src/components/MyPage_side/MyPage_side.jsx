@@ -11,7 +11,7 @@ class MyPage_side extends Component {
                         <div className={styles.MyPage_side__category__text}>주문내역조회</div>
                         <Link to='/profile'><div className={styles.MyPage_side__category__text}>회원정보</div></Link>
                         <Link to='/wishlist'><div className={styles.MyPage_side__category__text}>관심상품</div></Link>
-                        <div className={styles.MyPage_side__category__text}>쿠폰</div>
+                        <Link to='/coupon'><div className={styles.MyPage_side__category__text}>쿠폰</div></Link>
                     </div>
                 </div>
             </div>
