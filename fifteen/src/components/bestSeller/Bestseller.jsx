@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './bestseller.css';
 import axios from 'axios';
+import _ from 'lodash';
 
 
 class Bestseller extends Component {
@@ -22,8 +23,11 @@ class Bestseller extends Component {
             },
         })
         this.setState({products : result.data});
-        console.log(result.data);
-        console.log(this.state.products);
+        var arr = this.state.products;
+        var saleSort = _.sortBy(arr, ['sale']);
+        var reverseSort = _.reverse(saleSort);
+        var sliceSort =  _.slice(reverseSort,0,5);
+        this.setState({products: sliceSort});
     }
 
     componentDidMount() {
