@@ -17,7 +17,7 @@ class Login extends Component {
                                 <Link to="/join">
                                     <div className={styles.join}>회원가입</div>
                                 </Link>
-                                <div className={styles.login__btn}>Log in</div>
+                                <Link to='/'><div className={styles.login__btn}>Log in</div></Link>
                             </div>
                         </div>
                     </div>
