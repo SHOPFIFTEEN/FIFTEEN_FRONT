@@ -7,6 +7,9 @@ import Index from './pages/index/index';
 import Login from './pages/login/login_page';
 import Join from './pages/join/join_page';
 import OrderPage from './pages/order/order_page';
+import Mypage from './pages/mypage/my_page';
+import Profile from './pages/profile/profile_page';
+import Wishlist from "./pages/wishlist/wishlist_page";
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
         <Route path='/login' component={Login}/>
         <Route path='/join' component={Join}/>
         <Route path='/order_page' component={OrderPage} />
+        <Route path='/mypage' component={Mypage}/>
+        <Route path='/profile' component={Profile}/>
+        <Route path='/wishlist' component={Wishlist}/>
     </div>
   );
 }
