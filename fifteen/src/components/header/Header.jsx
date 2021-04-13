@@ -54,7 +54,7 @@ class Header extends Component {
                                             <div className={styles.header__box__right__menu__modal__auth}>
                                                 <Link to="/login"><div>Login</div></Link>
                                                 <Link to ="/join"><div>Join</div></Link>
-                                                <div>My Page</div>
+                                                <Link to="/mypage"><div>My Page</div></Link>
                                                 <div></div>
                                                 <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
                                                 <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
