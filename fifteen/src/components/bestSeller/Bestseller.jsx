@@ -1,55 +1,35 @@
 import React, {Component} from 'react';
 import './bestseller.css';
+import axios from 'axios';
 
 
 class Bestseller extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products : [
-                {
-                    productSeq : 1,
-                    title : '나는 더미야_1',
-                    image : '나중추가',
-                    author : 'dummy dum',
-                    price : '13,000',
-                    publisher : '애웅출판사'
-                },
-                {
-                    productSeq : 2,
-                    title : '나는 더미야_2',
-                    image : '나중추가',
-                    author : 'dummy dum',
-                    price : '13,000',
-                    publisher : '애웅출판사'
-                },
-                {
-                    productSeq : 3,
-                    title : '나는 더미야_3',
-                    image : '나중추가',
-                    author : 'dummy dum',
-                    price : '13,000',
-                    publisher : '애웅출판사'
-                },
-                {
-                    productSeq : 4,
-                    title : '나는 더미야_4',
-                    image : '나중추가',
-                    author : 'dummy dum',
-                    price : '13,000',
-                    publisher : '애웅출판사'
-                },
-                {
-                    productSeq : 5,
-                    title : '나는 더미야_5',
-                    image : '나중추가',
-                    author : 'dummy dum',
-                    price : '13,000',
-                    publisher : '애웅출판사' 
-                }
-            ]
+           products : [{'productSeq' : '1'}]
         }
     }
+
+    getBookList = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : 'http://3.34.126.33:8080/product/select_all',
+            data: { },
+            headers : {
+                'Access-Control-Allow-Origin' : '*',
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({products : result.data});
+        console.log(result.data);
+        console.log(this.state.products);
+    }
+
+    componentDidMount() {
+        this.getBookList();
+    }
+
     render() {
         return (
             <div>
