@@ -1,0 +1,121 @@
+.profilePage{
+    display: flex;
+    flex-direction: column;
+}
+.profilePage_line{
+    width: 1239px;
+    align-self: center;
+    height: 2px;
+    background: #282c34;
+}
+.profilePage_title{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 90px 150px;
+    font-weight: bold;
+    font-size: 35px;
+}
+.profilePage_main{
+    display: flex;;
+    flex-direction: row;
+    margin-left: 50px;
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 600px;}
+
+.profile_box_welcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 1000px;
+    height: 93px;
+    border: 1px solid #BBBBBB;
+    align-items: center;
+}
+.profile_box_welcome_image{
+    margin: 0 50px 0 60px;
+}
+.profile_box_welcome_line{
+    background: #BBBBBB;
+    width: 1px;
+    height: 75px;
+    margin: 0 10px 0 10px;
+}
+.profile_box_welcome_text{
+    margin-left: 37px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.profile_box_info{
+    display: flex;
+    flex-direction: column;
+}
+.profile_box_info_title{
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 20px;
+    margin : 40px 0 10px 0px;
+}
+.profile_box_info_input{
+    display: flex;
+    flex-direction: column;
+    height: 288px;
+    border-radius: 5px;
+    border-top: 1.5px solid #BBBBBB;
+}
+
+.profile_box_info_input_box{
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+}
+.profile_box_info_input_box_name{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 15px;
+    color: #676767;
+    width: 157px;
+    padding-left: 10px;
+    background: #F8F8F8;
+    border-right: 1px solid #BBBBBB;;
+}
+.profile_box_info_input_box_value{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 24px;
+    width: 200px;
+    height: 35px;
+}
+
+.profile_box_button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+.profile_box_confirm{
+    width: 150px;
+    height: 45px;
+    background: #000000;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 10px;
+}
+.profile_box_cancel{
+    width: 150px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #8C8C8C;
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}

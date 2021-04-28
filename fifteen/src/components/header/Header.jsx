@@ -6,7 +6,7 @@ import Search from '../../img/search.svg';
 import Heart from '../../img/heart.svg';
 import Bucket from '../../img/bucket.svg';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
-import { Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import { setCookie, getCookie, deleteCookie} from '../../cookies';
 
 class Header extends Component {
@@ -82,4 +82,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

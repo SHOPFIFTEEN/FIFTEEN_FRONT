@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './bestseller.css';
 import axios from 'axios';
 import _ from 'lodash';
+import {withRouter} from "react-router-dom";
 
 
 class Bestseller extends Component {
@@ -59,4 +60,4 @@ class Bestseller extends Component {
     }
 }
 
-export default Bestseller;
+export default withRouter(Bestseller);
