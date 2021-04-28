@@ -1,0 +1,112 @@
+.wishlistPage{
+    display: flex;
+    flex-direction: column;
+}
+.wishlistPage_line{
+    width: 1239px;
+    align-self: center;
+    height: 2px;
+    background: #282c34;
+}
+.wishlistPage_title{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 90px 150px;
+    font-weight: bold;
+    font-size: 35px;
+}
+.wishlistPage_main{
+    display: flex;;
+    flex-direction: row;
+    margin-left: 50px;
+}
+
+.wishlist{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+
+}
+
+.wishlist_theme{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 53px;
+    align-items: center;
+    border-top: 1.5px solid #BBBBBB;
+    border-bottom: 1.5px solid #BBBBBB;
+}
+.wishlist_theme_check{
+    width: 100px;
+}
+.wishlist_theme_img{
+    width :150px;
+
+}
+.wishlist_theme_title{
+    width: 550px;
+}
+.wishlist_theme_price{
+    width: 200px;
+}
+
+.wishlist_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 110px;
+    align-items: center;
+    border-bottom: 1.5px solid #BBBBBB;
+}
+.wishlist_box_check{
+    width: 100px;
+}
+.wishlist_box_img{
+    width: 87px;
+    margin: 0 31px 0 32px;
+
+}
+.wishlist_box_title{
+    width: 550px;
+}
+.wishlist_box_price{
+    width: 200px;
+}
+
+.wishlist_button{
+    display: flex;
+    flex-direction: column;
+}
+.wishlist_button_delete{
+    width: 90px;
+    height: 30px;
+    background: #8B8B8B;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.wishlist_paging{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.wishlist_paging_before{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #DDDDDD;
+}
+.wishlist_paging_this{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #DDDDDD;
+    font-size: 18px;
+}
+.wishlist_paging_after{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #DDDDDD;
+}

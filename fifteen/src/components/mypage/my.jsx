@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import styles from './my.module.css';
+import {withRouter} from "react-router-dom";
 
 class My extends Component{
     render(){
@@ -56,4 +57,4 @@ class My extends Component{
         )
     }
 }
-export default My;
+export default withRouter(My);

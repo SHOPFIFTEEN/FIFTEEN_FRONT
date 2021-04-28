@@ -6,13 +6,15 @@ import Search from '../../img/search.svg';
 import Heart from '../../img/heart.svg';
 import Bucket from '../../img/bucket.svg';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
-import { Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import { setCookie, getCookie, deleteCookie} from '../../cookies';
 
 class Header extends Component {
     constructor(p) {
         super(p);
         this.state={
             modal : false,
+            token : undefined
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -20,6 +22,12 @@ class Header extends Component {
     toggle() {
         this.setState({
             modal: !this.state.modal
+        })
+    }
+
+    componentDidMount(){
+        this.setState({
+            token : getCookie("accessToken")
         })
     }
 
@@ -52,9 +60,8 @@ class Header extends Component {
                                                 <div>BOARD</div>
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__auth}>
-                                                <Link to="/login"><div>Login</div></Link>
-                                                <Link to ="/join"><div>Join</div></Link>
-                                                <Link to="/mypage"><div>My Page</div></Link>
+                                                <Link to="/login"><div>{!(this.state.token) ? "Login" : "LogOut"}</div></Link>
+                                                {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
                                                 <div></div>
                                                 <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
                                                 <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
@@ -75,4 +82,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
