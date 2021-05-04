@@ -1,0 +1,22 @@
+.review{
+    display: flex;
+    flex-direction: column;
+}
+.review-title{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.review-text{
+    font-weight: bold;
+    font-size: 15px;
+    color: #9E9E9E;
+}
+.review-box{
+    display: flex;
+    flex-direction: column;
+}
+.review-subject{
+    display: flex;
+    flex-direction: row;
+}

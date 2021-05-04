@@ -1,0 +1,9 @@
+.ProductPage{
+    display: flex;
+    flex-direction: column;
+}
+
+.ProductPage-main{
+    display: flex;
+    justify-content: center;
+}

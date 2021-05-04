@@ -1,0 +1,109 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.product-main{
+    display: flex;
+    position: sticky;
+    flex-direction: row;
+    width: 1000px;
+    justify-content: center;
+    padding: 50px 70px 50px 70px;
+    background: #FBF8F3;
+}
+.product-main-imgBox{
+    height: 400px;
+    width: 400px;
+    background: #F0E9DF;
+}
+.product-main-imgBox-img{
+    margin: 90px 50px 100px 50px;
+}
+.product-main-box{
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    align-items: flex-start;
+}
+.product-main-box-category{
+    font-size: 12px;
+}
+.product-main-box-title{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 30px;
+}
+.product-main-box-author{
+    font-size: 12px;
+}
+.product-main-box-comment{
+    text-align: left;
+    font-size: 13px;
+    margin-top: 25px;
+}
+.product-main-box-price-total{
+    position: absolute;
+    font-size: 14px;
+    margin-top: 245px;
+}
+
+.product-main-box-price{
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 270px;
+}
+.product-main-box-button{
+    width: 270px;
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:330px;
+}
+.product-main-box-button-buy,.product-main-box-button-cart{
+    width: 120px;
+    height: 35px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #FFFFFF;
+    background: #000000;
+    border-radius: 5px;
+}
+.product-detail{
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    margin-top: 100px;
+}
+.product-detail-sidenav{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.product-detail-sidenav-information,.product-detail-sidenav-review,.product-detail-sidenav-qna{
+    font-size: 15px;
+    margin: 10px;
+}
+.product-detail-box{
+    width: 800px;
+
+}
+.product-detail-box-information{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 15px;
+}
+.product-detail-box-information-box{
+    margin : 0 0 30px 0;
+}
+.product-detail-box-information-title{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
