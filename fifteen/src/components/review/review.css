@@ -1,10 +1,14 @@
-.review{
+.review,.qna{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+    border-top : 1px solid #BBBBBB;
 }
 .review-title{
     font-weight: bold;
     font-size: 22px;
+    padding-top: 3px;
 }
 
 .review-text{
@@ -15,8 +19,33 @@
 .review-box{
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #585858;
 }
 .review-subject{
     display: flex;
     flex-direction: row;
+    margin-top: 15px;
+
+}
+.review-subject-num{
+    width: 120px;
+
+}
+.review-subject-content{
+    width: 450px;
+}
+.review-subject-author{
+    width: 230px;
+}
+.review-button{
+    width: 100px;
+    height: 30px;
+    margin-left: 700px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #FFFFFF;
+    background: #000000;
+    margin-bottom: 20px;
 }
