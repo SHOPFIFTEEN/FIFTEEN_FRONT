@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import {withRouter} from "react-router-dom";
 import axios from "axios";
 import _ from "lodash";
+import {Link} from "react-router-dom";
 
 class JoinPage extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class JoinPage extends Component {
         let {id, pwd, name, phoneNumber, email} = this.state;
         let result = axios({
             method: 'POST',
-            url: "http://3.34.126.33:8080/user_info/insert_user",
+            url: "http://52.79.196.94:8080/user_info/insert_user",
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -34,8 +35,9 @@ class JoinPage extends Component {
                 phone_number: phoneNumber,
                 email: email,
             }
-        }).then((response) => {
-            if (response.isSuccess === true) {
+        }).then((result) => {
+            if (result.status < 400) {
+                console.log('완료!');
                 const {history} = this.props;
                 alert('회원가입이 성공적으로 완료되었습니다.');
                 history.push('/login');
