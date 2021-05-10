@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './product.css';
 import axios from "axios";
 import Review from "../review/review";
+import QnA from "../Q&A/Q&A";
 
 class Product extends Component{
 
@@ -14,7 +15,7 @@ class Product extends Component{
         getProductInfoList = async function () {
             let result =await axios ({
                 method : 'GET',
-                url : 'http://13.125.235.86:8080/product/select_all',
+                url : 'http://52.79.196.94/:8080/product/select_all',
                 data: { },
                 headers : {
                     'Access-Control-Allow-Origin' : '*',
@@ -77,9 +78,10 @@ class Product extends Component{
                             </div>
                         </div>
                         <div className="product-detail-box-review">
-
+                            <Review />
                         </div>
                         <div className="product-detail-box-qna">
+                            <QnA />
                         </div>
                     </div>
                 </div>
