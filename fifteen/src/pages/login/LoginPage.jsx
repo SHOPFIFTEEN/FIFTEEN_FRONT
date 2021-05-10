@@ -37,7 +37,7 @@ class Login_page extends Component {
         const pw = this.state.password;
         const result = axios( {
             method : 'POST',
-            url : "http://3.34.126.33:8080/user_info/get_login_token",
+            url : "http://52.79.196.94:8080/user_info/get_login_token",
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -45,8 +45,8 @@ class Login_page extends Component {
                 id : id,
                 passwd : pw
             }
-        }).then((response)=>{
-            if(response?.isSuccess){
+        }).then((result)=>{
+            if(result.status<400){
                 const {history} = this.props;
                 this.state.token = result.data.accessToken;
                 setCookie("accessToken", this.state.token);

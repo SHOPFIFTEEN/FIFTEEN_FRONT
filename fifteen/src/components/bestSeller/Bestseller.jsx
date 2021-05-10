@@ -16,7 +16,7 @@ class Bestseller extends Component {
     getBookList = async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://3.34.126.33:8080/product/select_all',
+            url : 'http://52.79.196.94:8080/product/select_all',
             data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
