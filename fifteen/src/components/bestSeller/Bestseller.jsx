@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './bestseller.css';
 import axios from 'axios';
 import _ from 'lodash';
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 
 class Bestseller extends Component {
@@ -42,16 +42,18 @@ class Bestseller extends Component {
                     <div className="bestSellerTitle">Best Seller</div>
                     <div className="bestSellerBooks">
                         {this.state.products.map(arr => (
-                            <div key={arr.productSeq}>
-                                <div className="bestSellerBookItem">
-                                    <div className="bestSellerBookItemImg">
-                                        {arr.image}
+                            <Link to={`/product/${arr.productSeq}`}>
+                                <div key={arr.productSeq}>
+                                    <div className="bestSellerBookItem">
+                                        <div className="bestSellerBookItemImg">
+                                            {arr.image}
+                                        </div>
+                                        <div className="bestSellerBookItemTitle">{arr.title}</div>
+                                        <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
+                                        <div className="bestSellerBookItemPrice">{arr.price}</div>
                                     </div>
-                                    <div className="bestSellerBookItemTitle">{arr.title}</div>
-                                    <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                    <div className="bestSellerBookItemPrice">{arr.price}</div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

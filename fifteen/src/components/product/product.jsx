@@ -3,44 +3,50 @@ import './product.css';
 import axios from "axios";
 import Review from "../review/review";
 import QnA from "../Q&A/Q&A";
+import _ from "lodash";
 
 class Product extends Component{
 
         constructor(props) {
             super(props);
             this.state = {
-                productInfoArr: [{'productSeq': '1'}]
+                productSeq : '0',
+                products : [{'' : ''}],
             }
         }
-        getProductInfoList = async function () {
-            let result =await axios ({
-                method : 'GET',
-                url : 'http://52.79.196.94:8080/product/select_all',
-                data: { },
-                headers : {
-                    'Access-Control-Allow-Origin' : '*',
-                    "Content-Type" : 'application/json'
-                },
-            });
-            this.setState({productInfoArr : result.data});
-        };
 
-        componentDidMount() {
-            this.getProductInfoList();
-        }
+    getBookList = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : 'http://52.79.196.94:8080/product/select_all',
+            data: { },
+            headers : {
+                'Access-Control-Allow-Origin' : '*',
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({products : result.data});
+        // this.setState({productSeq : this.props.productSeq});
+    }
+
+    componentDidMount() {
+        this.getBookList();
+        console.log(this.props);
+    }
+
     render(){
         return(
             <div className="product">
                 <div className="product-main">
                     <div className="product-main-imgBox">
-                        <img className="product-main-imgBox-img" src={this.state.productInfoArr[0].image}/></div>
+                        <img className="product-main-imgBox-img" src={this.state.products[this.state.productSeq].img}/></div>
                     <div className="product-main-box">
-                        <div className="product-main-box-category">{this.state.productInfoArr[0].field}</div>
-                        <div className="product-main-box-title">{this.state.productInfoArr[0].title}</div>
-                        <div className="product-main-box-author">지은이 : {this.state.productInfoArr[0].author} / 출판사 : {this.state.productInfoArr[0].publisher}</div>
-                        <div className="product-main-box-comment">{this.state.productInfoArr[0].a_intro}</div>
+                        <div className="product-main-box-category">{this.state.products[this.state.productSeq].field}</div>
+                        <div className="product-main-box-title">{this.state.products[this.state.productSeq].title}</div>
+                        <div className="product-main-box-author">지은이 : {this.state.products[this.state.productSeq].author} / 출판사 : {this.state.products[this.state.productSeq].publisher}</div>
+                        <div className="product-main-box-comment">{this.state.products[this.state.productSeq].a_intro}</div>
                         <div className="product-main-box-price-total">Total</div>
-                        <div className="product-main-box-price">{this.state.productInfoArr[0].price}원</div>
+                        <div className="product-main-box-price">{this.state.products[this.state.productSeq].price}원</div>
                         <div className="product-main-box-button">
                             <button className="product-main-box-button-buy">BUY NOW</button>
                             <button className="product-main-box-button-cart">ADD TO CART</button>
@@ -58,11 +64,11 @@ class Product extends Component{
                         <div className="product-detail-box-information">
                             <div className="product-detail-box-information-box">
                                 <div className="product-detail-box-information-title">저자 소개</div>
-                                {this.state.productInfoArr[0].a_intro}
+                                {this.state.products[this.state.productSeq].a_intro}
                             </div>
                             <div className="product-detail-box-information-box">
                                 <div className="product-detail-box-information-title">작품 소개</div>
-                                {this.state.productInfoArr[0].content}
+                                {this.state.products[this.state.productSeq].content}
                             </div>
                             <div className="product-detail-box-information-box">
                                 <div className="product-detail-box-information-title">배송 방법</div>

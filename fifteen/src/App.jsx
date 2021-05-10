@@ -12,6 +12,7 @@ import MyPage from './pages/mypage/MyPage';
 import Profile from './pages/profile/ProfilePage';
 import Wishlist from "./pages/wishlist/WishlistPage";
 import Coupon from './pages/coupon/CouponPage';
+import ProductPage from "./pages/product/product_page";
 
 class App extends Component{
     render() {
@@ -25,6 +26,7 @@ class App extends Component{
                 <Route path='/profile' component={Profile}/>
                 <Route path='/wishlist' component={Wishlist}/>
                 <Route path='/coupon' component={Coupon}/>
+                <Route path='/product/:productSeq' component={ProductPage}/>
             </div>
         );
     }
