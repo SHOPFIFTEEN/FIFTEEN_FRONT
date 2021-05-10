@@ -1,11 +1,32 @@
 .list{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+.list-fieldBox {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 1000px;
+    height: 50px;
+    padding: 10px 0 0 0 ;
+    margin-bottom: 30px;
+    justify-content: space-around;
+    border-top : solid black 2px;
+    border-bottom: solid black 2px;
+}
+
+.list-fieldBox.selected {
+    font-weight: bold;
+}
+
 .list-sortBox{
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    width: 1000px;
+    justify-content: flex-start;
 }
 .list-sortBox-sort{
     font-size: 17px;
@@ -20,23 +41,26 @@
     font-size: 15px;
     margin-right: 10px;
 }
+
 .list-product {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1100px;
+    width: 1000px;
+    flex-wrap: wrap;
 }
 
 .list-product-item {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 170px;
     height: 270px;
     align-items: flex-start;
+    margin-bottom: 40px;
 }
 
 .list-product-item-title {
-    font-size: 20px;
+    font-size: 18px;
     color : #2A4478;
 }
 

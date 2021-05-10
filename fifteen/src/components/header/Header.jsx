@@ -41,10 +41,7 @@ class Header extends Component {
                                 <div className={styles.header__box__left__title}>#FIFTEEN</div>
                             </Link>
                             <div className={styles.header__box__left__category}>
-                                <div>국내 도서</div> <div>&#47;</div>
-                                <div>외국 도서</div> <div>&#47;</div>
-                                <div>추천 도서</div> <div>&#47;</div>
-                                <div>ebook</div>
+                                Shopping mall specializing in domestic books
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
@@ -55,7 +52,9 @@ class Header extends Component {
                                 <MDBModal isOpen={this.state.modal} toggle={this.toggle} contentClassName={(styles.header__box__right__menu__modal)} fullHeight position="right" >
                                         <div>
                                             <div className={styles.header__box__right__menu__modal__title}>
-                                                <div>SHOP</div>
+                                                <Link to='/list'>
+                                                    <div>SHOP</div>
+                                                </Link>
                                                 <Link to="/order_page"><div>ORDER</div></Link>
                                                 <div>BOARD</div>
                                             </div>

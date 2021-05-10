@@ -9,7 +9,7 @@ class Bestseller extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           products : [{'productSeq' : '1'}]
+           products : [{'productSeq' : '1'}],
         }
     }
 
@@ -44,8 +44,8 @@ class Bestseller extends Component {
                         {this.state.products.map(arr => (
                             <div key={arr.productSeq}>
                                 <div className="bestSellerBookItem">
-                                    <div className="bestSellerBookItemImg">
-                                        {arr.image}
+                                    <div className="list-product-item-imageBox">
+                                        <img className="list-product-item-imageBox-img" src={arr.image} />
                                     </div>
                                     <div className="bestSellerBookItemTitle">{arr.title}</div>
                                     <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
