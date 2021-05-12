@@ -1,36 +1,41 @@
 .couponPage{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
 }
 .couponPage_line{
-    width: 1239px;
+    width: 1000px;
     align-self: center;
     height: 2px;
     background: #282c34;
 }
 .couponPage_title{
     display: flex;
-    justify-content: flex-start;
-    margin: 10px 0 90px 150px;
+    align-self: flex-start;
     font-weight: bold;
     font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .couponPage_main{
-    display: flex;;
+    display: flex;
     flex-direction: row;
-    margin-left: 50px;
+    width: 1000px;
 }
 
 .coupon{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 820px;
 }
 .couponTitle{
     display: flex;
     justify-self: flex-start;
     font-weight: bold;
     font-size: 20px;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
 .couponTheme{
@@ -43,16 +48,16 @@
     border-bottom: 1.5px solid #BBBBBB;
 }
 .couponThemeSeq{
-    width:150px;
+    width:130px;
 }
 .couponThemeName{
-    width:400px;
+    width:350px;
 }
 .couponThemePrice{
-    width: 150px;
+    width: 120px;
 }
 .couponThemeTerm{
-    width:300px;
+    width: 250px;
 }
 
 .couponBox{
@@ -64,16 +69,16 @@
     border-bottom: 1.5px solid #BBBBBB;
 }
 .couponBoxSeq{
-    width:150px;
+    width:130px;
 }
 .couponBoxName{
-    width:400px;
+    width:350px;
 }
 .couponBoxPrice{
-    width: 150px;
+    width: 120px;
 }
 .couponBoxTerm{
-    width:300px;
+    width:250px;
 }
 
 .couponButton{
@@ -88,18 +93,18 @@
     margin-top: 50px;
 }
 .couponPagingBefore{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }
 .couponPagingThis{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
     font-size: 18px;
 }
 .couponPagingAfter{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }

@@ -1,30 +1,34 @@
 .wishlistPage{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
 }
 .wishlistPage_line{
-    width: 1239px;
+    width: 1000px;
     align-self: center;
     height: 2px;
     background: #282c34;
 }
 .wishlistPage_title{
     display: flex;
-    justify-content: flex-start;
-    margin: 10px 0 90px 150px;
+    align-self: flex-start;
     font-weight: bold;
     font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .wishlistPage_main{
-    display: flex;;
+    display: flex;
     flex-direction: row;
-    margin-left: 50px;
+    width: 1000px;
 }
 
 .wishlist{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 820px;
 
 }
 
@@ -34,8 +38,8 @@
     justify-content: space-evenly;
     height: 53px;
     align-items: center;
-    border-top: 1.5px solid #BBBBBB;
-    border-bottom: 1.5px solid #BBBBBB;
+    border-top: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
 }
 .wishlist_theme_check{
     width: 100px;
@@ -55,7 +59,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 110px;
+    height: 90px;
     align-items: center;
     border-bottom: 1.5px solid #BBBBBB;
 }
@@ -95,18 +99,18 @@
     justify-content: center;
 }
 .wishlist_paging_before{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }
 .wishlist_paging_this{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
     font-size: 18px;
 }
 .wishlist_paging_after{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }

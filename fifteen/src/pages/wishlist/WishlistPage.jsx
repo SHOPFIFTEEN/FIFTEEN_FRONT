@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './wishlistPage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import MyPageSide from '../../components/MyPageSide/MyPageSide';
+import MyPageSide from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
 
 class WishlistPage extends Component {
@@ -96,9 +96,9 @@ class WishlistPage extends Component {
                             <div className="wishlist_button">
                                 <button className="wishlist_button_delete">삭제</button>
                                 <div className="wishlist_paging">
-                                    <button className="wishlist_paging_before"></button>
+                                    <button className="wishlist_paging_before">&lt;</button>
                                     <button className="wishlist_paging_this">1</button>
-                                    <button className="wishlist_paging_after"></button>
+                                    <button className="wishlist_paging_after">&gt;</button>
                                 </div>
                             </div>
                         </div>

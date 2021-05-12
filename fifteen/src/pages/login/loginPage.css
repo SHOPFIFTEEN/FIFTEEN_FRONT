@@ -7,9 +7,8 @@
     display: flex;
     flex-direction: column;
     width: 1000px;
+    height: 550px;
     align-items: flex-start;
-    height: 600px;
-    box-sizing: border-box;
 }
 
 .login__box {
@@ -18,12 +17,11 @@
     align-items: center;
     width: 1000px;
 }
-
-.header__bar {
-    height: 1.5px;
-    width: 100%;
-    background-color: black;
+.login-header-bar{
+    height: 2px;
+    width: 1000px;
     margin-bottom: 10px;
+    background-color: black;
 }
 
 .login__title {
@@ -75,6 +73,12 @@
     margin-bottom: 10px;
 }
 
+input:focus {outline:none;}
+
+.login-form-box-size{
+    width: 150px;
+    text-align: left;
+}
 .id__box .input {
     border: none;
     width: 92%;
@@ -85,17 +89,19 @@
 
 .pw__box .input {
     border: none;
-    width: 80%;
+    width: 92%;
     height: 100%;
     margin-left: 20px;
     font-size: 20px;
 }
 
-.join {
+.login-join {
     font-size: 17px;
     margin-bottom: 25px;
-    width: 100px;
+    width: 70px;
     height: 30px;
+    align-self: flex-end;
+    color: #8C8C8C;
 }
 
 .login__btn {
