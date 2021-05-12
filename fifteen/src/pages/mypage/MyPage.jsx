@@ -2,37 +2,37 @@ import React, {Component} from 'react'
 import './myPage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import MyPageSide from '../../components/MyPageSide/MyPageSide';
+import PageSideNav from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
 
 class MyPage extends Component {
     render(){
         return(
             <div>
+                <Header />
                 <div className='My_Page'>
-                    <Header />
                     <div className='My_Page_line'/>
                     <div className='My_page__title'>My page</div>
                     <div className='My_page__main'>
-                        <MyPageSide/>
+                        <PageSideNav/>
                             <div className='my'>
                                 <div className='my__box'>
                                     <div className='my__box_info'>
                                         <div className='my__box__info__left'>
                                             <div className='my__box__info__box'>
                                                 <div className='my__box__info__box__text'>총 주문</div>
-                                                <div className='my__box__info__box__cnt'>0</div>
+                                                <div className='my__box__info__box__cnt'>0회</div>
                                             </div>
                                             <div className='my__box__info__box'>
                                                 <div className='my__box__info__box__text'>쿠폰</div>
-                                                <div className='my__box__info__box__cnt'>0</div>
+                                                <div className='my__box__info__box__cnt'>0개</div>
                                             </div>
                                         </div>
                                         <div className='my_box__info__bar'/>
                                         <div className='my__box__info__right'>
                                             <div className='my__box__info__box'>
                                                 <div className='my__box__info__box__text'>총 적립금</div>
-                                                <div className='my__box__info__box__cnt'>0</div>
+                                                <div className='my__box__info__box__cnt'>0원</div>
                                             </div>
                                         </div>
                                     </div>
@@ -63,8 +63,8 @@ class MyPage extends Component {
                                 </div>
                             </div>
                         </div>
-                    <Footer/>
                 </div>
+                <Footer/>
             </div>
         )
     }

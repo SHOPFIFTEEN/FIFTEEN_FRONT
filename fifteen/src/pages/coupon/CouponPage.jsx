@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './couponPage.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import MyPageSide from '../../components/MyPageSide/MyPageSide';
+import MyPageSide from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
 
 class CouponPage extends Component{
@@ -66,9 +66,9 @@ class CouponPage extends Component{
                             {this.renderProducts}
                             <div className="couponButton">
                                 <div className="couponPaging">
-                                    <button className="couponPagingBefore"> </button>
+                                    <button className="couponPagingBefore">&lt;</button>
                                     <button className="couponPagingThis">1</button>
-                                    <button className="couponPagingAfter"> </button>
+                                    <button className="couponPagingAfter">&gt;</button>
                                 </div>
                             </div>
                         </div>

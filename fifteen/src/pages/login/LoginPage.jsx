@@ -61,22 +61,20 @@ class Login_page extends Component {
             <div>
                 <div className='login_page'>
                     <Header/>
-                    <div>
-                        <div className='login'>
-                            <div className='header__bar'/>
+                        <div className="login">
+                            <div className="login-header-bar"/>
                             <div className='login__title'>Log in</div>
                             <div className='login__box'>
                                 <div className='login__form__box'>
                                     <div className='login__form__content'>
-                                        <div className='id__box'>ID <input type="text" className='input' name='id' value={id} onChange={this.handleChangeId}/> </div>
-                                        <div className='pw__box'>Password <input type="password" className='input' name='pw' value={password} onChange={this.handleChangePwd}/></div>
-                                        <button className='join' onClick={this.handleGoJoin}>회원가입</button>
+                                        <div className='id__box'><div className="login-form-box-size">ID</div> <input type="text" className='input' name='id' value={id} onChange={this.handleChangeId}/> </div>
+                                        <div className='pw__box'><div className="login-form-box-size">Password</div><input type="password" className='input' name='pw' value={password} onChange={this.handleChangePwd}/></div>
+                                        <button className='login-join' onClick={this.handleGoJoin}>회원가입</button>
                                         <button className='login__btn' onClick={this.login}>Log in</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <Footer/>
                 </div>
             </div>

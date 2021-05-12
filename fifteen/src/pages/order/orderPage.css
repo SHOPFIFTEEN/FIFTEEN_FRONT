@@ -1,31 +1,36 @@
 .orderPage{
     display: flex;
     flex-direction: column;
-}
-.orderPage__title{
-    display: flex;
-    justify-content: flex-start;
-    margin: 10px 0 90px 150px;
-    font-weight: bold;
-    font-size: 35px;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
 
 }
-.orderPage__main{
-    display: flex;;
-    flex-direction: row;
-    margin-left: 50px;
-}
 .orderPage_line{
-    width: 1239px;
+    width: 1000px;
     align-self: center;
     height: 2px;
     background: #282c34;
 }
+.orderPage__title{
+    display: flex;
+    align-self: flex-start;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.orderPage__main{
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+}
 
-.order{
+
+.order-info{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 820px;
     height: 500px;
 }
 .order_info_title{
@@ -35,30 +40,60 @@
     font-size: 20px;
 }
 .order_info_box{
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
-    height: 300px;
-    border-top: 1.5px solid #BBBBBB;
-    border-bottom: 1.5px solid #BBBBBB;
+    border-top: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
     margin-bottom: 55px;
 }
+.order-info-box-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+}
+.order-info-box-product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 7px 0 7px 0;
+    border-top: 1px solid #BBBBBB;
+}
+.order-info-box-date{
+    width: 200px;
+}
+.order-info-box-info{
+    width: 350px;
+}
+.order-info-box-quantity{
+    width: 80px;
+}
+.order-info-box-price{
+    width: 100px;
+}
+.order-info-box-state{
+    width: 150px;
+}
+
 .order_paging{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 .order_paging_before{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }
 .order_paging_this{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
     font-size: 18px;
 }
 .order_paging_after{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid #DDDDDD;
 }

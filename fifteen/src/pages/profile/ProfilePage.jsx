@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './profilePage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import MyPageSide from '../../components/MyPageSide/MyPageSide';
+import MyPageSide from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
 import ProfileImage from "../../img/profile.svg";
 import axios from "axios";
@@ -37,8 +37,8 @@ class ProfilePage extends Component{
     render(){
         return(
             <div>
+                <Header />
                 <div className="profilePage">
-                    <Header />
                     <div className="profilePage_line" />
                     <div className="profilePage_title">Profile</div>
                     <div className="profilePage_main">
@@ -88,8 +88,8 @@ class ProfilePage extends Component{
                             </div>
                         </div>
                     </div>
-                    <Footer/>
                 </div>
+                <Footer/>
             </div>
         )
     }
