@@ -119,8 +119,11 @@
 }
 .admin-manage-box-item{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1000px;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
 }
 .admin-manage-box-item-img{
     width: 170px;

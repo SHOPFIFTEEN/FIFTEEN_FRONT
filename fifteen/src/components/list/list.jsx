@@ -72,7 +72,7 @@ class List extends Component {
             <div>
                 <div className="list">
                     <div className="list-fieldBox">
-                        <div onClick={()=>this.fieldProducts('전체')}>전체</div>
+                        <div onClick={()=>this.fieldProducts('전체')} >전체</div>
                         <div onClick={()=>this.fieldProducts('소설')}>소설</div>
                         <div onClick={()=>this.fieldProducts('시/에세이')}>시/에세이</div>
                         <div onClick={()=>this.fieldProducts('경제/경영')}>경제/경영</div>

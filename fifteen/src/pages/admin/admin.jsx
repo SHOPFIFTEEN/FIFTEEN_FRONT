@@ -4,9 +4,34 @@ import {withRouter} from "react-router-dom";
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
+import _ from "lodash";
 
 
 class Admin extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            products : [{'productSeq' : '1'}],
+        }
+    }
+
+    getBookList = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : 'http://52.79.196.94:8080/product/select_all',
+            data: { },
+            headers : {
+                'Access-Control-Allow-Origin' : '*',
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({products : result.data});
+    }
+
+    componentDidMount() {
+        this.getBookList();
+    }
+
     render(){
         return(
             <div>
@@ -42,10 +67,18 @@ class Admin extends Component {
                         <div className="admin-manage-title">상품 관리</div>
                         <div className="admin-manage-box">
                             <div className="admin-manage-box-item">
-                                <div className="admin-manage-box-item-img"> </div>
-                                <div className="admin-manage-box-item-title">주택과 세금</div>
-                                <div className="admin-manage-box-item-sub">국세청 부동산</div>
-                                <div className="admin-manage-box-item-price">6000원</div>
+                                {this.state.products.map(arr => (
+                                    <div key={arr.productSeq}>
+                                        <div className="bestSellerBookItem">
+                                            <div className="list-product-item-imageBox">
+                                                <img className="list-product-item-imageBox-img" src={arr.image} />
+                                            </div>
+                                            <div className="bestSellerBookItemTitle">{arr.title}</div>
+                                            <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
+                                            <div className="bestSellerBookItemPrice">{arr.price}</div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

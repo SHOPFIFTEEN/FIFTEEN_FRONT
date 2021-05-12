@@ -17,8 +17,8 @@
     border-bottom: solid black 2px;
 }
 
-.list-fieldBox.selected {
-    font-weight: bold;
+.list-fieldBox div {
+    cursor: pointer;
 }
 
 .list-sortBox{
