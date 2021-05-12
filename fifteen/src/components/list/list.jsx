@@ -30,8 +30,12 @@ class List extends Component {
     }
 
     fieldProducts(f) {
-        var filterProduct = _.filter(this.state.products, {'field' : f});
-        this.setState({fieldProducts : filterProduct});
+        if(f=='전체'){
+            this.setState({fieldProducts : this.state.products});
+        }else{
+            var filterProduct = _.filter(this.state.products, {'field' : f});
+            this.setState({fieldProducts : filterProduct});
+        }
 
         //클릭시 강조 표시 추가 필요
     }
@@ -68,6 +72,7 @@ class List extends Component {
             <div>
                 <div className="list">
                     <div className="list-fieldBox">
+                        <div onClick={()=>this.fieldProducts('전체')}>전체</div>
                         <div onClick={()=>this.fieldProducts('소설')}>소설</div>
                         <div onClick={()=>this.fieldProducts('시/에세이')}>시/에세이</div>
                         <div onClick={()=>this.fieldProducts('경제/경영')}>경제/경영</div>
