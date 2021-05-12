@@ -12,27 +12,56 @@ class ProfilePage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            userInfoArr: [{'productSeq': '1'}]
+            userInfo: {'productSeq': '1'},
+            id : '',
+            pwd : '',
+            name : '',
+            phoneNum : '',
         }
     }
 
-    componentDidMount() {
-        this.getUserInfoList();
-    }
-
-    getUserInfoList = async function () {
+    getUserInfo = async function () {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/user_info/select_all',
+            url : 'http://52.79.196.94:8080/user_info/select_all_by_user_seq',
             data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
                 "Content-Type" : 'application/json'
             },
         });
-        this.setState({userInfoArr : result.data});
+        this.setState({userInfo : result.data});
+        console.log(this.state.userInfo);
     };
 
+    postUserInfo = async function () {
+        let result =await axios ({
+            method : 'POST',
+            url : 'http://52.79.196.94:8080/user_info/select_all_by_user_seq',
+            data: {  },
+            headers : {
+                'Access-Control-Allow-Origin' : '*',
+                "Content-Type" : 'application/json'
+            },
+        });
+    };
+
+    handleChangeId = (e) => {
+        this.setState({id: e.target.value})
+    }
+    handleChangePwd = (e) => {
+        this.setState({pwd: e.target.value})
+    }
+    handleChangeName = (e) => {
+        this.setState({name: e.target.value})
+    }
+    handleChangePhoneNum = (e) => {
+        this.setState({phoneNumber: e.target.value})
+    }
+
+    componentDidMount() {
+        this.getUserInfo();
+    }
 
     render(){
         return(
@@ -57,11 +86,11 @@ class ProfilePage extends Component{
                                     <div className="profile_box_info_input">
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">아이디</div>
-                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfoArr[0].id}/>
+                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.id} onChange={this.handleChangeId}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">비밀번호</div>
-                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfoArr[0].passwd} />
+                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.passwd} onChange={this.handleChangePwd}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">비밀번호 확인</div>
@@ -69,7 +98,7 @@ class ProfilePage extends Component{
                                         </div>
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">이름</div>
-                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfoArr[0].name} />
+                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.name} onChange={this.handleChangeName}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">주소</div>
@@ -77,7 +106,7 @@ class ProfilePage extends Component{
                                         </div>
                                         <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">휴대전화</div>
-                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfoArr[0].phoneNum}/>
+                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.phoneNum} onChange={this.handleChangePhoneNum}/>
                                         </div>
                                     </div>
                                 </div>
