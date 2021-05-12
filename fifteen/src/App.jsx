@@ -13,6 +13,7 @@ import Profile from './pages/profile/ProfilePage';
 import Wishlist from "./pages/wishlist/WishlistPage";
 import Coupon from './pages/coupon/CouponPage';
 import ListPage from "./pages/list/ListPage";
+import Admin from "./pages/admin/admin";
 
 class App extends Component{
     render() {
@@ -27,6 +28,7 @@ class App extends Component{
                 <Route path='/wishlist' component={Wishlist}/>
                 <Route path='/coupon' component={Coupon}/>
                 <Route path='/list' component={ListPage}/>
+                <Route path='/admin' component={Admin}/>
             </div>
         );
     }
