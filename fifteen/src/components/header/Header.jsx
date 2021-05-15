@@ -31,6 +31,14 @@ class Header extends Component {
         console.log(this.state.keyword);
     }
 
+    logout=()=> {
+        deleteCookie("accessToken");
+        this.setState({
+            token : undefined
+        });
+        alert('로그아웃 되었습니다.');
+    }
+
     componentDidMount(){
         this.setState({
             token : getCookie("accessToken")
@@ -67,7 +75,7 @@ class Header extends Component {
                                                 <div>BOARD</div>
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__auth}>
-                                                <Link to="/login"><div>{!(this.state.token) ? "Login" : "LogOut"}</div></Link>
+                                                <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
                                                 {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
                                                 <div></div>
                                                 <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
