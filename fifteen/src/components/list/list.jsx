@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './list.css';
 import axios from 'axios';
 import _ from 'lodash';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 
 
 class List extends Component {
@@ -18,10 +18,9 @@ class List extends Component {
     getBookList = async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/product/select_all',
+            url : 'http://52.79.196.94:3001/product',
             data: { },
             headers : {
-                'Access-Control-Allow-Origin' : '*',
                 "Content-Type" : 'application/json'
             },
         })
@@ -92,14 +91,16 @@ class List extends Component {
                     <div className="list-product">
                         {this.state.fieldProducts.map(arr => (
                             <div key={arr.productSeq}>
-                                <div className="list-product-item">
-                                    <div className="list-product-item-imageBox">
-                                        <img className="list-product-item-imageBox-img" src={arr.image} />
+                                <Link to={`/product/${arr.productSeq}`}>
+                                    <div className="list-product-item">
+                                        <div className="list-product-item-imageBox">
+                                            <img className="list-product-item-imageBox-img" src={arr.image} />
+                                        </div>
+                                        <div className="list-product-item-title">{arr.title}</div>
+                                        <div className="list-product-item-sub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
+                                        <div className="list-product-item-price">{arr.price}</div>
                                     </div>
-                                    <div className="list-product-item-title">{arr.title}</div>
-                                    <div className="list-product-item-sub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                    <div className="list-product-item-price">{arr.price}</div>
-                                </div>
+                                </Link>
                             </div>
                         ))}
                     </div>

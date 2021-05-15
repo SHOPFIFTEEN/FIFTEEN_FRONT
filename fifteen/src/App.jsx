@@ -14,6 +14,8 @@ import Wishlist from "./pages/wishlist/WishlistPage";
 import Coupon from './pages/coupon/CouponPage';
 import ListPage from "./pages/list/ListPage";
 import Admin from "./pages/admin/admin";
+import ProductPage from "./pages/product/product_page";
+import Product from "./components/product/product";
 
 class App extends Component{
     render() {
@@ -29,6 +31,7 @@ class App extends Component{
                 <Route path='/coupon' component={Coupon}/>
                 <Route path='/list' component={ListPage}/>
                 <Route path='/admin' component={Admin}/>
+                <Route path='/product/:productSeq' component={Product}/>
             </div>
         );
     }
