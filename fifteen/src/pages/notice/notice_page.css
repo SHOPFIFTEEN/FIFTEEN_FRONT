@@ -1,0 +1,40 @@
+.noticePage{
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    margin: 0 auto;
+}
+.noticePage-main{
+    display: flex;
+    flex-direction: column;
+}
+.noticePage-title{
+    display: flex;
+    align-self: flex-start;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.noticePage-nav{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    margin-top: 50px;
+}
+.noticePage-nav-side{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+.noticePage-nav-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 18px 0;
+    margin-right: 150px;
+    font-size: 17px;
+}
+.noticePage-table{
+    width: 820px;
+}

@@ -75,7 +75,7 @@ class Header extends Component {
                                                     <div>SHOP</div>
                                                 </Link>
                                                 <Link to="/order_page"><div>ORDER</div></Link>
-                                                <div>BOARD</div>
+                                                <Link to="/notice"> <div>BOARD</div></Link>
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__auth}>
                                                 <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
