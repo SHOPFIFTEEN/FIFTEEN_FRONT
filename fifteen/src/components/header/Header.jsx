@@ -15,7 +15,8 @@ class Header extends Component {
         this.state={
             modal : false,
             token : undefined,
-            keyword : ''
+            keyword : '',
+            userSeq : undefined
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -33,6 +34,7 @@ class Header extends Component {
 
     logout=()=> {
         deleteCookie("accessToken");
+        deleteCookie("userSeq");
         this.setState({
             token : undefined
         });
@@ -41,7 +43,8 @@ class Header extends Component {
 
     componentDidMount(){
         this.setState({
-            token : getCookie("accessToken")
+            token : getCookie("accessToken"),
+            userSeq : getCookie("userSeq")
         })
     }
 

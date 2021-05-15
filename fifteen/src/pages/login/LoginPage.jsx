@@ -12,7 +12,8 @@ class Login_page extends Component {
         this.state = {
             id : '',
             password : '',
-            token : undefined
+            token : undefined,
+            userSeq : undefined,
         }
     }
 
@@ -49,6 +50,8 @@ class Login_page extends Component {
             if(result.status<400){
                 const {history} = this.props;
                 this.state.token = result.data.accessToken;
+                this.state.userSeq = result.data.userSeq;
+                setCookie("userSeq", this.state.userSeq);
                 setCookie("accessToken", this.state.token);
                 history.push('/');
                 alert('로그인 되었습니다.');
