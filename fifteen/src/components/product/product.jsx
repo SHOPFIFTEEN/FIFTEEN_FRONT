@@ -6,13 +6,16 @@ import QnA from "../Q&A/Q&A";
 import '../../pages/product/product_page.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
+import {getCookie} from "../../cookies";
 
 class Product extends Component{
 
         constructor(props) {
             super(props);
             this.state = {
-                productInfo: {productSeq : 12}
+                productInfo: {productSeq : 12},
+                count : 0,
+                productSeq : ''
             }
         }
 
@@ -29,13 +32,39 @@ class Product extends Component{
                 }
             })
             this.setState({productInfo: result.data[0]})
-            console.log(result.data)
+        }
+
+        addCart = () => {
+            let result =axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/cart/add/${this.props.match.params.productSeq}`,
+                headers : {
+                    "Content-Type" : 'application/json',
+                    "x-access-token" : getCookie("accessToken"),
+                },
+                data : {
+                    count : this.state.count
+                }
+            }).then((result)=>{
+                if(result.status<400){
+                    alert('담았습니다.')
+                }
+            })
+        }
+
+        plusCount= () =>{
+            var c = this.state.count;
+            this.setState({count : ++c});
+        }
+        minusCount =()=> {
+            var c = this.state.count;
+            this.setState({count : --c});
         }
 
         componentDidMount() {
             this.getProductInfoList();
-            console.log(this.state.productInfo);
         }
+
     render(){
         return(
             <div className="productPage">
@@ -54,7 +83,14 @@ class Product extends Component{
                                 <div className="product-main-box-price">{this.state.productInfo.price}원</div>
                                 <div className="product-main-box-button">
                                     <button className="product-main-box-button-buy">BUY NOW</button>
-                                    <button className="product-main-box-button-cart">ADD TO CART</button>
+                                    <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO CART</button>
+                                    <div>
+                                        {this.state.productInfo.title} | {this.state.productInfo.author}
+                                        <div onClick={this.plusCount}>+</div>
+                                        {this.state.count}
+                                        <div onClick={this.minusCount}>-</div>
+                                        <div onClick={this.addCart}>담기</div>
+                                    </div>
                                     <button className="product-main-box-button-heart"/>
                                 </div>
                             </div>
