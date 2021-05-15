@@ -24,7 +24,7 @@ class JoinPage extends Component {
         let {id, pwd, name, phoneNumber, email} = this.state;
         let result = axios({
             method: 'POST',
-            url: "http://52.79.196.94:8080/user_info/insert_user",
+            url: "http://52.79.196.94:3001/auth/signup",
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -32,7 +32,7 @@ class JoinPage extends Component {
                 id: id,
                 passwd: pwd,
                 name: name,
-                phone_number: phoneNumber,
+                phoneNum: phoneNumber,
                 email: email,
             }
         }).then((result) => {

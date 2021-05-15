@@ -12,7 +12,7 @@ class Login_page extends Component {
         this.state = {
             id : '',
             password : '',
-            token : getCookie("accessToken") //굳이 필요한가?
+            token : undefined
         }
     }
 
@@ -37,7 +37,7 @@ class Login_page extends Component {
         const pw = this.state.password;
         const result = axios( {
             method : 'POST',
-            url : "http://52.79.196.94:8080/user_info/get_login_token",
+            url : "http://52.79.196.94:3001/auth/login",
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -51,6 +51,7 @@ class Login_page extends Component {
                 this.state.token = result.data.accessToken;
                 setCookie("accessToken", this.state.token);
                 history.push('/');
+                alert('로그인 되었습니다.');
             }
         });
 
