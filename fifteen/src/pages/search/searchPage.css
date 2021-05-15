@@ -1,0 +1,89 @@
+.searchPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1000px;
+    flex-wrap: wrap;
+}
+
+.list-product-item {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: 270px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.list-product-item-title {
+    font-size: 18px;
+    color : #2A4478;
+}
+
+.list-product-item-sub {
+    font-size: 12px;
+    text-align: left;
+}
+
+.list-product-item-price {
+    font-size: 13px;
+}
+
+.list-product-item-imageBox {
+    background-color: #ECEBE8;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.list-product-item-imageBox-img{
+    height: 150px;
+}
+
+.searchCrumbBox {
+    font-size: 16px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.searchCrumb {
+    text-align: left;
+}
+
+.searchCrumb span {
+    font-weight: bold;
+}
+
+
+.list-sortBox{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    width: 1000px;
+    justify-content: flex-start;
+}
+.list-sortBox-sort{
+    font-size: 17px;
+}
+.list-sortBox-bar{
+    width: 50px;
+    height: 1px;
+    background-color: black;
+    margin: 13px 15px 0 15px;
+}
+.list-sortBox-sale,.list-sortBox-lowPrice,.list-sortBox-highPrice{
+    font-size: 15px;
+    margin-right: 10px;
+}
