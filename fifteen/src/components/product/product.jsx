@@ -12,7 +12,7 @@ class Product extends Component{
         constructor(props) {
             super(props);
             this.state = {
-                productInfo: [],
+                productInfo: {productSeq : 12}
             }
         }
 
@@ -28,9 +28,9 @@ class Product extends Component{
                     productSeq : this.props.match.params.productSeq
                 }
             })
-            this.setState({productInfo: result.data})
-            console.log(result.data);
-        };
+            this.setState({productInfo: result.data[0]})
+            console.log(result.data)
+        }
 
         componentDidMount() {
             this.getProductInfoList();
