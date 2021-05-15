@@ -14,7 +14,8 @@ class Header extends Component {
         super(p);
         this.state={
             modal : false,
-            token : undefined
+            token : undefined,
+            keyword : ''
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -23,6 +24,11 @@ class Header extends Component {
         this.setState({
             modal: !this.state.modal
         })
+    }
+
+    search = (e) => {
+        this.setState({keyword : e.target.value })
+        console.log(this.state.keyword);
     }
 
     componentDidMount(){
@@ -45,8 +51,10 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
-                            <input type="text" className={styles.header__box__right__search__click}/>
-                            <img src={Search} className={styles.header__box__right__search}/>
+                            <input type="text" name='search' onChange={this.search} className={styles.header__box__right__search__click}/>
+                            <Link to={`/search/${this.state.keyword}`}>
+                                <img src={Search} className={styles.header__box__right__search}/>
+                            </Link>
                             <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()} />
                             <div className={styles.header__box__right__menu__modal__box}>
                                 <MDBModal isOpen={this.state.modal} toggle={this.toggle} contentClassName={(styles.header__box__right__menu__modal)} fullHeight position="right" >

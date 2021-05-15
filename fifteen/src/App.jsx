@@ -14,7 +14,7 @@ import Wishlist from "./pages/wishlist/WishlistPage";
 import Coupon from './pages/coupon/CouponPage';
 import ListPage from "./pages/list/ListPage";
 import Admin from "./pages/admin/admin";
-import ProductPage from "./pages/product/product_page";
+import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
 
 class App extends Component{
@@ -32,6 +32,7 @@ class App extends Component{
                 <Route path='/list' component={ListPage}/>
                 <Route path='/admin' component={Admin}/>
                 <Route path='/product/:productSeq' component={Product}/>
+                <Route path='/search/:keyword' component={Search}/>
             </div>
         );
     }
