@@ -6,6 +6,7 @@ import MyPageSide from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
 import ProfileImage from "../../img/profile.svg";
 import axios from "axios";
+import {getCookie} from "../../cookies";
 
 class ProfilePage extends Component{
 
@@ -17,34 +18,26 @@ class ProfilePage extends Component{
             pwd : '',
             name : '',
             phoneNum : '',
+            userSeq : undefined,
+            token : undefined
         }
     }
 
     getUserInfo = async function () {
+        this.state.userSeq = getCookie("userSeq");
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/user_info/select_all_by_user_seq',
+            url : `http://52.79.196.94:3001/auth/${this.state.userSeq}`,
             data: { },
             headers : {
-                'Access-Control-Allow-Origin' : '*',
-                "Content-Type" : 'application/json'
+                "Content-Type" : 'application/json',
+                "x-access-token" : getCookie("accessToken"),
             },
         });
-        this.setState({userInfo : result.data});
+        this.setState({userInfo : result.data[0]});
         console.log(this.state.userInfo);
     };
 
-    postUserInfo = async function () {
-        let result =await axios ({
-            method : 'POST',
-            url : 'http://52.79.196.94:8080/user_info/select_all_by_user_seq',
-            data: {  },
-            headers : {
-                'Access-Control-Allow-Origin' : '*',
-                "Content-Type" : 'application/json'
-            },
-        });
-    };
 
     handleChangeId = (e) => {
         this.setState({id: e.target.value})
