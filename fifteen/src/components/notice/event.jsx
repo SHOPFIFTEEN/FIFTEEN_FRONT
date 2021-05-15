@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './notice.css'
 
-class Notice extends Component{
+class Event extends Component{
     render(){
         return(
             <div className="notice">
@@ -12,12 +12,12 @@ class Notice extends Component{
                 </div>
                 <div className="notice-content">
                     <div className="notice-seq">1</div>
-                    <div className="notice-title">구매 전 필독 공지사항</div>
-                    <div className="notice-date">2021-05-15</div>
+                    <div className="notice-title">내 생일^ㅁ^</div>
+                    <div className="notice-date">2021-01-06</div>
                 </div>
             </div>
         )
     }
 }
 
-export default Notice;
+export default Event;

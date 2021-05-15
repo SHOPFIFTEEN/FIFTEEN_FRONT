@@ -16,7 +16,8 @@ import ListPage from "./pages/list/ListPage";
 import Admin from "./pages/admin/admin";
 import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
-
+import NoticePage from "./pages/notice/notice_page";
+import EventPage from "./pages/notice/event_page";
 class App extends Component{
     render() {
         return (
@@ -33,6 +34,8 @@ class App extends Component{
                 <Route path='/admin' component={Admin}/>
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
+                <Route path='/notice' component={NoticePage} />
+                <Route path='/event' component={EventPage} />
             </div>
         );
     }
