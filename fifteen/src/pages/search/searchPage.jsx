@@ -58,8 +58,8 @@ class Search extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.props.match.params.keyword != prevProps.match.params.keyword){
-            this.fetch(this.props.match.params.keyword);
+        if(this.props.match.params.keyword !== prevProps.match.params.keyword){
+            this.searchResult();
         }
     }
 

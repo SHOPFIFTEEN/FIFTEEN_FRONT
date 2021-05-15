@@ -51,7 +51,7 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
-                            <input type="text" name='search' onChange={this.search} className={styles.header__box__right__search__click}/>
+                            <input type="text" name='search' onChange={this.search}  className={styles.header__box__right__search__click}/>
                             <Link to={`/search/${this.state.keyword}`}>
                                 <img src={Search} className={styles.header__box__right__search}/>
                             </Link>
