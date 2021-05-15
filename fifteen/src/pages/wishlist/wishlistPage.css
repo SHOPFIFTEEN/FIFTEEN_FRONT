@@ -114,3 +114,17 @@
     width: 30px;
     border: 1px solid #DDDDDD;
 }
+
+.list-product-item-imageBox {
+    background-color: #ECEBE8;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.list-product-item-imageBox-img{
+    height: 50px;
+}
