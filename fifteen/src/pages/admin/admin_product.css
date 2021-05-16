@@ -18,10 +18,15 @@
     font-weight: bold;
     font-size: 35px;
 }
+.admin-box{
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+}
 .admin-event{
     display: flex;
     flex-direction: column;
-    width: 900px;
+    width: 820px;
 }
 .admin-event-title{
     display: flex;
@@ -101,8 +106,7 @@
 .admin-manage{
     display: flex;
     flex-direction: column;
-    width: 900px;
-    margin-top: 100px;
+    width: 820px;
 }
 .admin-manage-title{
     display: flex;
@@ -144,4 +148,17 @@
 .admin-manage-item-price{
     font-size: 12px;
     line-height: 19px;
+}
+.admin-product-item-imageBox{
+    background-color: #ECEBE8;
+    width: 200px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.admin-product-item-imageBox-img{
+    height: 150px;
 }

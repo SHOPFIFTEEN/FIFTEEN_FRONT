@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './orderPage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import PageSideNav from '../../components/MyPageSide/page_sidenav';
+import PageSideNav from '../../components/page_nav/page_sidenav';
 import {withRouter} from "react-router-dom";
 
 class OrderPage extends Component{

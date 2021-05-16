@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './profilePage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import MyPageSide from '../../components/MyPageSide/page_sidenav';
+import MyPageSide from '../../components/page_nav/page_sidenav';
 import {withRouter} from "react-router-dom";
 import ProfileImage from "../../img/profile.svg";
 import axios from "axios";
