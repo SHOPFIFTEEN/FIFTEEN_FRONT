@@ -39,9 +39,10 @@ class WishlistPage extends Component {
         }else{
             count = count - 1;
         }
+        console.log(count);
         let result = await axios ({
             method : 'POST',
-            url : `http://52.79.196.94:3001/cart/ki/${cartSeq}`,
+            url : `http://52.79.196.94:3001/cart/re/${cartSeq}`,
             headers : {
                 "Content-Type" : 'application/json',
                 "x-access-token" : getCookie("accessToken"),
@@ -49,8 +50,11 @@ class WishlistPage extends Component {
             data : {
                 count : count
             }
+        }).then((result)=>{
+            if(result.status<400){
+                this.setState({change : this.state.change + 1});
+            }
         })
-        this.setState({change : this.state.change + 1});
     }
 
     getCart = async function () {
