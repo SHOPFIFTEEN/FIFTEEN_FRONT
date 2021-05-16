@@ -11,7 +11,8 @@ class WishlistPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [{}]
+            products: [{}],
+            change : 0
         }
     }
 
@@ -28,7 +29,29 @@ class WishlistPage extends Component {
                 alert('삭제되었습니다.');
             }
         })
+        this.setState({change : this.state.change + 1});
     };
+
+    reCart = async function (cartSeq, cartCount, e) {
+        var count = cartCount;
+        if(e===1){
+            count = count + 1;
+        }else{
+            count = count - 1;
+        }
+        let result = await axios ({
+            method : 'POST',
+            url : `http://52.79.196.94:3001/cart/ki/${cartSeq}`,
+            headers : {
+                "Content-Type" : 'application/json',
+                "x-access-token" : getCookie("accessToken"),
+            },
+            data : {
+                count : count
+            }
+        })
+        this.setState({change : this.state.change + 1});
+    }
 
     getCart = async function () {
         let result =await axios ({
@@ -48,7 +71,7 @@ class WishlistPage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.products!==this.state.products){
+        if(prevState.change!==this.state.change){
             this.getCart();
         }
     }
@@ -65,7 +88,9 @@ class WishlistPage extends Component {
                         <img className="list-product-item-imageBox-img" src={arr.image} />
                     </div>
                     <div className="wishlist_box_title">{arr.title}</div>
+                    <div onClick={this.reCart(arr.cartSeq, arr.count, 0)}>-</div>
                     <div className="wishlist_box_count">{arr.count}</div>
+                    <div onClick={this.reCart(arr.cartSeq, arr.count, 1)}>+</div>
                     <div className="wishlist_box_price">{arr.price}</div>
                     <div onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
                 </div>
