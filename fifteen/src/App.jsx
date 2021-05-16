@@ -18,6 +18,8 @@ import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
 import AdminEvent from "./pages/admin/admin_event";
 import AdminNotice from "./pages/admin/admin_notice";
+import NoticePage from "./pages/notice/notice_page";
+import EventPage from "./pages/notice/event_page";
 
 class App extends Component{
     render() {
