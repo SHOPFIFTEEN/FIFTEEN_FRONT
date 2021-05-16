@@ -4,7 +4,7 @@ import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import MyPageSide from '../../components/MyPageSide/page_sidenav';
 import {withRouter} from "react-router-dom";
-import {getCookie} from "../../cookies";
+import {getCookie, setCookie} from "../../cookies";
 import axios from "axios";
 
 class WishlistPage extends Component {
@@ -14,6 +14,21 @@ class WishlistPage extends Component {
             products: [{}]
         }
     }
+
+    deleteCart = async function (e) {
+        let result =await axios ({
+            method : 'DELETE',
+            url : `http://52.79.196.94:3001/cart/ki/${e}`,
+            headers : {
+                "Content-Type" : 'application/json',
+                "x-access-token" : getCookie("accessToken"),
+            },
+        }).then((result)=> {
+            if (result.status < 400) {
+                alert('삭제되었습니다.');
+            }
+        })
+    };
 
     getCart = async function () {
         let result =await axios ({
@@ -26,24 +41,16 @@ class WishlistPage extends Component {
             },
         });
         this.setState({products : result.data});
-        console.log(result.data);
     };
-
-    deleteCart = async function (e) {
-        console.log(e.data.cartSeq);
-        let result =await axios ({
-            method : 'DELETE',
-            url : `http://52.79.196.94:3001/cart/ki/`,
-            headers : {
-                "Content-Type" : 'application/json',
-                "x-access-token" : getCookie("accessToken"),
-            },
-        });
-    };
-
 
     componentDidMount() {
         this.getCart();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.products!==this.state.products){
+            this.getCart();
+        }
     }
 
     renderProducts = () => {
@@ -60,7 +67,7 @@ class WishlistPage extends Component {
                     <div className="wishlist_box_title">{arr.title}</div>
                     <div className="wishlist_box_count">{arr.count}</div>
                     <div className="wishlist_box_price">{arr.price}</div>
-                    <div onClick={this.deleteCart}>X</div>
+                    <div onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
                 </div>
             </div>
         ))
