@@ -13,9 +13,11 @@ import Profile from './pages/profile/ProfilePage';
 import Wishlist from "./pages/wishlist/WishlistPage";
 import Coupon from './pages/coupon/CouponPage';
 import ListPage from "./pages/list/ListPage";
-import Admin from "./pages/admin/admin";
+import AdminProduct from "./pages/admin/admin_product";
 import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
+import AdminEvent from "./pages/admin/admin_event";
+import AdminNotice from "./pages/admin/admin_notice";
 
 class App extends Component{
     render() {
@@ -30,7 +32,9 @@ class App extends Component{
                 <Route path='/wishlist' component={Wishlist}/>
                 <Route path='/coupon' component={Coupon}/>
                 <Route path='/list' component={ListPage}/>
-                <Route path='/admin' component={Admin}/>
+                <Route path='/admin/product' component={AdminProduct}/>
+                <Route path='/admin/event' component={AdminEvent}/>
+                <Route path='/admin/notice' component={AdminNotice}/>
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
             </div>
