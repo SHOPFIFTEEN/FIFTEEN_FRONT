@@ -12,25 +12,25 @@ class AdminEvent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products : [{'productSeq' : '1'}],
+            events : [{'eventSeq':'1'}]
         }
     }
 
-    getBookList = async function() {
+    getEvent= async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/product/select_all',
+            url : 'http://52.79.196.94:3001/event',
             data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
                 "Content-Type" : 'application/json'
             },
         })
-        this.setState({products : result.data});
+        this.setState({events: result.data});
     }
 
     componentDidMount() {
-        this.getBookList();
+        this.getEvent();
     }
 
     render(){
@@ -53,13 +53,17 @@ class AdminEvent extends Component {
                                 <div className="admin-event-table-term">진행기간</div>
                                 <div className="admin-event-table-button" />
                             </div>
-                            <div className="admin-event-table">
-                                <div className="admin-event-table-content">3개월 독서왕</div>
-                                <div className="admin-event-table-term">2021-03-10 ~ 2021-05-10</div>
-                                <div className="admin-event-table-button">
-                                    <button className="admin-event-table-button-modify">수정</button>
+                            {this.state.events.map(arr=>(
+                                <div key={arr.eventSeq}>
+                                    <div className="admin-event-table">
+                                        <div className="admin-event-table-content">{arr.title}</div>
+                                        <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
+                                        <div className="admin-event-table-button">
+                                            <button className="admin-event-table-button-modify">수정</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                             <div className="admin-event-button">
                                 <button className="admin-event-button-before">&lt;</button>
                                 <button className="admin-event-button-now">1</button>
