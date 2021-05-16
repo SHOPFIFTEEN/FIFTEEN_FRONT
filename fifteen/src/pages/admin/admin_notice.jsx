@@ -13,13 +13,27 @@ class AdminNotice extends Component {
         super(props);
         this.state = {
             products : [{'productSeq' : '1'}],
+            notices : [{'noticeSeq': '1'}],
         }
+    }
+
+    getNotice = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : 'http://52.79.196.94:3001/notice',
+            data: { },
+            headers : {
+                'Access-Control-Allow-Origin' : '*',
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({notices : result.data});
     }
 
     getBookList = async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/product/select_all',
+            url : 'http://52.79.196.94:3001/product',
             data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
@@ -31,6 +45,7 @@ class AdminNotice extends Component {
 
     componentDidMount() {
         this.getBookList();
+        this.getNotice();
     }
 
     render(){
@@ -53,13 +68,17 @@ class AdminNotice extends Component {
                                 <div className="admin-event-table-term">진행기간</div>
                                 <div className="admin-event-table-button" />
                             </div>
-                            <div className="admin-event-table">
-                                <div className="admin-event-table-content">3개월 독서왕</div>
-                                <div className="admin-event-table-term">2021-03-10 ~ 2021-05-10</div>
-                                <div className="admin-event-table-button">
-                                    <button className="admin-event-table-button-modify">수정</button>
+                            {this.state.notices.map(arr=>(
+                                <div key={arr.noticeSeq}>
+                                    <div className="admin-event-table">
+                                        <div className="admin-event-table-content">{arr.title}</div>
+                                        <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
+                                        <div className="admin-event-table-button">
+                                            <button className="admin-event-table-button-modify">수정</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                             <div className="admin-event-button">
                                 <button className="admin-event-button-before">&lt;</button>
                                 <button className="admin-event-button-now">1</button>

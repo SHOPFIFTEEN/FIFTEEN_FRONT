@@ -16,6 +16,10 @@ import ListPage from "./pages/list/ListPage";
 import AdminProduct from "./pages/admin/admin_product";
 import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
+import admin_event from "./pages/admin/admin_event";
+import admin_notice from "./pages/admin/admin_notice";
+import event_page from "./pages/notice/event_page";
+import notice_page from "./pages/notice/notice_page";
 
 class App extends Component{
     render() {
@@ -31,12 +35,12 @@ class App extends Component{
                 <Route path='/coupon' component={Coupon}/>
                 <Route path='/list' component={ListPage}/>
                 <Route path='/admin/product' component={AdminProduct}/>
-                <Route path='/admin/event' component={AdminEvent}/>
-                <Route path='/admin/notice' component={AdminNotice}/>
+                <Route path='/admin/event' component={admin_event}/>
+                <Route path='/admin/notice' component={admin_notice}/>
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
-                <Route path='/notice' component={NoticePage} />
-                <Route path='/event' component={EventPage} />
+                <Route path='/notice' component={notice_page} />
+                <Route path='/event' component={event_page} />
             </div>
         );
     }

@@ -61,7 +61,7 @@ class Login_page extends Component {
                     history.push('/');
                     alert('로그인 되었습니다.');
                 }else{
-                    history.push('/admin');
+                    history.push('/admin/product');
                     alert('관리자로 로그인 되었습니다.');
                 }
             }

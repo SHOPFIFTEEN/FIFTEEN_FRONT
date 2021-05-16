@@ -19,7 +19,7 @@ class AdminProduct extends Component {
     getBookList = async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:8080/product/select_all',
+            url : 'http://52.79.196.94:3001/product',
             data: { },
             headers : {
                 'Access-Control-Allow-Origin' : '*',
