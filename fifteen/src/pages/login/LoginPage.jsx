@@ -14,8 +14,10 @@ class Login_page extends Component {
             password : '',
             token : undefined,
             userSeq : undefined,
+            userType: undefined
         }
     }
+
 
     handleGoJoin = (e) => {
         const {history} = this.props;
@@ -51,10 +53,17 @@ class Login_page extends Component {
                 const {history} = this.props;
                 this.state.token = result.data.accessToken;
                 this.state.userSeq = result.data.userSeq;
+                this.state.userType=result.data.userType;
                 setCookie("userSeq", this.state.userSeq);
                 setCookie("accessToken", this.state.token);
-                history.push('/');
-                alert('로그인 되었습니다.');
+                setCookie("userType",this.state.userType);
+                if(this.state.userType===1){
+                    history.push('/');
+                    alert('로그인 되었습니다.');
+                }else{
+                    history.push('/admin');
+                    alert('관리자로 로그인 되었습니다.');
+                }
             }
         });
 
