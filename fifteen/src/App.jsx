@@ -16,10 +16,13 @@ import ListPage from "./pages/list/ListPage";
 import AdminProduct from "./pages/admin/admin_product";
 import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
+<<<<<<< HEAD
 import AdminEvent from "./pages/admin/admin_event";
 import AdminNotice from "./pages/admin/admin_notice";
 import NoticePage from "./pages/notice/notice_page";
 import EventPage from "./pages/notice/event_page";
+=======
+>>>>>>> b24c7a503782a2bd5c79b8f558fa467cfbf1c4b5
 
 class App extends Component{
     render() {
@@ -39,6 +42,8 @@ class App extends Component{
                 <Route path='/admin/notice' component={AdminNotice}/>
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
+                <Route path='/notice' component={NoticePage} />
+                <Route path='/event' component={EventPage} />
             </div>
         );
     }
