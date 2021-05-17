@@ -18,8 +18,11 @@ import Search from "./pages/search/searchPage";
 import Product from "./components/product/product";
 import admin_event from "./pages/admin/admin_event";
 import admin_notice from "./pages/admin/admin_notice";
-import event_page from "./pages/notice/event_page";
-import notice_page from "./pages/notice/notice_page";
+import EventPage from "./pages/notice/event_page";
+import NoticePage from "./pages/notice/notice_page";
+import NoticeDetail from "./pages/notice_detail/NoticeDetail";
+import EventDetail from "./pages/notice_detail/EventDetail";
+
 
 class App extends Component{
     render() {
@@ -39,8 +42,10 @@ class App extends Component{
                 <Route path='/admin/notice' component={admin_notice}/>
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
-                <Route path='/notice' component={notice_page} />
-                <Route path='/event' component={event_page} />
+                <Route path='/notice' component={NoticePage} />
+                <Route path='/notice_detail' component={NoticeDetail} />
+                <Route path='/event' component={EventPage} />
+                <Route path='/event_detail' component={EventDetail} />
             </div>
         );
     }

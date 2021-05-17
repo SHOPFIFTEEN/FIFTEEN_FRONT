@@ -3,7 +3,6 @@ import './notice_page.css';
 import '../order/orderPage.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import Notice from "../../components/notice/notice";
 import {Link, withRouter} from "react-router-dom";
 
 
@@ -27,7 +26,18 @@ class NoticePage extends Component{
                             <div className='order_info_title'>공지사항</div>
                             <div className='order-info'>
                                 <div className="order_info_box">
-                                    <Notice />
+                                    <div className="notice">
+                                        <div className="notice-subject">
+                                            <div className="notice-seq">번호</div>
+                                            <div className="notice-title">제목</div>
+                                            <div className="notice-date">등록일</div>
+                                        </div>
+                                        <div className="notice-content">
+                                            <div className="notice-seq">1</div>
+                                            <div className="notice-title">구매 전 필독 공지사항</div>
+                                            <div className="notice-date">2021-05-15</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="order_paging">
                                     <button className="order_paging_before">&lt;</button>

@@ -4,7 +4,7 @@ import '../order/orderPage.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import {Link, withRouter} from "react-router-dom";
-import Event from "../../components/notice/event";
+
 
 
 
@@ -27,7 +27,18 @@ class EventPage extends Component{
                             <div className='order_info_title'>진행중인 이벤트</div>
                             <div className='order-info'>
                                 <div className="order_info_box">
-                                    <Event />
+                                    <div className="notice">
+                                        <div className="notice-subject">
+                                            <div className="notice-seq">번호</div>
+                                            <div className="notice-title">제목</div>
+                                            <div className="notice-date">등록일</div>
+                                        </div>
+                                        <div className="notice-content">
+                                            <div className="notice-seq">1</div>
+                                            <div className="notice-title">내 생일^ㅁ^</div>
+                                            <div className="notice-date">2021-01-06</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="order_paging">
                                     <button className="order_paging_before">&lt;</button>
