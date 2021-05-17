@@ -1,0 +1,102 @@
+.admin-nav{
+    display: flex;
+    flex-direction: column;
+}
+.admin-nav-padding{
+    margin-top: 250px;
+    width: 150px;
+    border-bottom: 1px solid #8B8B8B;
+}
+.admin-productEdit-info{
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+}
+.admin-productEdit-info-titleBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #BBBBBB;
+}
+.admin-productEdit-info-title-text{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.admin-productEdit-info-box{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: 10px 0 5px 0;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+.admin-productEdit-info-subject{
+    font-size: 17px;
+    color: #8B8B8B;
+    margin-bottom: 7px;
+
+}
+.admin-productEdit-info-subBox{
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    margin: 10px 0 5px 0;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+.admin-productEdit-info-category{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+}
+.admin-productEdit-info-title{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+
+}
+.admin-productEdit-info-publisher{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+}
+.admin-productEdit-info-author{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+}
+.admin-productEdit-info-price{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+
+}
+.admin-productEdit-info-cnt{
+    width: 800px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+
+}
+.admin-productEdit-info-authorIntro{
+    width: 800px;
+    height: 80px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+
+}
+.admin-productEdit-info-intro{
+    width: 800px;
+    height: 300px;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px;
+
+}
