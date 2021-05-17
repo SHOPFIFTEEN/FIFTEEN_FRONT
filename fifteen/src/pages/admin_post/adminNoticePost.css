@@ -1,0 +1,120 @@
+/*admin_edit, admin_post 공통 사용*/
+.admin-info{
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+}
+.admin_info_box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 55px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #BBBBBB;
+}
+.admin-info-box-titleBox{
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    border-top: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+}
+.admin-info-box-titleBox-title{
+    width: 150px;
+    height: 42px;
+    background-color: #F8F8F8;
+    font-size: 15px;
+    padding-top: 7px;
+}
+.admin-info-box-titleBox-text{
+    padding-top: 7px;
+    margin-left: 15px;
+}
+
+/*admin-edit event, notice*/
+.admin-info-box-subBox{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #BBBBBB;
+}
+.admin-info-box-subBox-date{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+}
+.admin-info-box-subBox-views{
+    display: flex;
+    flex-direction: row;
+}
+.admin-info-box-subBox-title{
+    width: 150px;
+    height: 38px;
+    background-color: #F8F8F8;
+    font-size: 15px;
+    padding-top: 7px;
+}
+.admin-info-box-subBox-text{
+    padding-top: 7px;
+    margin-left: 15px;
+
+}
+.admin-info-box-main-edit{
+    font-size: 15px;
+    padding: 10px 40px 10px 40px;
+    text-align: left;
+    word-break: break-all;
+}
+
+/*admin-post event, notice*/
+.admin-info-box-main-post{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #BBBBBB;
+
+}
+
+.admin-info-box-main-box{
+    width: 150px;
+    height: 500px;
+    background-color: #F8F8F8;
+    font-size: 15px;
+}
+.admin-info-box-main-title{
+    margin-top: 10px;
+}
+.admin-info-box-main-content{
+    width: 650px ;
+    text-align: left;
+    word-break: break-all;
+    padding: 10px 5px 10px 15px
+}
+
+.admin-info-box-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+.admin-info-box-btn-cancel{
+    width: 120px;
+    height: 35px;
+    border: 2px solid #BBBBBB;
+    margin-right: 10px;
+    border-radius: 5px;
+
+}
+.admin-info-box-btn-cancel:focus{
+    border: 2px solid #BBBBBB;
+}
+
+.admin-info-box-btn-submit{
+    width: 120px;
+    height: 35px;
+    border: 2px solid #2A4478;
+    border-radius: 5px;
+    color: #2A4478;
+}
+.admin-info-box-btn-submit:focus{
+    border: 2px solid #2A4478;
+}
+
