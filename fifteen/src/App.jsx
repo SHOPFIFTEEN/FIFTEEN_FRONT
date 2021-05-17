@@ -26,6 +26,8 @@ import AdminNoticeEdit from "./pages/admin_edit/AdminNoticeEdit";
 import AdminEventEdit from "./pages/admin_edit/AdminEventEdit";
 import AdminNoticePost from "./pages/admin_post/AdminNoticePost";
 import AdminEventPost from "./pages/admin_post/AdminEventPost";
+import AdminEventEditPage from "./pages/admin_edit/AdminEventEditPage";
+import AdminNoticeEditPage from "./pages/admin_edit/AdminNoticeEditPage";
 
 
 class App extends Component{
