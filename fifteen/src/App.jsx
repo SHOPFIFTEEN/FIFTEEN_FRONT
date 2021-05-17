@@ -22,6 +22,10 @@ import EventPage from "./pages/notice/event_page";
 import NoticePage from "./pages/notice/notice_page";
 import NoticeDetail from "./pages/notice_detail/NoticeDetail";
 import EventDetail from "./pages/notice_detail/EventDetail";
+import AdminNoticeEdit from "./pages/admin_edit/AdminNoticeEdit";
+import AdminEventEdit from "./pages/admin_edit/AdminEventEdit";
+import AdminNoticePost from "./pages/admin_post/AdminNoticePost";
+import AdminEventPost from "./pages/admin_post/AdminEventPost";
 
 
 class App extends Component{

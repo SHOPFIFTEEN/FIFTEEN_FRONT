@@ -1,3 +1,4 @@
+/*admin, admin_edit, admin_post 공통 사용*/
 .admin{
     width: 1000px;
     display: flex;
@@ -23,6 +24,7 @@
     flex-direction: row;
     width: 1000px;
 }
+/*admin -event, -notice*/
 .admin-event{
     display: flex;
     flex-direction: column;
@@ -40,6 +42,7 @@
     font-weight: bold;
     font-size: 25px;
 }
+
 .admin-event-title-recent{
     width: 85px;
     height: 30px;
@@ -48,6 +51,9 @@
     border: 1px solid #000000;
     border-radius: 5px;
     margin : auto 0 auto auto;
+}
+.admin-event-title-recent:focus{
+    border: 1px solid #000000;
 }
 .admin-event-title-submit{
     width: 87px;
@@ -102,7 +108,7 @@
     border: 1px solid #DDDDDD;
 }
 
-
+/*admin-product*/
 .admin-manage{
     display: flex;
     flex-direction: column;
@@ -162,3 +168,41 @@
 .admin-product-item-imageBox-img{
     height: 150px;
 }
+
+/*admin edit -event, notice*/
+
+.admin-event-title-modify{
+    width: 85px;
+    height: 30px;
+    font-size: 15px;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    color: #8B8B8B;
+    border-radius: 5px;
+    margin : auto 0 auto auto;
+}
+.admin-event-title-modify:focus{
+    border: 1px solid #BBBBBB;
+    color: #585858;
+}
+
+.admin-event-title-delete{
+    width: 85px;
+    height: 30px;
+    font-size: 15px;
+    background: #FFFFFF;
+    color: #8B8B8B;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px;
+    margin : auto 0 auto 7px;
+}
+
+.admin-event-title-delete:focus{
+    border: 1px solid #BBBBBB;
+    color: #585858;
+}
+
+
+
+
+
