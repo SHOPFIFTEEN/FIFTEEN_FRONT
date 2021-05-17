@@ -28,6 +28,8 @@ import AdminNoticePost from "./pages/admin_post/AdminNoticePost";
 import AdminEventPost from "./pages/admin_post/AdminEventPost";
 import AdminEventEditPage from "./pages/admin_edit/AdminEventEditPage";
 import AdminNoticeEditPage from "./pages/admin_edit/AdminNoticeEditPage";
+import AdminProductEdit from "./pages/admin_product/AdminProductEdit";
+import AdminProductPost from "./pages/admin_product/AdminProductPost";
 
 
 class App extends Component{
