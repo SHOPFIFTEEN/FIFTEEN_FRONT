@@ -33,12 +33,14 @@
     width: 820px;
     height: 500px;
 }
+
 .order_info_title{
     display: flex;
     justify-content: flex-start;
     font-weight: bold;
     font-size: 20px;
 }
+
 .order_info_box{
     display: flex;
     flex-direction: column;
