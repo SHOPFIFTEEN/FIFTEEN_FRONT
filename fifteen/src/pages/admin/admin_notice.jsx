@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './admin_product.css';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
@@ -14,6 +14,7 @@ class AdminNotice extends Component {
         this.state = {
             products : [{'productSeq' : '1'}],
             notices : [{'noticeSeq': '1'}],
+            noticeSeq : 0
         }
     }
 
@@ -23,28 +24,14 @@ class AdminNotice extends Component {
             url : 'http://52.79.196.94:3001/notice',
             data: { },
             headers : {
-                'Access-Control-Allow-Origin' : '*',
                 "Content-Type" : 'application/json'
             },
         })
         this.setState({notices : result.data});
     }
 
-    getBookList = async function() {
-        let result =await axios ({
-            method : 'GET',
-            url : 'http://52.79.196.94:3001/product',
-            data: { },
-            headers : {
-                'Access-Control-Allow-Origin' : '*',
-                "Content-Type" : 'application/json'
-            },
-        })
-        this.setState({products : result.data});
-    }
 
     componentDidMount() {
-        this.getBookList();
         this.getNotice();
     }
 
@@ -61,7 +48,9 @@ class AdminNotice extends Component {
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">공지 관리</div>
                                 <button className="admin-event-title-recent">최근순</button>
-                                <button className="admin-event-title-submit">등록</button>
+                                <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
+                                    <button className="admin-event-title-submit">등록</button>
+                                </Link>
                             </div>
                             <div className="admin-event-table">
                                 <div className="admin-event-table-content">제목</div>
@@ -70,13 +59,17 @@ class AdminNotice extends Component {
                             </div>
                             {this.state.notices.map(arr=>(
                                 <div key={arr.noticeSeq}>
-                                    <div className="admin-event-table">
-                                        <div className="admin-event-table-content">{arr.title}</div>
-                                        <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
-                                        <div className="admin-event-table-button">
-                                            <button className="admin-event-table-button-modify">수정</button>
+                                    <Link to={`/admin/notice_edit/${arr.noticeSeq}`}>
+                                        <div className="admin-event-table">
+                                            <div className="admin-event-table-content">{arr.title}</div>
+                                            <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
+                                            <div className="admin-event-table-button">
+                                                <Link to={`/admin/notice_edit_page/${arr.noticeSeq}`}>
+                                                    <button className="admin-event-table-button-modify">수정</button>
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
                             <div className="admin-event-button">

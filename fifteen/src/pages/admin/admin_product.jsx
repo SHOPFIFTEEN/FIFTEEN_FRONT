@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './admin_product.css';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
@@ -48,14 +48,16 @@ class AdminProduct extends Component {
                                 <div className="admin-manage-box-item">
                                     {this.state.products.map(arr => (
                                         <div key={arr.productSeq}>
-                                            <div className="bestSellerBookItem">
-                                                <div className="admin-product-item-imageBox">
-                                                    <img className="admin-product-item-imageBox-img" src={arr.image} />
+                                            <Link to={`/admin/product_edit/${arr.productSeq}`}>
+                                                <div className="bestSellerBookItem">
+                                                    <div className="admin-product-item-imageBox">
+                                                        <img className="admin-product-item-imageBox-img" src={arr.image} />
+                                                    </div>
+                                                    <div className="bestSellerBookItemTitle">{arr.title}</div>
+                                                    <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
+                                                    <div className="bestSellerBookItemPrice">{arr.price}</div>
                                                 </div>
-                                                <div className="bestSellerBookItemTitle">{arr.title}</div>
-                                                <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                                <div className="bestSellerBookItemPrice">{arr.price}</div>
-                                            </div>
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>
