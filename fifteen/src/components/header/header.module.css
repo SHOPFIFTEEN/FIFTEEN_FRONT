@@ -16,7 +16,7 @@ a:link, a:visited, a:hover, a:focus, a:active{
     flex-direction: row;
     justify-content: space-between;
     box-sizing: border-box;
-    padding-top: 60px;
+    padding-top: 5px;
     width: 1000px;
 }
 
@@ -24,6 +24,22 @@ a:link, a:visited, a:hover, a:focus, a:active{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+.header__box__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 760px;
+}
+.header__box__right__menu__modal__header__login {
+    display: flex;
+    align-items: flex-end;
+    font-size: 15px;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 200px;
+    box-sizing: border-box;
 }
 
 .header__box__left__title {
@@ -112,6 +128,7 @@ a:link, a:visited, a:hover, a:focus, a:active{
     box-sizing: border-box;
 }
 
+
 .header__box__right__menu__modal__heart {
     height: 21px;
 }
@@ -119,6 +136,9 @@ a:link, a:visited, a:hover, a:focus, a:active{
 .header__box__right__menu__modal__bucket {
     height: 21px;
     margin-left: 45px;
+}
+.header__box__right__menu__modal__bucket__header {
+    height: 21px;
 }
 
 .header__box__right__menu__modal__hr {

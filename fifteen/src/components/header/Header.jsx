@@ -52,6 +52,14 @@ class Header extends Component {
         return (
             <div>
                 <div className={styles.header}>
+                    <div className={styles.header__box__top}>
+                        <div className={styles.header__box__right__menu__modal__header__login}>
+                            <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
+                            {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
+                            <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
+                            <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
+                        </div>
+                    </div>
                     <div className={styles.header__box}>
                         <div className={styles.header__box__left}>
                             <Link to="/" >
