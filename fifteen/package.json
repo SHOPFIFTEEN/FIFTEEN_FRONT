@@ -12,6 +12,7 @@
     "bootstrap-css-only": "^4.4.1",
     "lodash": "^4.17.21",
     "mdbreact": "^5.0.2",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-awesome-modal": "^2.0.5",
     "react-bootstrap": "^1.5.2",

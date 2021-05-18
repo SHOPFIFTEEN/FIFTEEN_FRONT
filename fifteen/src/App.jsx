@@ -51,9 +51,17 @@ class App extends Component{
                 <Route path='/product/:productSeq' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
                 <Route path='/notice' component={NoticePage} />
-                <Route path='/notice_detail' component={NoticeDetail} />
+                <Route path='/notice_detail/:noticeSeq' component={NoticeDetail} />
                 <Route path='/event' component={EventPage} />
                 <Route path='/event_detail' component={EventDetail} />
+                <Route path='/admin/event_post/:eventSeq' component={AdminEventPost}/>
+                <Route path='/admin/event_edit/:eventSeq' component={AdminEventEdit}/>
+                <Route path='/admin/notice_post/:noticeSeq' component={AdminNoticePost}/>
+                <Route path='/admin/notice_edit/:noticeSeq' component={AdminNoticeEdit}/>
+                <Route path='/admin/notice_edit_page/:noticeSeq' component={AdminNoticeEditPage}/>
+                <Route path='/admin/event_edit_page/:eventSeq' component={AdminEventEditPage}/>
+                <Route path='/admin/product_edit/:productSeq' component={AdminProductEdit}/>
+                <Route path='/admin/product_post/:productSeq' cmponent={AdminProductPost}/>
             </div>
         );
     }

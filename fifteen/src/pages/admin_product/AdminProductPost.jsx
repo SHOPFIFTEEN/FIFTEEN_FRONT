@@ -14,6 +14,77 @@ import AdminNav from "../../components/page_nav/admin_nav";
 
 
 class AdminProductPost extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title : '',
+            field : '',
+            publisher : '',
+            author : '',
+            price : '',
+            count : '',
+            a_intro : '',
+            delivery : '',
+            mileage : '',
+            page : '',
+            p_date : '',
+            discount : '',
+            image : '',
+            prevURL : ''
+        }
+    }
+
+    getProductInfo = async function() {
+        if(this.props.match.params.productSeq==='0'){
+            this.state.productInfo = {
+                title : null,
+                content : null,
+                image : null,
+                start_date : null,
+                end_date : null
+            }}else{
+            let result =await axios ({
+                method : 'GET',
+                url : `http://52.79.196.94:3001/product/${this.props.match.params.productSeq}`,
+                data: { },
+                headers : {
+                    "Content-Type" : 'application/json'
+                },
+            })
+            this.setState({
+
+            });
+        }
+    }
+
+    reProductInfo =() =>{
+        let result = axios ({
+            method : 'POST',
+            url : `http://52.79.196.94:3001/product/re/${this.props.match.params.productSeq}`,
+            data : {
+
+            },
+            headers : {
+                "Content-Type" : 'application/json',
+                'x-access-token' : getCookie("accessToken")
+            },
+        })
+    }
+
+    addProductInfo = () =>{
+        let result = axios ({
+            method : 'POST',
+            url : `http://52.79.196.94:3001/product/add`,
+            data : {
+
+            },
+            headers : {
+                "Content-Type" : 'application/json',
+                'x-access-token' : getCookie("accessToken")
+            },
+        })
+    }
+
     render(){
         return(
             <div>

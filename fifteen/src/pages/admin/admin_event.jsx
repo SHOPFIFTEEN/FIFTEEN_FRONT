@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './admin_product.css';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
@@ -12,7 +12,8 @@ class AdminEvent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            events : [{'eventSeq':'1'}]
+            events : [{'eventSeq':'1'}],
+            eventSeq : 0
         }
     }
 
@@ -46,7 +47,9 @@ class AdminEvent extends Component {
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">이벤트 관리</div>
                                 <button className="admin-event-title-recent">최근순</button>
-                                <button className="admin-event-title-submit">등록</button>
+                                <Link to={`/admin/event_edit_page/${this.state.eventSeq}`}>
+                                    <button className="admin-event-title-submit">등록</button>
+                                </Link>
                             </div>
                             <div className="admin-event-table">
                                 <div className="admin-event-table-content">제목</div>
@@ -55,13 +58,17 @@ class AdminEvent extends Component {
                             </div>
                             {this.state.events.map(arr=>(
                                 <div key={arr.eventSeq}>
-                                    <div className="admin-event-table">
-                                        <div className="admin-event-table-content">{arr.title}</div>
-                                        <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
-                                        <div className="admin-event-table-button">
-                                            <button className="admin-event-table-button-modify">수정</button>
+                                    <Link to={`/admin/event_edit/${arr.eventSeq}`}>
+                                        <div className="admin-event-table">
+                                            <div className="admin-event-table-content">{arr.title}</div>
+                                            <div className="admin-event-table-term">{arr.start_date} ~ {arr.end_date}</div>
+                                            <div className="admin-event-table-button">
+                                                <Link to={`/admin/event_edit_page/${arr.eventSeq}`}>
+                                                    <button className="admin-event-table-button-modify">수정</button>
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
                             <div className="admin-event-button">
