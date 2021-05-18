@@ -7,6 +7,7 @@ import {withRouter} from "react-router-dom";
 import ProfileImage from "../../img/profile.svg";
 import axios from "axios";
 import {getCookie} from "../../cookies";
+import Address from "../../components/address/Adress";
 
 class ProfilePage extends Component{
 
