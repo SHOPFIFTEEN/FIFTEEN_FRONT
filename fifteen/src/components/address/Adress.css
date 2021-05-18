@@ -1,0 +1,89 @@
+.address{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+.address-title{
+    width: 100%;
+    font-weight: bold;
+    font-size: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #BBBBBB;
+    text-align: left;
+}
+.address-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    margin: 10px 40px 10px 40px;
+}
+.address-check{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+input[type='checkbox']{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #bcbcbc;
+    cursor: pointer;
+    margin-top: 5px;
+
+}
+
+.address-check-text1{
+    margin: 0 5px 0 0;
+    line-height: 30px;
+
+}
+.address-check-text2{
+    margin: 0 5px 0 20px;
+
+}
+.address-subject{
+    width: 100px;
+    font-size: 20px;
+    text-align: left;
+}
+.address-inputBox{
+    margin-left: 10px;
+    width: 80%;
+    height: 35px;
+}
+
+.address-receiver{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.address-address{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.address-address-box{
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+.address-address-inputBox{
+    margin-left: 10px;
+    width: 30%;
+    height: 35px;
+
+}
+.address-number{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
