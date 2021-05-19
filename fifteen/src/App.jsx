@@ -61,7 +61,7 @@ class App extends Component{
                 <Route path='/admin/notice_edit_page/:noticeSeq' component={AdminNoticeEditPage}/>
                 <Route path='/admin/event_edit_page/:eventSeq' component={AdminEventEditPage}/>
                 <Route path='/admin/product_edit/:productSeq' component={AdminProductEdit}/>
-                <Route path='/admin/product_post/:productSeq' cmponent={AdminProductPost}/>
+                <Route path='/admin/product_post/:productSeq' component={AdminProductPost}/>
             </div>
         );
     }
