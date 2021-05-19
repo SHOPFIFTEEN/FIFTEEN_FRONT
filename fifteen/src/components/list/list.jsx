@@ -62,6 +62,22 @@ class List extends Component {
         this.setState({fieldProducts: saleSort});
     }
 
+    sortByRecent(){
+        var arr = this.state.fieldProducts;
+        var saleSort = _.sortBy(arr, ['productSeq']);
+        var reverseSort = _.reverse(saleSort);
+        // var sliceSort =  _.slice(reverseSort,0,5);
+        this.setState({fieldProducts: reverseSort});
+    }
+
+    sortByName(){
+        var arr = this.state.fieldProducts;
+        arr.sort(function(a,b){
+            return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+        });
+        this.setState({fieldProduct : arr});
+    }
+
     componentDidMount() {
         this.getBookList();
     }
@@ -84,9 +100,10 @@ class List extends Component {
                     <div className="list-sortBox">
                         <button className="list-sortBox-sort">sort</button>
                         <div className="list-sortBox-bar"/>
-                        <button className="list-sortBox-sale" onClick={() => this.sortBySale()}>판매량순</button>
+                        <button className="list-sortBox-sale" onClick={() => this.sortByRecent()}>최신등록순</button>
                         <button className="list-sortBox-lowPrice" onClick={()=> this.sortByRowPrice()}>낮은 가격순</button>
                         <button className="list-sortBox-highPrice" onClick={()=> this.sortByHighPrice()}>높은 가격순</button>
+                        <button className="list-sortBox-highPrice" onClick={()=> this.sortByName()}>이름순</button>
                     </div>
                     <div className="list-product">
                         {this.state.fieldProducts.map(arr => (
