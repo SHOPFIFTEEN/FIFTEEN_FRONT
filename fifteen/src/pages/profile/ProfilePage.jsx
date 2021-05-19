@@ -20,7 +20,7 @@ class ProfilePage extends Component{
             name : '',
             phoneNum : '',
             userSeq : undefined,
-            token : undefined
+            token : undefined,
         }
     }
 
@@ -103,6 +103,7 @@ class ProfilePage extends Component{
                                             <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.phoneNum} onChange={this.handleChangePhoneNum}/>
                                         </div>
                                     </div>
+                                    <Address/>
                                 </div>
                                 <div className="profile_box_button">
                                     <button className="profile_box_confirm">회원정보수정</button>

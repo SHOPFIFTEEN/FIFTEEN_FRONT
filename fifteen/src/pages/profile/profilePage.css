@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     width: 820px;
-    height: 600px;
+    height: 1000px;
     margin-top: 20px;
 }
 
@@ -73,6 +73,7 @@
     height: 288px;
     border-radius: 5px;
     border-top: 1.5px solid #BBBBBB;
+    margin-bottom: 50px;
 }
 
 .profile_box_info_input_box{

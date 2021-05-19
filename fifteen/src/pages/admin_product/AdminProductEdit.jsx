@@ -142,6 +142,9 @@ class AdminProductInfo extends Component {
                                 <Link to={`/admin/product_post/${this.props.match.params.productSeq}`}>
                                     <button className='admin-info-box-btn-submit'>수정</button>
                                 </Link>
+                                <Link to={`/admin/product`}>
+                                    <button onClick={this.deleteProductInfo} className='admin-info-box-btn-cancel'>삭제</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
