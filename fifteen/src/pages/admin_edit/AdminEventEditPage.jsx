@@ -69,22 +69,28 @@ class AdminEventEditPage extends Component {
         })
     }
 
-    addEventInfo = () =>{
+    addEventInfo = (e) =>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', this.state.title);
+        formData.append('content', this.state.content);
+        formData.append('image', this.state.image);
+        formData.append('start_date', this.state.start_date);
+        formData.append('end_date', this.state.end_date);
         let result = axios ({
             method : 'POST',
             url : `http://52.79.196.94:3001/event/add`,
             data : {
-                title : this.state.title,
-                content : this.state.content,
-                image  : this.state.image,
-                start_date : this.state.start_date,
-                end_date : this.state.end_date
+                formData
             },
             headers : {
-                "Content-Type" : 'application/json',
+                "Content-Type" : 'multipart/form-data',
                 'x-access-token' : getCookie("accessToken")
             },
         })
+        for (let value of formData.values()) {
+            console.log(value);
+        }
     }
 
     handleChangeTitle = (e) => {
@@ -151,42 +157,44 @@ class AdminEventEditPage extends Component {
                             {/*adminNoticePost.css*/}
                             <div className='admin-info'>
                                 <div className='admin_info_box'>
-                                    <div className='admin-info-box-titleBox'>
-                                        <div className='admin-info-box-titleBox-title'>제목</div>
-                                        <input type='text' onChange={this.handleChangeTitle} className='admin-info-box-titleBox-text' value={this.state.title}/>
-                                    </div>
-                                    <div className='admin-info-box-titleBox'>
-                                        <div className='admin-info-box-titleBox-title'>기간</div>
-                                        <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/> ~
-                                        <input type='date' onChange={(e)=>this.handleChangeEndDate(e)} className='admin-info-box-titleBox-text' value={this.state.end_date}/>
-                                    </div>
-                                    <div className='admin-info-box-main-post'>
-                                        <div className='admin-info-box-main-box'>
-                                            <div className='admin-info-box-main-title'>내용</div>
+                                    <form encType='multipart/form-data'>
+                                        <div className='admin-info-box-titleBox'>
+                                            <div className='admin-info-box-titleBox-title'>제목</div>
+                                            <input type='text' onChange={this.handleChangeTitle} className='admin-info-box-titleBox-text' value={this.state.title}/>
                                         </div>
-                                        <div className='admin-info-box-main-content'>
-                                            <input type='file' onChange={this.handleChangeImage}/>
-                                            {profile_preview}
-                                            <br/>
-                                            <input type='text' onChange={this.handleChangeContent} value={this.state.content}/>
+                                        <div className='admin-info-box-titleBox'>
+                                            <div className='admin-info-box-titleBox-title'>기간</div>
+                                            <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/> ~
+                                            <input type='date' onChange={(e)=>this.handleChangeEndDate(e)} className='admin-info-box-titleBox-text' value={this.state.end_date}/>
                                         </div>
-                                    </div>
-                                    <div className='admin-info-box-button'>
-                                        <Link to={`/admin/event_edit/${this.props.match.params.eventSeq}`}>
-                                            <button className='admin-info-box-btn-cancel'>취소</button>
-                                        </Link>
+                                        <div className='admin-info-box-main-post'>
+                                            <div className='admin-info-box-main-box'>
+                                                <div className='admin-info-box-main-title'>내용</div>
+                                            </div>
+                                            <div className='admin-info-box-main-content'>
+                                                <input type='file' onChange={this.handleChangeImage}/>
+                                                {profile_preview}
+                                                <br/>
+                                                <input type='text' onChange={this.handleChangeContent} value={this.state.content}/>
+                                            </div>
+                                        </div>
+                                        <div className='admin-info-box-button'>
+                                            <Link to={`/admin/event_edit/${this.props.match.params.eventSeq}`}>
+                                                <button className='admin-info-box-btn-cancel'>취소</button>
+                                            </Link>
                                             <div>
                                                 {!(this.props.match.params.eventSeq==='0') ?
                                                     <Link to={`/admin/event`}>
                                                         <button onClick={this.reEventInfo} className='admin-info-box-btn-submit'>수정</button>
                                                     </Link>
-                                                :
+                                                    :
                                                     <Link to={`/admin/event`}>
                                                         <button onClick={this.addEventInfo} className='admin-info-box-btn-submit'>등록</button>
                                                     </Link>
                                                 }
                                             </div>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             {/*adminNoticePost.css*/}
