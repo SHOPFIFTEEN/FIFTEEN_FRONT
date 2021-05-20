@@ -33,12 +33,14 @@ class Header extends Component {
     }
 
     logout=()=> {
+        const {history} = this.props;
         deleteCookie("accessToken");
         deleteCookie("userSeq");
         this.setState({
             token : undefined
         });
         alert('로그아웃 되었습니다.');
+        history.push('/');
     }
 
     componentDidMount(){
