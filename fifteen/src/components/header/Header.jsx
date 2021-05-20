@@ -43,6 +43,10 @@ class Header extends Component {
         history.push('/');
     }
 
+    alert=()=> {
+        alert('검색어를 입력해주세요');
+    }
+
     componentDidMount(){
         this.setState({
             token : getCookie("accessToken"),
@@ -73,9 +77,10 @@ class Header extends Component {
                         </div>
                         <div className={styles.header__box__right}>
                             <input type="text" name='search' onChange={this.search}  className={styles.header__box__right__search__click}/>
-                            <Link to={`/search/${this.state.keyword}`}>
+                            {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className={styles.header__box__right__search}/>:
+                                <Link to={`/search/${this.state.keyword}`}>
                                 <img src={Search} className={styles.header__box__right__search}/>
-                            </Link>
+                            </Link>}
                             <img src={Menu} className={styles.header__box__right__menu} onClick={()=> this.toggle()} />
                             <div className={styles.header__box__right__menu__modal__box}>
                                 <MDBModal isOpen={this.state.modal} toggle={this.toggle} contentClassName={(styles.header__box__right__menu__modal)} fullHeight position="right" >
