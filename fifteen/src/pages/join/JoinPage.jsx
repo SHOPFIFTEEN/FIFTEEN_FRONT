@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import axios from "axios";
 import _ from "lodash";
 import {Link} from "react-router-dom";
+import {setCookie} from "../../cookies";
 
 class JoinPage extends Component {
     constructor(props) {
@@ -17,6 +18,9 @@ class JoinPage extends Component {
             name: '',
             phoneNumber: '',
             email: '',
+            token : undefined,
+            userSeq : undefined,
+            userType: undefined
         }
     }
 
@@ -37,11 +41,29 @@ class JoinPage extends Component {
             }
         }).then((result) => {
             if (result.status < 400) {
-                console.log('완료!');
-                const {history} = this.props;
                 alert('회원가입이 성공적으로 완료되었습니다.');
-                history.push('/login');
-                //TODO 이와 같은 회원가입 성공 이후 로직 추가 필요.
+                const response = axios( {
+                    method : 'POST',
+                    url : "http://52.79.196.94:3001/auth/login",
+                    headers: {
+                        "Content-Type": `application/json`,
+                    },
+                    data : {
+                        id : id,
+                        passwd : pwd
+                    }
+                }).then((response)=>{
+                    if(response.status<400){
+                        const {history} = this.props;
+                        this.state.token = result.data.accessToken;
+                        this.state.userSeq = result.data.userSeq;
+                        this.state.userType=result.data.userType;
+                        setCookie("userSeq", this.state.userSeq);
+                        setCookie("accessToken", this.state.token);
+                        setCookie("userType",this.state.userType);
+                        history.push('/');
+                    }
+                });
             } else {
                 //TODO 회원가입 실패 시 그 이후 로직 추가 필요
             }
