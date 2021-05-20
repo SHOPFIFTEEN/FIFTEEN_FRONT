@@ -7,6 +7,7 @@ import '../../pages/product/product_page.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import {getCookie} from "../../cookies";
+import {Link, withRouter} from "react-router-dom";
 
 class Product extends Component{
 
@@ -82,7 +83,8 @@ class Product extends Component{
                                 <div className="product-main-box-price-total">Total</div>
                                 <div className="product-main-box-price">{this.state.productInfo.price}원</div>
                                 <div className="product-main-box-button">
-                                    <button className="product-main-box-button-buy">BUY NOW</button>
+                                    {/*여기 밑에 버튼에 결제 페이지 연결하려는데 오류나길래 뺴둠*/}
+                                    <Link><button className="product-main-box-button-buy">BUY NOW</button></Link>
                                     <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO CART</button>
                                     <div>
                                         {this.state.productInfo.title} | {this.state.productInfo.author}
