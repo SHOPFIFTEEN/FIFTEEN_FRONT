@@ -109,3 +109,12 @@
     margin-bottom: 10px;
 }
 
+.breadCrumb {
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 1000px;
+    text-align: left;
+
+}

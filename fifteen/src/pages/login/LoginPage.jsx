@@ -64,6 +64,8 @@ class Login_page extends Component {
                     history.push('/admin/product');
                     alert('관리자로 로그인 되었습니다.');
                 }
+            }else{
+                alert('로그인에 실패하였습니다.');
             }
         });
 

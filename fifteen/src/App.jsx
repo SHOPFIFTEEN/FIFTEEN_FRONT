@@ -49,7 +49,7 @@ class App extends Component{
                 <Route path='/admin/product' component={AdminProduct}/>
                 <Route path='/admin/event' component={admin_event}/>
                 <Route path='/admin/notice' component={admin_notice}/>
-                <Route path='/product/:productSeq' component={Product}/>
+                <Route path='/product/:productSeq/:keyword' component={Product}/>
                 <Route path='/search/:keyword' component={Search}/>
                 <Route path='/notice' component={NoticePage} />
                 <Route path='/notice_detail/:noticeSeq' component={NoticeDetail} />

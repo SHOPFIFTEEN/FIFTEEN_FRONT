@@ -11,7 +11,8 @@ class List extends Component {
         this.state = {
             products : [{'productSeq' : '1'}],
             fieldProducts : [{'productSeq' : '1'}],
-            field : ''
+            field : '',
+            keyword : 'field'
         }
     }
 
@@ -108,7 +109,7 @@ class List extends Component {
                     <div className="list-product">
                         {this.state.fieldProducts.map(arr => (
                             <div key={arr.productSeq}>
-                                <Link to={`/product/${arr.productSeq}`}>
+                                <Link to={`/product/${arr.productSeq}/${this.state.keyword}`}>
                                     <div className="list-product-item">
                                         <div className="list-product-item-imageBox">
                                             <img className="list-product-item-imageBox-img" src={arr.image} />
