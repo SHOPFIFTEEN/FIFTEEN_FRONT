@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import './Adress.css';
 import axios from 'axios';
 import _ from 'lodash';
-import {withRouter, Link} from "react-router-dom";
+import {withRouter, Link, Switch} from "react-router-dom";
 import {getCookie} from "../../cookies";
-
+import Modal from 'react-awesome-modal';
 
 class Address extends Component {
     constructor(props) {
@@ -12,22 +12,22 @@ class Address extends Component {
         this.state = {
             deliveryInfo : {},
             newDeliveryInfo : {},
-            defaultDelivery : {}
-        }
+            defaultDelivery : {},
+            AddressVisible: false
+        };
+    }
+    _openModal = function() {
+        this.setState({
+            AddressVisible : true
+        });
     }
 
-    getDeliveryInfo = async function () {
-        let result =await axios ({
-            method : 'GET',
-            url : `http://52.79.196.94:3001/delivery`,
-            data: { },
-            headers : {
-                "Content-Type" : 'application/json',
-                "x-access-token" : getCookie("accessToken"),
-            },
+    _closeModal = function() {
+        this.setState({
+            AddressVisible : false
         });
-        this.setState({defaultDelivery: _.find(result.data, {'is_default' : '1'})});
-    };
+    }
+
 
     render() {
         return (
@@ -35,8 +35,32 @@ class Address extends Component {
                 <div className='address-title'>배송지</div>
                 <div className='address-box'>
                     <div className='address-check'>
-                        <input type='checkbox' className='address-check-text1'/><label>주문자 정보와 동일</label>
-                        <input type='checkbox' className='address-check-text2'/><label>새로운 배송지</label>
+                        <label className='address-check-text'><input type='checkbox' className='address-check-text1'/>기본 배송지</label>
+                        <div className='address-check-text2' onClick={() => this._openModal()}>
+                            배송지 목록 보기
+                            <Modal visible={this.state.AddressVisible} width="700" effect="fadeInDown" onClickAway={() => this._closeModal()}>
+                                <div className='address-modal'>
+                                    <div className='address-modal-list'>
+                                        <div className='address-modal-list-head'>
+                                            <div className='address-list-name'>배송지 이름</div>
+                                            <div className='address-modal-btnBox'>
+                                                <button className='address-modal-btn'>수정</button>
+                                                <button className='address-modal-btn'>삭제</button>
+                                            </div>
+                                        </div>
+                                        <div className='address-list-address'>서울특별시 노원구 공릉로 58길 130 서울과기대 생활관 누리학사 222호</div>
+                                    </div>
+                                    <button className='address-modal-list-plus'>
+                                        <div className='address-modal-list-plus-text'>+</div>
+                                    </button>
+                                    <input className='address-modal-cancel' value='취소' type='button' onClick={() => this._closeModal()}/>
+                                </div>
+                            </Modal>
+                        </div>
+                </div>
+                    <div className='address-list'>
+                        <div className='address-list-name'>배송지 이름</div>
+                        <div className='address-list-address'>서울특별시 노원구 공릉로 58길 130 서울과기대 생활관 누리학사 222호</div>
                     </div>
                     <div className='address-receiver'>
                         <div className='address-subject'>받는 사람</div>

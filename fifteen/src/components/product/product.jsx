@@ -7,6 +7,7 @@ import '../../pages/product/product_page.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import {getCookie} from "../../cookies";
+import {Link, withRouter} from "react-router-dom";
 
 class Product extends Component {
 
