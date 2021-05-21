@@ -44,7 +44,7 @@ class Address extends Component {
                                         <div className='address-modal-list-head'>
                                             <div className='address-list-name'>배송지 이름</div>
                                             <div className='address-modal-btnBox'>
-                                                <button className='address-modal-btn'>수정</button>
+                                                <Link to='/address_edit'> <button className='address-modal-btn'>수정</button></Link>
                                                 <button className='address-modal-btn'>삭제</button>
                                             </div>
                                         </div>

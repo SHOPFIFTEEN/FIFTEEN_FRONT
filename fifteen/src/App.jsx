@@ -31,6 +31,9 @@ import AdminNoticeEditPage from "./pages/admin_edit/AdminNoticeEditPage";
 import AdminProductEdit from "./pages/admin_product/AdminProductEdit";
 import AdminProductPost from "./pages/admin_product/AdminProductPost";
 import PurchasePage from "./pages/purchase/PurchasePage";
+import AddressPage from "./pages/addressPage/AddressPage";
+import AddressPost from "./pages/addressPage/AddressPost";
+import AddressEdit from "./pages/addressPage/AddressEdit";
 
 
 class App extends Component{
@@ -64,6 +67,9 @@ class App extends Component{
                 <Route path='/admin/product_edit/:productSeq' component={AdminProductEdit}/>
                 <Route path='/admin/product_post/:productSeq' component={AdminProductPost}/>
                 <Route path='/purchase' component={PurchasePage} />
+                <Route path='/address' component={AddressPage}/>
+                <Route path='/address_post' component={AddressPost}/>
+                <Route path='/address_edit' component={AddressEdit}/>
             </div>
         );
     }

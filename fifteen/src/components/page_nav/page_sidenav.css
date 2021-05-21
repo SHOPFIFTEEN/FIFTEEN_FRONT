@@ -17,3 +17,20 @@
     margin-right: 150px;
     font-size: 17px;
 }
+.pageNav-category-text:hover .pageNav-category-box{
+    margin-top: 10px;
+}
+.pageNav-category-address{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+}
+.pageNav-category-text:hover .pageNav-category-address{
+    opacity: 1;
+    visibility: visible;
+    width: 200px;
+    height: 35px;
+    color: rgba(107, 141, 221, 0.82);
+    text-align: left;
+    margin-top: 8px;
+}
