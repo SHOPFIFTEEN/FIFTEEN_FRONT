@@ -5,6 +5,7 @@ import './NoticeDetail.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import {Link, withRouter} from "react-router-dom";
+import axios from "axios";
 
 
 
@@ -30,12 +31,12 @@ class NoticeDetail extends Component{
                                 <div className='notice_info_box'>
                                     <div className='notice-info-box-titleBox'>
                                         <div className='notice-info-box-titleBox-title'>제목</div>
-                                        <div className='notice-info-box-titleBox-text'>구매 전 필독 공지사항</div>
+                                        <div className='notice-info-box-titleBox-text'> </div>
                                     </div>
                                     <div className='notice-info-box-subBox'>
                                         <div className='notice-info-box-subBox-date'>
                                             <div className='notice-info-box-subBox-title'>작성일</div>
-                                            <div className='notice-info-box-subBox-text'>2021-05-15</div>
+                                            <div className='notice-info-box-subBox-text'> </div>
                                         </div>
                                         <div className='notice-info-box-subBox-views'>
                                             <div className='notice-info-box-subBox-title'>조회수</div>

@@ -5,10 +5,59 @@ import './NoticeDetail.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import {Link, withRouter} from "react-router-dom";
+import axios from "axios";
+import {getCookie} from "../../cookies";
 
 
 
 class EventDetail extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            eventInfo : [],
+        }
+    }
+
+    getEventInfo = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/event/${this.props.match.params.eventSeq}`,
+            data: { },
+            headers : {
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({eventInfo : result.data[0]});
+    }
+
+    deleteEventInfo =()=> {
+        var response = window.confirm('삭제하시겠습니까?');
+        if(response){
+            let result = axios ({
+                method : 'DELETE',
+                url : `http://52.79.196.94:3001/event/ki/${this.props.match.params.eventSeq}`,
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            }).then((result)=>{
+                if(result.status<400){
+                    const {history} = this.props;
+                    alert('삭제되었습니다.');
+                    history.push('/admin/event');
+
+                }}
+            )
+        }else{
+            alert('삭제를 취소하였습니다.');
+        }
+    }
+
+
+    componentDidMount() {
+        this.getEventInfo();
+    }
+
     render(){
         return(
             <div>
@@ -30,12 +79,12 @@ class EventDetail extends Component{
                                 <div className='notice_info_box'>
                                     <div className='notice-info-box-titleBox'>
                                         <div className='notice-info-box-titleBox-title'>제목</div>
-                                        <div className='notice-info-box-titleBox-text'>이벤트 테스트</div>
+                                        <div className='notice-info-box-titleBox-text'> </div>
                                     </div>
                                     <div className='notice-info-box-subBox'>
                                         <div className='notice-info-box-subBox-date'>
-                                            <div className='notice-info-box-subBox-title'>작성일</div>
-                                            <div className='notice-info-box-subBox-text'>2021-05-17</div>
+                                            <div className='notice-info-box-subBox-title'>기간</div>
+                                            <div className='notice-info-box-subBox-text'> </div>
                                         </div>
                                         <div className='notice-info-box-subBox-views'>
                                             <div className='notice-info-box-subBox-title'>조회수</div>
