@@ -130,3 +130,10 @@
 .join__btn.disabled {
     background-color: #8C8C8C;
 }
+
+.overlap__btn{
+    font-size: 12px;
+    width: 120px;
+    height: 30px;
+    align-items: center;
+}

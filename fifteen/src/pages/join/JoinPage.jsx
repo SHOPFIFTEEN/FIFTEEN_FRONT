@@ -18,6 +18,10 @@ class JoinPage extends Component {
             name: '',
             phoneNumber: '',
             email: '',
+            isValidID: undefined,
+            isValidEmail: undefined,
+            onClick: undefined,
+            onClick2: undefined,
             token : undefined,
             userSeq : undefined,
             userType: undefined
@@ -71,6 +75,55 @@ class JoinPage extends Component {
 
     }
 
+    checkOverlapID = () => {
+        let {id} = this.state;
+        let result = axios({
+            method: 'POST',
+            url: "http://52.79.196.94:3001/auth/overlap_id",
+            headers: {
+                "Content-Type": `application/json`,
+            },
+            data: {
+                id: id
+            }
+        }).then((result) => {
+            if(result.data.tf ===true){
+                console.log(result.data.tf);
+                this.setState({isValidID: true})
+                this.setState({onClick: true})
+            }else{
+                console.log(result.data.tf);
+                this.setState({isValidID: false})
+                this.setState({onClick: true})
+                document.getElementById("id_box").value='';
+            }
+        })
+
+    }
+    checkOverlapEmail = () => {
+        let {email} = this.state;
+        let result = axios({
+            method: 'POST',
+            url: "http://52.79.196.94:3001/auth/overlap_email",
+            headers: {
+                "Content-Type": `application/json`,
+            },
+            data: {
+                email: email
+            }
+        }).then((response) => {
+            if(response.data.tf ===true){
+                this.setState({isValidEmail: true})
+                this.setState({onClick2: true})
+            }else{
+                this.setState({isValidEmail: false})
+                this.setState({onClick2: true})
+
+            }
+        })
+
+    }
+
     handleChangeId = (e) => {
         this.setState({id: e.target.value})
     }
@@ -113,18 +166,19 @@ class JoinPage extends Component {
                                         <span>*</span>
                                         <div className="input__box__just">아이디
                                             <div className="input__box__alin">
-                                                <input type="text" className="input" value={id} onChange={this.handleChangeId}/>
+                                                <input type="text" className="input" id="id_box" value={id} onChange={this.handleChangeId} required/>
                                                 <div>(영문소문자 / 숫자, 4~16)</div>
                                             </div>
                                         </div>
                                     </div>
+                                    <button className="overlap__btn" onClick={this.checkOverlapID}>중복 확인</button>
+                                    {(this.state.onClick) ? ((this.state.isValidID) ? <div style={{ color: "blue" }}>사용가능한 ID입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 ID입니다.</div>) : null}
                                     <div className="input__box">
                                         <span>*</span>
                                         <div className="input__box__just">비밀번호
                                             <div className="input__box__alin">
                                                 <input type="password" className="input" value={pwd}
-                                                       onChange={this.handleChangePwd}/>
-                                                <div>(영문대소문자 / 숫자, 4~16)</div>
+                                                       onChange={this.handleChangePwd} required/>
                                             </div>
                                         </div>
                                     </div>
@@ -132,29 +186,31 @@ class JoinPage extends Component {
                                         <span>*</span>
                                         <div className="input__box__just">비밀번호 확인<input type="password" className="input"
                                                                                         value={pwdRe}
-                                                                                        onChange={this.handleChangePwdRe}/>
+                                                                                        onChange={this.handleChangePwdRe} required/>
                                         </div>
                                     </div>
                                     <div className="input__box">
                                         <span>*</span>
                                         <div className="input__box__just">이름<input type="text" className="input" value={name}
-                                                                                   onChange={this.handleChangeName}/></div>
+                                                                                   onChange={this.handleChangeName} required/></div>
                                     </div>
                                     <div className="input__box">
                                         <span>*</span>
                                         <div className="input__box__just">휴대전화<input type="text" className="input"
                                                                                      value={phoneNumber}
-                                                                                     onChange={this.handleChangePhoneNum}/>
+                                                                                     onChange={this.handleChangePhoneNum} required/>
                                         </div>
                                     </div>
                                     <div className="input__box">
                                         <span>*</span>
                                         <div className="input__box__just">이메일<input type="text" className="input" value={email}
-                                                                                    onChange={this.handleChangeEmail}/></div>
+                                                                                    onChange={this.handleChangeEmail} required/></div>
                                     </div>
+                                    <button className="overlap__btn" onClick={this.checkOverlapEmail}>중복 확인</button>
+                                    {(this.state.onClick2) ? ((this.state.isValidEmail) ? <div style={{ color: "blue" }}>사용가능한 Email입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 Email입니다.</div>) : null}
                                 </div>
                                 <div className="agree__box">
-                                    <input type="checkbox" className="agree__btn"/>
+                                    <input type="checkbox" className="agree__btn" required/>
                                     <div>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</div>
                                 </div>
                                 <button className={`join__btn ${canJoin ? '' : 'disabled'}`} onClick={this.join}
