@@ -60,12 +60,14 @@
     border-top: 1px solid #BBBBBB;
 }
 .notice-seq{
-    width: 150px;
+    width: 120px;
+    padding-left: 30px;
 }
 .notice-title{
-    width: 420px;
+    width: 400px;
+    padding-left: 30px;
 }
 .notice-date{
-    width: 250px;
+    width: 300px;
 }
 

@@ -4,10 +4,36 @@ import '../order/orderPage.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import {Link, withRouter} from "react-router-dom";
+import axios from "axios";
 
 
 
 class NoticePage extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            products : [{'productSeq' : '1'}],
+            notices : [{'noticeSeq': '1'}],
+            noticeSeq : 0
+        }
+    }
+
+    getNotice = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : 'http://52.79.196.94:3001/notice',
+            data: { },
+            headers : {
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({notices : result.data});
+    }
+
+
+    componentDidMount() {
+        this.getNotice();
+    }
     render(){
         return(
             <div>
@@ -32,11 +58,17 @@ class NoticePage extends Component{
                                             <div className="notice-title">제목</div>
                                             <div className="notice-date">등록일</div>
                                         </div>
-                                        <div className="notice-content">
-                                            <div className="notice-seq">1</div>
-                                            <div className="notice-title">구매 전 필독 공지사항</div>
-                                            <div className="notice-date">2021-05-15</div>
-                                        </div>
+                                        {this.state.notices.map(arr=>(
+                                            <div key={arr.noticeSeq}>
+                                                <Link to={`/notice_detail/${arr.noticeSeq}`}>
+                                                    <div className="notice-content">
+                                                        <div className="notice-seq">1</div>
+                                                        <div className="notice-title">{arr.title}</div>
+                                                        <div className="notice-date">{arr.start_date} ~ {arr.end_date}</div>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                                 <div className="order_paging">
