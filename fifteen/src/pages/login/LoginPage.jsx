@@ -14,7 +14,8 @@ class Login_page extends Component {
             password : '',
             token : undefined,
             userSeq : undefined,
-            userType: undefined
+            userType: undefined,
+            userName: undefined
         }
     }
 
@@ -54,12 +55,14 @@ class Login_page extends Component {
                 this.state.token = result.data.accessToken;
                 this.state.userSeq = result.data.userSeq;
                 this.state.userType=result.data.userType;
+                this.state.userName=result.data.name;
                 setCookie("userSeq", this.state.userSeq);
                 setCookie("accessToken", this.state.token);
                 setCookie("userType",this.state.userType);
+                setCookie("userName",this.state.userName);
                 if(this.state.userType===1){
                     history.push('/');
-                    alert('로그인 되었습니다.');
+                    alert(result.data.name+'님 환영합니다!');
                 }else{
                     history.push('/admin/product');
                     alert('관리자로 로그인 되었습니다.');

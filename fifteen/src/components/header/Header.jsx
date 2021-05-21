@@ -16,7 +16,8 @@ class Header extends Component {
             modal : false,
             token : undefined,
             keyword : '',
-            userSeq : undefined
+            userSeq : undefined,
+            userName: undefined
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -36,6 +37,7 @@ class Header extends Component {
         const {history} = this.props;
         deleteCookie("accessToken");
         deleteCookie("userSeq");
+        deleteCookie("userName");
         this.setState({
             token : undefined
         });
@@ -50,7 +52,8 @@ class Header extends Component {
     componentDidMount(){
         this.setState({
             token : getCookie("accessToken"),
-            userSeq : getCookie("userSeq")
+            userSeq : getCookie("userSeq"),
+            userName : getCookie("userName")
         })
     }
 
@@ -60,10 +63,10 @@ class Header extends Component {
                 <div className={styles.header}>
                     <div className={styles.header__box__top}>
                         <div className={styles.header__box__right__menu__modal__header__login}>
-                            <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
+                            <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div id="logout" onClick={this.logout}>{this.state.userName}님&nbsp;&nbsp; logout</div>}</div>
                             {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
-                            <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
-                            <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
+                            {!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}
+
                         </div>
                     </div>
                     <div className={styles.header__box}>
@@ -96,8 +99,7 @@ class Header extends Component {
                                                 <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
                                                 {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
                                                 <div></div>
-                                                <img src={Bucket} className={styles.header__box__right__menu__modal__bucket}/>
-                                                <img src={Heart} className={styles.header__box__right__menu__modal__heart}/>
+                                                {!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__hr}></div>
                                             <div className={styles.header__box__right__menu__modal__contact}>
