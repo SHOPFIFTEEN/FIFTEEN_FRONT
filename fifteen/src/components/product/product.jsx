@@ -89,19 +89,17 @@ class Product extends Component {
                                 <div className="product-main-box-comment">{this.state.productInfo.a_intro}</div>
                                 <div className="product-main-box-price-total">Total</div>
                                 <div className="product-main-box-price">{this.state.productInfo.price}원</div>
+                                <div className="product-main-box-purchase">
+                                    <div className="product-main-box-purchase-text"> {this.state.productInfo.title} | {this.state.productInfo.author}</div>
+                                    <div className="product-main-box-purchase-btn" onClick={this.minusCount}>-</div>
+                                    <div className="product-main-box-purchase-btnText">{this.state.count}</div>
+                                    <div className="product-main-box-purchase-btn" onClick={this.plusCount}>+</div>
+                                </div>
                                 <div className="product-main-box-button">
                                     <button className="product-main-box-button-buy">BUY NOW</button>
                                     <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
                                         CART
                                     </button>
-                                    <div>
-                                        {this.state.productInfo.title} | {this.state.productInfo.author}
-                                        <div onClick={this.plusCount}>+</div>
-                                        {this.state.count}
-                                        <div onClick={this.minusCount}>-</div>
-                                        <div onClick={this.addCart}>담기</div>
-                                    </div>
-                                    <button className="product-main-box-button-heart"/>
                                 </div>
                             </div>
                         </div>

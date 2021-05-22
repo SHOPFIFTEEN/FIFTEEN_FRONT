@@ -27,9 +27,11 @@
     margin-bottom: 20px;
     width: 1000px;
     justify-content: flex-start;
+
 }
 .list-sortBox-sort{
     font-size: 17px;
+    background-color: white;
 }
 .list-sortBox-bar{
     width: 50px;
@@ -40,6 +42,7 @@
 .list-sortBox-sale,.list-sortBox-lowPrice,.list-sortBox-highPrice{
     font-size: 15px;
     margin-right: 10px;
+    background-color: white;
 }
 
 .list-product {
@@ -60,17 +63,30 @@
 }
 
 .list-product-item-title {
+    width: 170px;
     font-size: 18px;
     color : #2A4478;
+    text-align: left;
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .list-product-item-sub {
+    width: 170px;
     font-size: 12px;
     text-align: left;
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .list-product-item-price {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .list-product-item-imageBox {

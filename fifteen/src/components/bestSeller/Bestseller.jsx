@@ -49,7 +49,7 @@ class Bestseller extends Component {
                                         </div>
                                         <div className="bestSellerBookItemTitle">{arr.title}</div>
                                         <div className="bestSellerBookItemSub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                        <div className="bestSellerBookItemPrice">{arr.price}</div>
+                                        <div className="bestSellerBookItemPrice">{arr.price}원</div>
                                     </div>
                                 </Link>
                             </div>

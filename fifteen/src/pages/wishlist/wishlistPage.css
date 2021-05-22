@@ -38,44 +38,51 @@
     justify-content: space-evenly;
     height: 53px;
     align-items: center;
+    
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
 }
 .wishlist_theme_check{
-    width: 100px;
+    width: 80px;
 }
 .wishlist_theme_img{
-    width :150px;
-
+    width :100px;
+    padding-left: 10px;
 }
 .wishlist_theme_title{
-    width: 550px;
+    width: 400px;
 }
 .wishlist_theme_price{
-    width: 200px;
+    width: 150px;
+}
+.wishlist_theme_x{
+    width: 50px;
 }
 
 .wishlist_box{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 90px;
+    height: 120px;
     align-items: center;
     border-bottom: 1.5px solid #BBBBBB;
 }
 .wishlist_box_check{
+    width: 80px;
+}
+.wishlist_box-imageBox{
     width: 100px;
 }
 .wishlist_box_img{
-    width: 87px;
+    width: 70px;
     margin: 0 31px 0 32px;
 
 }
 .wishlist_box_title{
-    width: 550px;
+    width: 400px;
 }
 .wishlist_box_price{
-    width: 200px;
+    width: 150px;
 }
 
 .wishlist_button{
