@@ -8,6 +8,7 @@ import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
 import {getCookie} from "../../cookies";
 import {Link, withRouter} from "react-router-dom";
+import Star from '../../img/star.svg';
 
 class Product extends Component {
 
@@ -131,6 +132,22 @@ class Product extends Component {
                                         <br/>
                                         -상품 하자 이외 단순변심에 의한 교환, 반품의 경우 반송비는 고객님께서 부담하셔야 합니다. (색상 교환, 사이즈 교환 등 포함)<br/>
                                         -교환/반품비는 제품에 따라 상이 하오니 이점 유의하시기 바랍니다.<br/>
+                                    </div>
+                                </div>
+                                <div className='product-detail-box-summary'>
+                                    <div className='product-detail-box-summary-imgBox'>
+                                        <img className='product-detail-box-summary-imgBox-img' src={this.state.productInfo.image} />
+                                    </div>
+                                    <div className='product-detail-box-summary-info'>
+                                        <div className='product-detail-box-summary-info-category'>{this.state.productInfo.field}</div>
+                                        <div className='product-detail-box-summary-info-title'>{this.state.productInfo.title}</div>
+                                        <div className='product-detail-box-summary-info-price'>{this.state.productInfo.price}원</div>
+                                    </div>
+                                    <div className='product-detail-box-summary-info'>
+                                        <div className='product-detail-box-summary-info-score'>
+                                            <img className='product-detail-box-summary-info-starImg' src={Star}/>
+                                            <div className='product-detail-box-summary-info-sub'>4.4 / 5.0 </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="product-detail-box-review">

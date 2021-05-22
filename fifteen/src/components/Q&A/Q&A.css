@@ -1,0 +1,46 @@
+.qna-subject{
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #585858;
+}
+.qna-content{
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #BBBBBB;
+}
+.qna-subject-num-kinds{
+    width: 150px;
+}
+.qna-subject-num-title{
+    width: 370px;
+}
+.qna-subject-num-date{
+    width: 200px;
+}
+.qna-subject-num-answer{
+    width: 150px;
+}
+.qna-subject-num-kinds-text{
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #BBBBBB;
+    color: white;
+    font-weight: bold;
+    margin: auto;
+}
+.qna-subject-num-answer-text{
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgba(189, 111, 215, 0.91);
+    color: white;
+    font-weight: bold;
+    margin: auto;
+}
