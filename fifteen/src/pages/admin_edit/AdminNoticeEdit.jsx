@@ -78,10 +78,12 @@ class AdminNoticeEdit extends Component {
                         <div className="admin-event">
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">공지 관리</div>
+                                <div className='admin-event-title-btn'>
                                 <Link to={`/admin/notice_edit_page/${this.props.match.params.noticeSeq}`}>
                                     <button className="admin-event-title-modify">수정</button>
                                 </Link>
                                 <button onClick={this.deleteNoticeInfo} className="admin-event-title-delete">삭제</button>
+                            </div>
                             </div>
                             {/*adminNoticePost.css*/}
                             <div className='admin-info'>

@@ -5,6 +5,7 @@ import axios from "axios";
 import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
 import styles from "../../components/header/header.module.css";
+import Search from "../../img/search.svg";
 
 
 class AdminNotice extends Component {
@@ -50,20 +51,36 @@ class AdminNotice extends Component {
                     <div className="admin-box">
                         <AdminNav />
                         <div className="admin-event">
+                            <div className='admin-searchBox'>
+                                <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
+                                {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
+                                    <Link to={`/search/${this.state.keyword}`}>
+                                        <img src={Search} className='admin-searchBox-img'/>
+                                    </Link>}
+                            </div>
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">공지 관리</div>
-                                <button className="admin-event-title-recent">최근순</button>
-                                <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
+                                <div className='admin-event-title-btn'>
+                                    <button className="admin-event-title-recent">최신순</button>
+                                    <button className='admin-event-title-recent'>활성화</button>
+                                    <button className='admin-event-title-recent'>비활성화</button>
+                                    <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
                                     <button className="admin-event-title-submit">등록</button>
                                 </Link>
+                                </div>
                             </div>
                             <div className="admin-event-table">
+                                <div className='admin-event-table-btnBox'>활성화</div>
                                 <div className="admin-event-table-content">제목</div>
                                 <div className="admin-event-table-term">진행기간</div>
                                 <div className="admin-event-table-button" />
                             </div>
                             {this.state.notices.map(arr=>(
                                 <div key={arr.noticeSeq}>
+                                    <div className="admin-event-table">
+                                    <div className='admin-event-table-btnBox'>
+                                        <input type='checkbox' className='admin-event-table-check' />
+                                    </div>
                                     <Link to={`/admin/notice_edit/${arr.noticeSeq}`}>
                                         <div className="admin-event-table">
                                             <div className="admin-event-table-content">{arr.title}</div>
@@ -75,6 +92,7 @@ class AdminNotice extends Component {
                                             </div>
                                         </div>
                                     </Link>
+                                    </div>
                                 </div>
                             ))}
                             <div className="admin-event-button">

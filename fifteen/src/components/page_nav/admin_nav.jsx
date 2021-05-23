@@ -9,7 +9,8 @@ class AdminNav extends Component {
         this.state={
             token : undefined,
             userSeq : undefined,
-            userName: undefined
+            userName: undefined,
+            productSeq : 0
         }
     }
 
@@ -37,7 +38,11 @@ class AdminNav extends Component {
             <div>
                 <div className="pageNav">
                     <div className="pageNav-category">
-                        <Link to='/admin/product'><div className="pageNav-category-text">상품 관리</div></Link>
+                        <div className="pageNav-category-text"><Link to='/admin/product'>상품 관리</Link>
+                            <div className='pageNav-category-box'>
+                                <Link to='/admin/product'><div className='pageNav-category-address'>상품 추가</div></Link>
+                            </div>
+                        </div>
                         <Link to='/admin/notice'><div className="pageNav-category-text">공지 관리</div></Link>
                         <Link to='/admin/event'><div className="pageNav-category-text">이벤트 관리</div></Link>
                         <div className="pageNav-category-text" onClick={this.logout}>로그아웃</div>

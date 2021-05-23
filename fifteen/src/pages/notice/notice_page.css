@@ -71,3 +71,23 @@
     width: 300px;
 }
 
+.notice-info-head{
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.notice-info-title{
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.notice-info-sort{
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

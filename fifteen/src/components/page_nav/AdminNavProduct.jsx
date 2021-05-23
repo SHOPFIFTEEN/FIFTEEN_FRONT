@@ -3,6 +3,7 @@ import './page_sidenav.css';
 import {Link, withRouter} from "react-router-dom";
 
 class AdminNavProduct extends Component {
+
     render(){
         return(
             <div>
@@ -11,8 +12,8 @@ class AdminNavProduct extends Component {
                         <div className="pageNav-category-text">[ 제품 이름 ]</div>
                         <Link to='/admin/product'><div className="pageNav-category-text">Information 수정</div></Link>
                         <Link to='/admin/product'><div className="pageNav-category-text">Information 추가</div></Link>
-                        <Link to='/admin/notice'><div className="pageNav-category-text">Review 관리</div></Link>
-                        <Link to='/admin/event'><div className="pageNav-category-text">Q&A 관리</div></Link>
+                       <div className="pageNav-category-text">Review 관리</div>
+                        <div className="pageNav-category-text">Q&A 관리</div>
                     </div>
                 </div>
             </div>
