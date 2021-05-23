@@ -30,15 +30,26 @@
 .bestSellerBookItemTitle {
     font-size: 20px;
     color : #2A4478;
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
+    text-align: left;
 }
 
 .bestSellerBookItemSub {
     font-size: 12px;
     text-align: left;
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
 }
 
 .bestSellerBookItemPrice {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .list-product-item-imageBox {

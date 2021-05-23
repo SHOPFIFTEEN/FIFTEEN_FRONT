@@ -88,15 +88,15 @@ class WishlistPage extends Component {
                     <input type='checkbox'
                            name='wishlist'
                            className="wishlist_box_check"/>
-                    <div className="list-product-item-imageBox">
-                        <img className="list-product-item-imageBox-img" src={arr.image} />
+                    <div className="wishlist_box-imageBox">
+                        <img className="wishlist_box_img" src={arr.image} />
                     </div>
                     <div className="wishlist_box_title">{arr.title}</div>
                     <div onClick={this.reCart(arr.cartSeq, arr.count, 0)}>-</div>
                     <div className="wishlist_box_count">{arr.count}</div>
                     <div onClick={this.reCart(arr.cartSeq, arr.count, 1)}>+</div>
                     <div className="wishlist_box_price">{arr.price}</div>
-                    <div onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
+                    <div className='wishlist_theme_x' onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
                 </div>
             </div>
         ))
@@ -123,8 +123,8 @@ class WishlistPage extends Component {
                                 <div className="wishlist_theme_title">상품정보</div>
                                 <div className="wishlist_theme_count">수량</div>
                                 <div className="wishlist_theme_price">판매가</div>
+                                <div className="wishlist_theme_x">삭제</div>
                             </div>
-
                             {renderProducts}
                             <div className="wishlist_button">
                                 <button className="wishlist_button_delete">삭제</button>

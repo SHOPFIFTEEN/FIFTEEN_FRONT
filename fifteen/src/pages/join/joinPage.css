@@ -132,8 +132,33 @@
 }
 
 .overlap__btn{
-    font-size: 12px;
+    font-size: 14px;
     width: 120px;
     height: 30px;
     align-items: center;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.input__box__email{
+    color: #8C8C8C;
+    width: 600px;
+    height: 55px;
+    background-color: white;
+    font-size: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+.input__check{
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0 30px 200px;
+}
+.input__check2{
+    display: flex;
+    flex-direction: row;
+    margin: -12px 0 30px 200px;
 }

@@ -20,7 +20,9 @@ class PurchasePage extends Component{
                         <div className='purchase-orderer-title'>주문자</div>
                         <div className='purchase-orderer-text'>이유진(rooproop1111@naver.com)</div>
                     </div>
-                    <Address/>
+                    <div className='purchase-address'>
+                        <Address/>
+                    </div>
                     <div className='purchase-product'>
                         <div className='purchase-product-title'>주문상품</div>
                         <div className='purchase-product-box'>

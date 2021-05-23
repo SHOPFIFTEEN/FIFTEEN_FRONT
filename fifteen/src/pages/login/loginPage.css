@@ -96,12 +96,13 @@ input:focus {outline:none;}
 }
 
 .login-join {
-    font-size: 17px;
+    font-size: 18px;
     margin-bottom: 25px;
-    width: 70px;
+    width: 90px;
     height: 30px;
     align-self: flex-end;
     color: #8C8C8C;
+    background-color: white;
 }
 
 .login__btn {

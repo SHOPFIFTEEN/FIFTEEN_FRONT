@@ -158,7 +158,7 @@ class JoinPage extends Component {
                     <Header/>
                     <div>
                         <div className="join">
-                            <div className="header__bar"></div>
+                            <div className="header__bar" />
                             <div className="join__title">Join</div>
                             <div className="join__box">
                                 <div className="join__form__box">
@@ -171,8 +171,10 @@ class JoinPage extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="overlap__btn" onClick={this.checkOverlapID}>중복 확인</button>
-                                    {(this.state.onClick) ? ((this.state.isValidID) ? <div style={{ color: "blue" }}>사용가능한 ID입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 ID입니다.</div>) : null}
+                                    <div className='input__check'>
+                                        <button className="overlap__btn" onClick={this.checkOverlapID}>중복 확인</button>
+                                        {(this.state.onClick) ? ((this.state.isValidID) ? <div style={{ color: "blue" }}>사용가능한 ID입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 ID입니다.</div>) : null}
+                                    </div>
                                     <div className="input__box">
                                         <span>*</span>
                                         <div className="input__box__just">비밀번호
@@ -206,8 +208,10 @@ class JoinPage extends Component {
                                         <div className="input__box__just">이메일<input type="text" className="input" value={email}
                                                                                     onChange={this.handleChangeEmail} required/></div>
                                     </div>
-                                    <button className="overlap__btn" onClick={this.checkOverlapEmail}>중복 확인</button>
-                                    {(this.state.onClick2) ? ((this.state.isValidEmail) ? <div style={{ color: "blue" }}>사용가능한 Email입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 Email입니다.</div>) : null}
+                                    <div className='input__check2'>
+                                        <button className="overlap__btn" onClick={this.checkOverlapEmail}>중복 확인</button>
+                                        {(this.state.onClick2) ? ((this.state.isValidEmail) ? <div style={{ color: "blue" }}>사용가능한 Email입니다.</div> : <div style={{ color: "red" }}>이미 존재하는 Email입니다.</div>) : null}
+                                    </div>
                                 </div>
                                 <div className="agree__box">
                                     <input type="checkbox" className="agree__btn" required/>
