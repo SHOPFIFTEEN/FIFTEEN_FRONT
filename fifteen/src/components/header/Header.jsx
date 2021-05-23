@@ -73,9 +73,7 @@ class Header extends Component {
             },
         });
         this.setState({products: result.data});
-        let sum = _.sumBy(result.data, function (o) {
-            return o.count
-        });
+        let sum = this.state.products.length;
         this.setState({sum : sum});
     }
 
