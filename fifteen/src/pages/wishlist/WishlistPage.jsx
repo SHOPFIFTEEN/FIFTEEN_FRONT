@@ -3,7 +3,7 @@ import './wishlistPage.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import MyPageSide from '../../components/page_nav/page_sidenav';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import {getCookie, setCookie} from "../../cookies";
 import axios from "axios";
 import _ from 'lodash';
@@ -15,6 +15,7 @@ class WishlistPage extends Component {
             products: [{}],
             sum : 0,
             change : 0,
+            keyword : 'field'
         }
     }
 
@@ -95,9 +96,13 @@ class WishlistPage extends Component {
                            name='wishlist'
                            className="wishlist_box_check"/>
                     <div className="wishlist_box-imageBox">
-                        <img className="wishlist_box_img" src={arr.image} />
+                    <Link to={`/product/${arr.productSeq}/${this.state.keyword}`}>
+                            <img className="wishlist_box_img" src={arr.image} />
+                    </Link>
                     </div>
-                    <div className="wishlist_box_title">{arr.title}</div>
+                    <Link to={`/product/${arr.productSeq}/${this.state.keyword}`}>
+                        <div className="wishlist_box_title">{arr.title}</div>
+                    </Link>
                     <div className="wishlist_minus" onClick={()=>this.reCart(arr.cartSeq, 1, arr.count)}>-</div>
                     <div className="wishlist_box_count">{arr.count}</div>
                     <div className="wishlist_plus" onClick={()=>this.reCart(arr.cartSeq, 2,  arr.count)}>+</div>
