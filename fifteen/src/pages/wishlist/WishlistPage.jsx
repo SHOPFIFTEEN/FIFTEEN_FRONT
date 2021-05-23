@@ -6,12 +6,14 @@ import MyPageSide from '../../components/page_nav/page_sidenav';
 import {withRouter} from "react-router-dom";
 import {getCookie, setCookie} from "../../cookies";
 import axios from "axios";
+import _ from 'lodash';
 
 class WishlistPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             products: [{}],
+            sum : 0,
             change : 0
         }
     }
@@ -29,17 +31,22 @@ class WishlistPage extends Component {
                 alert('삭제되었습니다.');
             }
         })
-        this.setState({change : this.state.change + 1});
+        this.setState({change : 1});
     };
 
-    reCart = async function (cartSeq, cartCount, e) {
-        var count = cartCount;
-        if(e===1){
-            count = count + 1;
-        }else{
-            count = count - 1;
-        }
+    reCart = async function (cartSeq, cartCount, setCount) {
+        var count = setCount;
         console.log(count);
+        if(cartCount===1){
+            count = count - 1;
+            if(count === 0){
+                alert('수량이 1보다 작습니다.');
+                count ++;
+            }
+        }else {
+            count = count + 1;
+        }
+        console.log(cartSeq);
         let result = await axios ({
             method : 'POST',
             url : `http://52.79.196.94:3001/cart/re/${cartSeq}`,
@@ -50,11 +57,8 @@ class WishlistPage extends Component {
             data : {
                 count : count
             }
-        }).then((result)=>{
-            if(result.status<400){
-                this.setState({change : this.state.change + 1});
-            }
         })
+        this.setState({change : 1});
     }
 
     getCart = async function () {
@@ -68,6 +72,8 @@ class WishlistPage extends Component {
             },
         });
         this.setState({products : result.data});
+        let sum = _.sumBy(result.data, function(o){return o.count*o.price});
+        this.setState({sum : sum});
     };
 
     componentDidMount() {
@@ -75,8 +81,9 @@ class WishlistPage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.change!==this.state.change){
+        if(this.state.change===1){
             this.getCart();
+            this.setState({change : 0});
         }
     }
 
@@ -85,16 +92,13 @@ class WishlistPage extends Component {
         return products.map(arr => (
             <div key={arr.productSeq}>
                 <div className="wishlist_box">
-                    <input type='checkbox'
-                           name='wishlist'
-                           className="wishlist_box_check"/>
                     <div className="list-product-item-imageBox">
-                        <img className="list-product-item-imageBox-img" src={arr.image} />
+                        <img className="list-product-item-imageBox-img" src={arr.image} width="80px"/>
                     </div>
                     <div className="wishlist_box_title">{arr.title}</div>
-                    <div onClick={this.reCart(arr.cartSeq, arr.count, 0)}>-</div>
+                    <div className="wishlist_minus" onClick={()=>this.reCart(arr.cartSeq, 1, arr.count)}>-</div>
                     <div className="wishlist_box_count">{arr.count}</div>
-                    <div onClick={this.reCart(arr.cartSeq, arr.count, 1)}>+</div>
+                    <div className="wishlist_plus" onClick={()=>this.reCart(arr.cartSeq, 2,  arr.count)}>+</div>
                     <div className="wishlist_box_price">{arr.price}</div>
                     <div onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
                 </div>
@@ -116,9 +120,6 @@ class WishlistPage extends Component {
                         <MyPageSide/>
                         <div className="wishlist">
                             <div className="wishlist_theme">
-                                <input type='checkbox'
-                                       name='wishlist'
-                                       className="wishlist_theme_check"/>
                                 <div className="wishlist_theme_img">이미지</div>
                                 <div className="wishlist_theme_title">상품정보</div>
                                 <div className="wishlist_theme_count">수량</div>
@@ -126,8 +127,12 @@ class WishlistPage extends Component {
                             </div>
 
                             {renderProducts}
+
+                            <div className="wishlist_bottom_box">
+                                <div className="wishlist_sum">Sum : {this.state.sum}</div>
+                                <div className="wishlist_buy_btn">결제</div>
+                            </div>
                             <div className="wishlist_button">
-                                <button className="wishlist_button_delete">삭제</button>
                                 <div className="wishlist_paging">
                                     <button className="wishlist_paging_before">&lt;</button>
                                     <button className="wishlist_paging_this">1</button>
