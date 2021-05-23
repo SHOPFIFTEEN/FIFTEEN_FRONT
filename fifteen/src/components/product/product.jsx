@@ -61,7 +61,12 @@ class Product extends Component {
     }
     minusCount = () => {
         var c = this.state.count;
-        this.setState({count: --c});
+        c = --c;
+        if(c===0){
+            alert('상품 수량은 1개 이상이어야 합니다.');
+        }else{
+            this.setState({count: --c});
+        }
     }
 
     componentDidMount() {

@@ -85,6 +85,33 @@
     width: 150px;
 }
 
+.wishlist_bottom_box {
+    width: 830px;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.wishlist_sum {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.wishlist_buy_btn {
+    width: 100px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding: 6px;
+    height: 37px;
+    text-align: center;
+}
+
 .wishlist_button{
     display: flex;
     flex-direction: column;
@@ -134,4 +161,16 @@
 }
 .list-product-item-imageBox-img{
     height: 50px;
+}
+
+.wishlist_minus {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.wishlist_plus {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
 }
