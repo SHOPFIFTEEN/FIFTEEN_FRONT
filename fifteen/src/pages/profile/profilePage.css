@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     width: 820px;
-    height: 1000px;
+    height: 600px;
     margin-top: 20px;
 }
 
@@ -104,7 +104,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+
 }
 .profile_box_confirm{
     width: 150px;

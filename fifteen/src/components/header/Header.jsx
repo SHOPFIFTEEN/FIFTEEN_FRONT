@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styles from './header.module.css';
+import './header.module.css';
 import Menu from '../../img/menu.svg';
 import Search from '../../img/search.svg';
 import Heart from '../../img/heart.svg';
@@ -63,9 +64,9 @@ class Header extends Component {
                 <div className={styles.header}>
                     <div className={styles.header__box__top}>
                         <div className={styles.header__box__right__menu__modal__header__login}>
-                            <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div id="logout" onClick={this.logout}>{this.state.userName}님&nbsp;&nbsp; logout</div>}</div>
-                            {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
-                            {!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}
+                            <div className={styles.header_top_login_text}>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div id="logout" onClick={this.logout}>{this.state.userName}님&nbsp;&nbsp; logout</div>}</div>
+                            <div className={styles.header_top_join_text}>{!(this.state.token) ? <Link to ="/join"><div className='header-top-login-text'>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}</div>
+                            <div className={styles.header_top_wish_text}>{!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}</div>
 
                         </div>
                     </div>

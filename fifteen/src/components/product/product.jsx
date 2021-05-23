@@ -94,30 +94,28 @@ class Product extends Component {
                                 <div className="product-main-box-comment">{this.state.productInfo.a_intro}</div>
                                 <div className="product-main-box-price-total">Total</div>
                                 <div className="product-main-box-price">{this.state.productInfo.price}원</div>
+                                <div className="product-main-box-purchase">
+                                    <div className="product-main-box-purchase-text"> {this.state.productInfo.title} | {this.state.productInfo.author}</div>
+                                    <div className="product-main-box-purchase-btn" onClick={this.minusCount}>-</div>
+                                    <div className="product-main-box-purchase-btnText">{this.state.count}</div>
+                                    <div className="product-main-box-purchase-btn" onClick={this.plusCount}>+</div>
+                                </div>
                                 <div className="product-main-box-button">
-                                    <button className="product-main-box-button-buy">BUY NOW</button>
+                                    <Link to='/purchase'><button className="product-main-box-button-buy">BUY NOW</button></Link>
                                     <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
                                         CART
                                     </button>
-                                    <div>
-                                        {this.state.productInfo.title} | {this.state.productInfo.author}
-                                        <div onClick={this.plusCount}>+</div>
-                                        {this.state.count}
-                                        <div onClick={this.minusCount}>-</div>
-                                        <div onClick={this.addCart}>담기</div>
-                                    </div>
-                                    <button className="product-main-box-button-heart"/>
                                 </div>
                             </div>
                         </div>
                         <div className="product-detail">
                             <div className="product-detail-sidenav">
-                                <div className="product-detail-sidenav-information">information</div>
-                                <div className="product-detail-sidenav-review">review</div>
-                                <div className="product-detail-sidenav-qna">Q&A</div>
+                                <a href='#info'> <div className="product-detail-sidenav-information">information</div></a>
+                                <a href="#review"> <div className="product-detail-sidenav-review">review</div></a>
+                                <a href='#qna'> <div className="product-detail-sidenav-qna">Q&A</div></a>
                             </div>
                             <div className="product-detail-box">
-                                <div className="product-detail-box-information">
+                                <div id='info' className="product-detail-box-information">
                                     <div className="product-detail-box-information-box">
                                         <div className="product-detail-box-information-title">저자 소개</div>
                                         {this.state.productInfo.a_intro}
@@ -139,16 +137,16 @@ class Product extends Component {
                                         -교환/반품비는 제품에 따라 상이 하오니 이점 유의하시기 바랍니다.<br/>
                                     </div>
                                 </div>
-                                <div className='product-detail-box-summary'>
+                                <div id='review' className='product-detail-box-summary'>
                                     <div className='product-detail-box-summary-imgBox'>
                                         <img className='product-detail-box-summary-imgBox-img' src={this.state.productInfo.image} />
                                     </div>
-                                    <div className='product-detail-box-summary-info'>
+                                    <div className='product-detail-box-summary-info1'>
                                         <div className='product-detail-box-summary-info-category'>{this.state.productInfo.field}</div>
                                         <div className='product-detail-box-summary-info-title'>{this.state.productInfo.title}</div>
                                         <div className='product-detail-box-summary-info-price'>{this.state.productInfo.price}원</div>
                                     </div>
-                                    <div className='product-detail-box-summary-info'>
+                                    <div className='product-detail-box-summary-info2'>
                                         <div className='product-detail-box-summary-info-score'>
                                             <img className='product-detail-box-summary-info-starImg' src={Star}/>
                                             <div className='product-detail-box-summary-info-sub'>4.4 / 5.0 </div>
@@ -158,7 +156,7 @@ class Product extends Component {
                                 <div className="product-detail-box-review">
                                     <Review/>
                                 </div>
-                                <div className="product-detail-box-qna">
+                                <div id='qna' className="product-detail-box-qna">
                                     <QnA/>
                                 </div>
                             </div>

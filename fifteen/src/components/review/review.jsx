@@ -46,12 +46,12 @@ class Review extends Component{
                         <div className="review-subject-author">작성자</div>
                         <div className="review-subject-date">등록일</div>
                     </div>
-                </div>
-                <div className='review-dropdown'>
-                    <div className='review-dropdown-user'>좋아요!</div>
-                    <div className='review-dropdown-admin'>
-                        <img src={Arrow}/>
-                        <div className='review-dropdown-admin-text'>넹</div>
+                    <div className='review-dropdown'>
+                        <div className='review-dropdown-user'>좋아요!</div>
+                        <div className='review-dropdown-admin'>
+                            <img src={Arrow}/>
+                            <div className='review-dropdown-admin-text'>넹</div>
+                        </div>
                     </div>
                 </div>
                 <div className="review-button" onClick={() => this._openModal()}>write

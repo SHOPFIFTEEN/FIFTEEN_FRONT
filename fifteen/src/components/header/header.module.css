@@ -29,16 +29,16 @@ a:link, a:visited, a:hover, a:focus, a:active{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-left: 760px;
+    width: 1000px;
 }
 .header__box__right__menu__modal__header__login {
     display: flex;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
     font-size: 15px;
     font-weight: bold;
-    justify-content: space-between;
     margin-top: 40px;
-    width: 200px;
+    width: 520px;
     box-sizing: border-box;
 }
 
@@ -139,6 +139,7 @@ a:link, a:visited, a:hover, a:focus, a:active{
 }
 .header__box__right__menu__modal__bucket__header {
     height: 21px;
+    margin-right: 10px;
 }
 
 .header__box__right__menu__modal__hr {
@@ -158,4 +159,13 @@ a:link, a:visited, a:hover, a:focus, a:active{
 }
 
 
+.header_top_login_text{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.header_top_join_text{
+}
 
+.header_top_wish_text{
+    margin-left: 20px;
+}

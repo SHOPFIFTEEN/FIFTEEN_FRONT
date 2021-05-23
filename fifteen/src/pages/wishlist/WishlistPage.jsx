@@ -92,15 +92,18 @@ class WishlistPage extends Component {
         return products.map(arr => (
             <div key={arr.productSeq}>
                 <div className="wishlist_box">
-                    <div className="list-product-item-imageBox">
-                        <img className="list-product-item-imageBox-img" src={arr.image} width="80px"/>
+                    <input type='checkbox'
+                           name='wishlist'
+                           className="wishlist_box_check"/>
+                    <div className="wishlist_box-imageBox">
+                        <img className="wishlist_box_img" src={arr.image} />
                     </div>
                     <div className="wishlist_box_title">{arr.title}</div>
                     <div className="wishlist_minus" onClick={()=>this.reCart(arr.cartSeq, 1, arr.count)}>-</div>
                     <div className="wishlist_box_count">{arr.count}</div>
                     <div className="wishlist_plus" onClick={()=>this.reCart(arr.cartSeq, 2,  arr.count)}>+</div>
                     <div className="wishlist_box_price">{arr.price}</div>
-                    <div onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
+                    <div className='wishlist_theme_x' onClick={()=> {this.deleteCart(arr.cartSeq);}}>X</div>
                 </div>
             </div>
         ))
@@ -124,8 +127,8 @@ class WishlistPage extends Component {
                                 <div className="wishlist_theme_title">상품정보</div>
                                 <div className="wishlist_theme_count">수량</div>
                                 <div className="wishlist_theme_price">판매가</div>
+                                <div className="wishlist_theme_x">삭제</div>
                             </div>
-
                             {renderProducts}
 
                             <div className="wishlist_bottom_box">

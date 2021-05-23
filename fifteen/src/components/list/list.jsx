@@ -116,7 +116,7 @@ class List extends Component {
                                         </div>
                                         <div className="list-product-item-title">{arr.title}</div>
                                         <div className="list-product-item-sub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                        <div className="list-product-item-price">{arr.price}</div>
+                                        <div className="list-product-item-price">{arr.price}원</div>
                                     </div>
                                 </Link>
                             </div>
