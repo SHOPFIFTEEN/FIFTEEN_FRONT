@@ -105,12 +105,12 @@ class Product extends Component {
                         </div>
                         <div className="product-detail">
                             <div className="product-detail-sidenav">
-                                <div className="product-detail-sidenav-information">information</div>
-                                <div className="product-detail-sidenav-review">review</div>
-                                <div className="product-detail-sidenav-qna">Q&A</div>
+                                <a href='#info'> <div className="product-detail-sidenav-information">information</div></a>
+                                <a href="#review"> <div className="product-detail-sidenav-review">review</div></a>
+                                <a href='#qna'> <div className="product-detail-sidenav-qna">Q&A</div></a>
                             </div>
                             <div className="product-detail-box">
-                                <div className="product-detail-box-information">
+                                <div id='info' className="product-detail-box-information">
                                     <div className="product-detail-box-information-box">
                                         <div className="product-detail-box-information-title">저자 소개</div>
                                         {this.state.productInfo.a_intro}
@@ -132,7 +132,7 @@ class Product extends Component {
                                         -교환/반품비는 제품에 따라 상이 하오니 이점 유의하시기 바랍니다.<br/>
                                     </div>
                                 </div>
-                                <div className='product-detail-box-summary'>
+                                <div id='review' className='product-detail-box-summary'>
                                     <div className='product-detail-box-summary-imgBox'>
                                         <img className='product-detail-box-summary-imgBox-img' src={this.state.productInfo.image} />
                                     </div>
@@ -151,7 +151,7 @@ class Product extends Component {
                                 <div className="product-detail-box-review">
                                     <Review/>
                                 </div>
-                                <div className="product-detail-box-qna">
+                                <div id='qna' className="product-detail-box-qna">
                                     <QnA/>
                                 </div>
                             </div>
