@@ -9,6 +9,8 @@ import Bucket from '../../img/bucket.svg';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import {Link, withRouter} from "react-router-dom";
 import { setCookie, getCookie, deleteCookie} from '../../cookies';
+import axios from "axios";
+import _ from "lodash";
 
 class Header extends Component {
     constructor(p) {
@@ -18,7 +20,9 @@ class Header extends Component {
             token : undefined,
             keyword : '',
             userSeq : undefined,
-            userName: undefined
+            userName: undefined,
+            products : [],
+            sum : 0
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -58,12 +62,30 @@ class Header extends Component {
         alert('검색어를 입력해주세요');
     }
 
+    getCart = async function () {
+        let result = await axios({
+            method: 'GET',
+            url: `http://52.79.196.94:3001/cart`,
+            data: {},
+            headers: {
+                "Content-Type": 'application/json',
+                "x-access-token": getCookie("accessToken"),
+            },
+        });
+        this.setState({products: result.data});
+        let sum = _.sumBy(result.data, function (o) {
+            return o.count
+        });
+        this.setState({sum : sum});
+    }
+
     componentDidMount(){
         this.setState({
             token : getCookie("accessToken"),
             userSeq : getCookie("userSeq"),
-            userName : getCookie("userName")
+            userName : getCookie("userName"),
         })
+        this.getCart();
     }
 
     render() {
@@ -74,7 +96,11 @@ class Header extends Component {
                         <div className={styles.header__box__right__menu__modal__header__login}>
                             <div className={styles.header_top_login_text}>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div id="logout" onClick={this.logout}>{this.state.userName}님&nbsp;&nbsp; logout</div>}</div>
                             <div className={styles.header_top_join_text}>{!(this.state.token) ? <Link to ="/join"><div className='header-top-login-text'>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}</div>
-                            <div className={styles.header_top_wish_text}>{!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}</div>
+                            <div className={styles.header_top_wish_text}>{!(this.state.token) ? null : <Link to ="/wishlist">
+                                <div className={styles.cart}>
+                                    <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
+                                    {!(this.state.sum) ? null : <div className={styles.cart_sum}>{this.state.sum}</div>}
+                                </div></Link>}</div>
 
                         </div>
                     </div>
@@ -108,7 +134,10 @@ class Header extends Component {
                                                 <div>{!(this.state.token) ? <Link to='/login'><div>login</div></Link> : <div onClick={this.logout}>logout</div>}</div>
                                                 {!(this.state.token) ? <Link to ="/join"><div>Join</div></Link> : <Link to="/mypage"><div>My Page</div></Link>}
                                                 <div></div>
-                                                {!(this.state.token) ? null : <Link to ="/wishlist"><img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/></Link>}
+                                                {!(this.state.token) ? null : <Link to ="/wishlist"> <div className={styles.cart}>
+                                                    <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
+                                                    {!(this.state.sum) ? null : <div className={styles.cart_sum}>{this.state.sum}</div>}
+                                                </div></Link>}
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__hr}></div>
                                             <div className={styles.header__box__right__menu__modal__contact}>
