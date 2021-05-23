@@ -14,7 +14,7 @@ class WishlistPage extends Component {
         this.state = {
             products: [{}],
             sum : 0,
-            change : 0
+            change : 0,
         }
     }
 
@@ -36,7 +36,6 @@ class WishlistPage extends Component {
 
     reCart = async function (cartSeq, cartCount, setCount) {
         var count = setCount;
-        console.log(count);
         if(cartCount===1){
             count = count - 1;
             if(count === 0){

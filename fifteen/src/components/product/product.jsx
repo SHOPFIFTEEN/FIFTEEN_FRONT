@@ -6,7 +6,7 @@ import QnA from "../Q&A/Q&A";
 import '../../pages/product/product_page.css';
 import Header from '../../../src/components/header/Header';
 import Footer from '../../../src/components/footer/Footer';
-import {getCookie} from "../../cookies";
+import {getCookie, setCookie} from "../../cookies";
 import {Link, withRouter} from "react-router-dom";
 import Star from '../../img/star.svg';
 
@@ -18,7 +18,7 @@ class Product extends Component {
             productInfo: {productSeq: 12},
             count: 0,
             productSeq: '',
-            keyword : 'field'
+            keyword : 'field',
         }
     }
 
@@ -50,7 +50,7 @@ class Product extends Component {
             }
         }).then((result) => {
             if (result.status < 400) {
-                alert('담았습니다.')
+                alert('담았습니다.');
             }
         })
     }
@@ -73,6 +73,7 @@ class Product extends Component {
         this.setState({keyword : this.props.match.params.keyword})
         this.getProductInfoList();
     }
+
 
     render() {
         return (
