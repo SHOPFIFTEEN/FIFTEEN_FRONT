@@ -19,6 +19,12 @@ class Login_page extends Component {
         }
     }
 
+    onKeyPress=(e)=>{
+        if(e.key==='Enter'){
+            this.login();
+        }
+    }
+
 
     handleGoJoin = (e) => {
         const {history} = this.props;
@@ -85,8 +91,8 @@ class Login_page extends Component {
                             <div className='login__box'>
                                 <div className='login__form__box'>
                                     <div className='login__form__content'>
-                                        <div className='id__box'><div className="login-form-box-size">ID</div> <input type="text" className='input' name='id' value={id} onChange={this.handleChangeId}/> </div>
-                                        <div className='pw__box'><div className="login-form-box-size">Password</div><input type="password" className='input' name='pw' value={password} onChange={this.handleChangePwd}/></div>
+                                        <div className='id__box'><div className="login-form-box-size">ID</div> <input type="text" className='input' name='id' value={id} onChange={this.handleChangeId} required/> </div>
+                                        <div className='pw__box'><div className="login-form-box-size">Password</div><input type="password" className='input' name='pw' value={password} onChange={this.handleChangePwd} onKeyPress={this.onKeyPress}required/></div>
                                         <button className='login-join' onClick={this.handleGoJoin}>회원가입</button>
                                         <button className='login__btn' onClick={this.login}>Log in</button>
                                     </div>

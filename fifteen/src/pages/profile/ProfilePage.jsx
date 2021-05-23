@@ -83,24 +83,16 @@ class ProfilePage extends Component{
                                             <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.id} onChange={this.handleChangeId}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
-                                            <div className="profile_box_info_input_box_name">비밀번호</div>
-                                            <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.passwd} onChange={this.handleChangePwd}/>
-                                        </div>
-                                        <div className="profile_box_info_input_box">
-                                            <div className="profile_box_info_input_box_name">비밀번호 확인</div>
-                                            <input type="text" className="profile_box_info_input_box_value" />
-                                        </div>
-                                        <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">이름</div>
                                             <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.name} onChange={this.handleChangeName}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
-                                            <div className="profile_box_info_input_box_name">주소</div>
-                                            <input type="text" className="profile_box_info_input_box_value" />
-                                        </div>
-                                        <div className="profile_box_info_input_box">
                                             <div className="profile_box_info_input_box_name">휴대전화</div>
                                             <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.phoneNum} onChange={this.handleChangePhoneNum}/>
+                                        </div>
+                                        <div className="profile_box_info_input_box">
+                                            <div className="profile_box_info_input_box_name">비밀번호 확인</div>
+                                            <input type="text" className="profile_box_info_input_box_value" />
                                         </div>
                                     </div>
                                 </div>
