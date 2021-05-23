@@ -69,7 +69,7 @@ class App extends Component{
                 <Route path='/purchase' component={PurchasePage} />
                 <Route path='/address' component={AddressPage}/>
                 <Route path='/address_post' component={AddressPost}/>
-                <Route path='/address_edit' component={AddressEdit}/>
+                <Route path='/address_edit/:delSeq' component={AddressEdit}/>
             </div>
         );
     }

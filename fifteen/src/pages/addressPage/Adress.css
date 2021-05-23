@@ -32,6 +32,7 @@ button{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
+    margin-left: 200px;
 }
 input[type='checkbox']{
     width: 20px;
@@ -164,10 +165,8 @@ input[type='checkbox']{
     width: 100%;
 }
 .address-address-box{
-    height: 130px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 80%;
 }
 .address-address-inputBox{
@@ -180,4 +179,17 @@ input[type='checkbox']{
     display: flex;
     flex-direction: row;
     width: 100%;
+}
+
+.daum-address {
+    width: 100px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: #D0D0D0;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 7px;
+    margin-left: 10px;
 }
