@@ -8,6 +8,7 @@ import axios from "axios";
 import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
 import {getCookie, setCookie} from "../../cookies";
+import styles from "../../components/header/header.module.css";
 
 
 class AdminNoticeEdit extends Component {
@@ -61,7 +62,13 @@ class AdminNoticeEdit extends Component {
     render(){
         return(
             <div>
-                <Header />
+                <div className={styles.header}>
+                    <div className={styles.header__box}>
+                        <div className={styles.header__box__left}>
+                            <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                            <div className={styles.header__box__left__category}>
+                                Shopping mall specializing in domestic books
+                            </div></div></div></div>
                 {/* admin_product.css*/}
                 <div className="admin">
                     <div className="admin-bar" />
@@ -100,7 +107,6 @@ class AdminNoticeEdit extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }

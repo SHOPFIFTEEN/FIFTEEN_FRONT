@@ -9,6 +9,7 @@ import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
 import { setCookie, getCookie, deleteCookie} from '../../cookies';
 import moment from "moment";
+import styles from "../../components/header/header.module.css";
 
 
 class AdminEventEditPage extends Component {
@@ -137,7 +138,13 @@ class AdminEventEditPage extends Component {
 
         return(
             <div>
-                <Header />
+                <div className={styles.header}>
+                    <div className={styles.header__box}>
+                        <div className={styles.header__box__left}>
+                            <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                            <div className={styles.header__box__left__category}>
+                                Shopping mall specializing in domestic books
+                            </div></div></div></div>
                 {/* admin_product.css*/}
                 <div className="admin">
                     <div className="admin-bar" />
@@ -193,7 +200,6 @@ class AdminEventEditPage extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }

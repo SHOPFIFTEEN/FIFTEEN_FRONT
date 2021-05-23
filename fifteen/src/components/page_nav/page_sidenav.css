@@ -16,6 +16,7 @@
     padding: 0 0 18px 0;
     margin-right: 150px;
     font-size: 17px;
+    cursor: pointer;
 }
 .pageNav-category-text:hover .pageNav-category-box{
     margin-top: 10px;

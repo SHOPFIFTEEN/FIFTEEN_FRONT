@@ -162,6 +162,7 @@ a:link, a:visited, a:hover, a:focus, a:active{
 .header_top_login_text{
     margin-right: 20px;
     margin-left: 20px;
+    cursor: pointer;
 }
 .header_top_join_text{
 }

@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import './admin_product.css';
 import {withRouter, Link} from "react-router-dom";
-import Header from '../../../src/components/header/Header';
-import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
 import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
+import styles from "../../components/header/header.module.css";
 
 
 class AdminProduct extends Component {
@@ -36,7 +35,13 @@ class AdminProduct extends Component {
     render(){
         return(
             <div>
-                <Header />
+                <div className={styles.header}>
+                <div className={styles.header__box}>
+                <div className={styles.header__box__left}>
+                        <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                    <div className={styles.header__box__left__category}>
+                        Shopping mall specializing in domestic books
+                    </div></div></div></div>
                 <div className="admin">
                     <div className="admin-bar" />
                     <div className="admin-title">관리자 페이지</div>
@@ -65,7 +70,6 @@ class AdminProduct extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }

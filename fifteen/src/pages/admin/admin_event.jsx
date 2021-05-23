@@ -6,6 +6,7 @@ import Footer from '../../../src/components/footer/Footer';
 import axios from "axios";
 import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
+import styles from "../../components/header/header.module.css";
 
 
 class AdminEvent extends Component {
@@ -37,7 +38,13 @@ class AdminEvent extends Component {
     render(){
         return(
             <div>
-                <Header />
+                <div className={styles.header}>
+                    <div className={styles.header__box}>
+                        <div className={styles.header__box__left}>
+                            <div className={styles.header__box__left__title}>#FIFTEEN</div>
+                            <div className={styles.header__box__left__category}>
+                                Shopping mall specializing in domestic books
+                            </div></div></div></div>
                 <div className="admin">
                     <div className="admin-bar" />
                     <div className="admin-title">관리자 페이지</div>
@@ -79,7 +86,6 @@ class AdminEvent extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }
