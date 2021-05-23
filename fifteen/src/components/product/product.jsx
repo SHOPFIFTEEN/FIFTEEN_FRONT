@@ -96,7 +96,7 @@ class Product extends Component {
                                     <div className="product-main-box-purchase-btn" onClick={this.plusCount}>+</div>
                                 </div>
                                 <div className="product-main-box-button">
-                                    <button className="product-main-box-button-buy">BUY NOW</button>
+                                    <Link to='/purchase'><button className="product-main-box-button-buy">BUY NOW</button></Link>
                                     <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
                                         CART
                                     </button>
@@ -136,12 +136,12 @@ class Product extends Component {
                                     <div className='product-detail-box-summary-imgBox'>
                                         <img className='product-detail-box-summary-imgBox-img' src={this.state.productInfo.image} />
                                     </div>
-                                    <div className='product-detail-box-summary-info'>
+                                    <div className='product-detail-box-summary-info1'>
                                         <div className='product-detail-box-summary-info-category'>{this.state.productInfo.field}</div>
                                         <div className='product-detail-box-summary-info-title'>{this.state.productInfo.title}</div>
                                         <div className='product-detail-box-summary-info-price'>{this.state.productInfo.price}원</div>
                                     </div>
-                                    <div className='product-detail-box-summary-info'>
+                                    <div className='product-detail-box-summary-info2'>
                                         <div className='product-detail-box-summary-info-score'>
                                             <img className='product-detail-box-summary-info-starImg' src={Star}/>
                                             <div className='product-detail-box-summary-info-sub'>4.4 / 5.0 </div>
