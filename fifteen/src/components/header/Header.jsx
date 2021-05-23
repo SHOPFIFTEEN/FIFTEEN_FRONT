@@ -34,6 +34,14 @@ class Header extends Component {
         console.log(this.state.keyword);
     }
 
+    onKeyPress=(e)=>{
+        if(e.key==='Enter'){
+            this.setState({keyword : e.target.value })
+            const {history} = this.props;
+            history.push(`/search/${this.state.keyword}`);
+        }
+    }
+
     logout=()=> {
         const {history} = this.props;
         deleteCookie("accessToken");
@@ -80,7 +88,7 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className={styles.header__box__right}>
-                            <input type="text" name='search' onChange={this.search}  className={styles.header__box__right__search__click}/>
+                            <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className={styles.header__box__right__search__click}/>
                             {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className={styles.header__box__right__search}/>:
                                 <Link to={`/search/${this.state.keyword}`}>
                                 <img src={Search} className={styles.header__box__right__search}/>
