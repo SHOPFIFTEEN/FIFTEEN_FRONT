@@ -103,9 +103,19 @@ class Product extends Component {
                                 </div>
                                 <div className="product-main-box-button">
                                     <Link to='/purchase'><button className="product-main-box-button-buy">BUY NOW</button></Link>
-                                    <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
+                                    <div className='product-main-box-button-popupBtn'>
+                                   <a href='#cart_popup'> <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
                                         CART
-                                    </button>
+                                   </button></a>
+                                    </div>
+                                    <div id="cart_popup" className='product-main-box-button-popup'>
+                                        <div className='product-main-box-button-popup-box'>
+                                            <div className='product-main-box-button-popup-box-text'>{this.state.productInfo.title}</div>
+                                            <div className='product-main-box-button-popup-box-text'>{this.state.count} 개를 장바구니에 담았습니다!</div>
+                                            <Link to="/wishlist"><button className='product-main-box-button-popup-box-btn'>장바구니 가기 </button></Link>
+                                            <a href='#none' className='product-main-box-button-popup-box-btn'>계속 쇼핑하기 </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

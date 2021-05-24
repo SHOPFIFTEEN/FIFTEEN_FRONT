@@ -49,14 +49,21 @@ class EventPage extends Component{
                             </div>
                         </div>
                         <div>
-                            <div className='order_info_title'>진행중인 이벤트</div>
+                            <div className='notice-info-head'>
+                                <div className='notice-info-title'>이벤트</div>
+                                <div className='notice-info-sortBtn'>
+                                    <button className='notice-info-sort'>최신순</button>
+                                    <button className='notice-info-sort'>진행중</button>
+                                    <button className='notice-info-sort'>종료</button>
+                                </div>
+                            </div>
                             <div className='order-info'>
                                 <div className="order_info_box">
                                     <div className="notice">
                                         <div className="notice-subject">
                                             <div className="notice-seq">번호</div>
                                             <div className="notice-title">제목</div>
-                                            <div className="notice-date">등록일</div>
+                                            <div className="notice-date">기간</div>
                                         </div>
                                         {this.state.events.map(arr=>(
                                             <div key={arr.eventSeq}>

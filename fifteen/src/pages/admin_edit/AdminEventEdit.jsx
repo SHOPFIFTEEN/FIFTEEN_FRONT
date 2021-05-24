@@ -78,10 +78,12 @@ class AdminEventEdit extends Component {
                         <div className="admin-event">
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">이벤트 관리</div>
+                                <div className='admin-event-title-btn'>
                                 <Link to={`/admin/event_edit_page/${this.props.match.params.eventSeq}`}>
                                     <button className="admin-event-title-modify">수정</button>
                                 </Link>
                                     <button onClick={this.deleteEventInfo} className="admin-event-title-delete">삭제</button>
+                            </div>
                             </div>
                             {/*adminNoticePost.css*/}
                             <div className='admin-info'>
