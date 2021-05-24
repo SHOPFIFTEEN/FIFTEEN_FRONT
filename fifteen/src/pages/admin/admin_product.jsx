@@ -6,6 +6,9 @@ import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
 import styles from "../../components/header/header.module.css";
 import Search from "../../img/search.svg";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 
 class AdminProduct extends Component {
@@ -14,8 +17,10 @@ class AdminProduct extends Component {
         this.state = {
             products : [{'productSeq' : '1'}],
             fieldProducts : [{'productSeq' : '1'}],
+            sortProducts : [{}],
             field : '',
-            keyword : 'field'
+            keyword : 'field',
+            range : [0,30000]
         }
     }
 
@@ -79,14 +84,39 @@ class AdminProduct extends Component {
         arr.sort(function(a,b){
             return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
         });
-        this.setState({fieldProduct : arr});
+        this.setState({fieldProducts : arr});
+    }
+
+    sortByFilter() {
+        var rang = this.state.range;
+        var arr = this.state.fieldProducts;
+        var filterSort = _.filter(arr, function(o){
+            return ((rang[0] <= o.price) && (o.price<= rang[1]));
+        });
+        this.setState({fieldProducts : filterSort});
     }
 
     componentDidMount() {
         this.getBookList();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.range!==this.state.range){
+            this.sortByFilter();
+        }
+    }
+
     render(){
+        const classes = makeStyles((theme)=>({
+            root: {
+                width: 500,
+            },
+        }));
+        const handleChange = (event, newValue) => {
+            this.setState({
+                range: newValue
+            })
+        };
         return(
             <div>
                 <div className={styles.header}>
@@ -130,10 +160,25 @@ class AdminProduct extends Component {
                                 <button className="list-sortBox-lowPrice" onClick={()=> this.sortByRowPrice()}>낮은 가격순</button>
                                 <button className="list-sortBox-highPrice" onClick={()=> this.sortByHighPrice()}>높은 가격순</button>
                                 <button className="list-sortBox-highPrice" onClick={()=> this.sortByName()}>이름순</button>
+                                <div className={classes.root}>
+                                    <Typography id="range-slider" style={{width: '130px', marginLeft : '10px', marginBottom : '10px'}} gutterBottom>
+                                        &nbsp;
+                                        <Slider
+                                            value={this.state.range}
+                                            onChange={handleChange}
+                                            valueLabelDisplay="auto"
+                                            aria-labelledby="range-slider"
+                                            max={30000}
+                                            min={0}
+                                            step={1000}
+                                            marks
+                                        />
+                                    </Typography>
+                                </div>
                             </div>
                             <div className="admin-manage-box">
                                 <div className="admin-manage-box-item">
-                                    {this.state.products.map(arr => (
+                                    {this.state.fieldProducts.map(arr => (
                                         <div key={arr.productSeq}>
                                             <Link to={`/admin/product_edit/${arr.productSeq}`}>
                                                 <div className="bestSellerBookItem">

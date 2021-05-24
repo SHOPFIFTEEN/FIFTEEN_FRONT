@@ -102,3 +102,9 @@
 .list-product-item-imageBox-img{
     height: 150px;
 }
+
+.select {
+    width: 150px;
+    height: 10px;
+    font-size: 15px;
+}
