@@ -30,9 +30,6 @@ class Product extends Component {
             headers: {
                 "Content-Type": 'application/json'
             },
-            params: {
-                productSeq: this.props.match.params.productSeq
-            }
         })
         this.setState({productInfo: result.data[0]})
     }
