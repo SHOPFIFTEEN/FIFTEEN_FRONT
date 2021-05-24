@@ -30,7 +30,7 @@ class Index extends Component {
     getEvent= async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:3001/event',
+            url : 'http://52.79.196.94:3001/event/banner/active',
             data: { },
             headers : {
                 "Content-Type" : 'application/json'
@@ -42,7 +42,7 @@ class Index extends Component {
     getNotice= async function() {
         let result =await axios ({
             method : 'GET',
-            url : 'http://52.79.196.94:3001/notice',
+            url : 'http://52.79.196.94:3001/notice/banner/active',
             data: { },
             headers : {
                 "Content-Type" : 'application/json'

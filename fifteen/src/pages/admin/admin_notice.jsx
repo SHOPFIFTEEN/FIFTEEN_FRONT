@@ -6,6 +6,7 @@ import _ from "lodash";
 import AdminNav from "../../components/page_nav/admin_nav";
 import styles from "../../components/header/header.module.css";
 import Search from "../../img/search.svg";
+import {getCookie} from "../../cookies";
 
 
 class AdminNotice extends Component {
@@ -14,7 +15,8 @@ class AdminNotice extends Component {
         this.state = {
             products : [{'productSeq' : '1'}],
             notices : [{'noticeSeq': '1'}],
-            noticeSeq : 0
+            noticeSeq : 0,
+            change : 0
         }
     }
 
@@ -30,9 +32,38 @@ class AdminNotice extends Component {
         this.setState({notices : result.data});
     }
 
+    postActive=(e)=> {
+        var thisOb = _.find(this.state.notices,{'noticeSeq' : e});
+        if(thisOb.active===1){
+            thisOb.active=0
+        }else{
+            thisOb.active=1
+        }
+        let result = axios ({
+            method : 'POST',
+            url : `http://52.79.196.94:3001/notice/active/${e}`,
+            data: {
+                active : thisOb.active
+            },
+            headers : {
+                "Content-Type" : 'application/json',
+                "x-access-token" : getCookie("accessToken")
+            },
+        })
+        this.setState({
+            change : 1
+        })
+    }
 
     componentDidMount() {
         this.getNotice();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.change!==this.state.change){
+            this.getNotice();
+            this.setState({change : 0})
+        }
     }
 
     render(){
@@ -79,7 +110,7 @@ class AdminNotice extends Component {
                                 <div key={arr.noticeSeq}>
                                     <div className="admin-event-table">
                                     <div className='admin-event-table-btnBox'>
-                                        <input type='checkbox' className='admin-event-table-check' />
+                                        <input type='checkbox' className='admin-event-table-check' onClick={()=>this.postActive(arr.noticeSeq)} checked={arr.active}/>
                                     </div>
                                     <Link to={`/admin/notice_edit/${arr.noticeSeq}`}>
                                         <div className="admin-event-table">
