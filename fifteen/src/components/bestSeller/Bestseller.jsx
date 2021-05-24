@@ -42,7 +42,7 @@ class Bestseller extends Component {
                     <div className="bestSellerBooks">
                         {this.state.products.map(arr => (
                             <div key={arr.productSeq}>
-                                <Link to={`/product/${arr.productSeq}`}>
+                                <Link to={`/product/${arr.productSeq}/${'field'}`}>
                                     <div className="bestSellerBookItem">
                                         <div className="list-product-item-imageBox">
                                             <img className="list-product-item-imageBox-img" src={arr.image} />
