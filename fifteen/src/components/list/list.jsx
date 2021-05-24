@@ -24,9 +24,23 @@ class List extends Component {
             headers : {
                 "Content-Type" : 'application/json'
             },
-        })
+        });
         this.setState({products : result.data});
-        this.setState({fieldProducts: this.state.products});
+        if(this.props.match.params.field==='전체'){
+            this.setState({fieldProducts: this.state.products});
+        }else{
+            console.log(this.props.match.params.field);
+            let result1 =await axios ({
+                method : 'GET',
+                url : `http://52.79.196.94:3001/product/category/${this.props.match.params.field}`,
+                data: { },
+                headers : {
+                    "Content-Type" : 'application/json'
+                },
+            })
+            this.setState({fieldProducts: result1.data});
+        }
+
     }
 
     fieldProducts(f) {

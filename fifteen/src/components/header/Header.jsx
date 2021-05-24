@@ -124,7 +124,7 @@ class Header extends Component {
                                 <MDBModal isOpen={this.state.modal} toggle={this.toggle} contentClassName={(styles.header__box__right__menu__modal)} fullHeight position="right" >
                                         <div>
                                             <div className={styles.header__box__right__menu__modal__title}>
-                                                <Link to='/list'>
+                                                <Link to={`/list/${'전체'}`}>
                                                     <div>SHOP</div>
                                                 </Link>
                                                 <Link to="/order_page"><div>ORDER</div></Link>
