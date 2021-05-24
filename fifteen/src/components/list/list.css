@@ -54,10 +54,10 @@
     background-color: white;
 }
 .list-sortBox-bar{
-    width: 50px;
-    height: 1px;
+    width: 100px;
+    height: 2px;
     background-color: black;
-    margin: 13px 15px 0 15px;
+    margin: 30px 15px 0 15px;
 }
 .list-sortBox-sale,.list-sortBox-lowPrice,.list-sortBox-highPrice{
     font-size: 15px;

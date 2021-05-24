@@ -2,7 +2,7 @@
     display : flex;
     flex-direction: column;
     align-items: center;
-    width : 1100px;
+    width : 1000px;
     height: 350px;
     margin: 80px 0 80px 0;
 }
@@ -16,19 +16,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1100px;
+    width: 1000px;
 }
 
 .bestSellerBookItem {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 300px;
+    width: 180px;
+    height: 270px;
     align-items: flex-start;
 }
 
 .bestSellerBookItemTitle {
-    font-size: 20px;
+    font-size: 18px;
     color : #2A4478;
     display:block;
     overflow: hidden;
@@ -54,8 +54,8 @@
 
 .list-product-item-imageBox {
     background-color: #ECEBE8;
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,5 +63,5 @@
     padding: 20px;
 }
 .list-product-item-imageBox-img{
-    height: 150px;
+    height: 145px;
 }

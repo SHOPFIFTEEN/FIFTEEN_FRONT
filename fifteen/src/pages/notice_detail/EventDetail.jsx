@@ -30,28 +30,6 @@ class EventDetail extends Component{
         this.setState({eventInfo : result.data[0]});
     }
 
-    deleteEventInfo =()=> {
-        var response = window.confirm('삭제하시겠습니까?');
-        if(response){
-            let result = axios ({
-                method : 'DELETE',
-                url : `http://52.79.196.94:3001/event/ki/${this.props.match.params.eventSeq}`,
-                headers : {
-                    "Content-Type" : 'application/json',
-                    'x-access-token' : getCookie("accessToken")
-                },
-            }).then((result)=>{
-                if(result.status<400){
-                    const {history} = this.props;
-                    alert('삭제되었습니다.');
-                    history.push('/admin/event');
-
-                }}
-            )
-        }else{
-            alert('삭제를 취소하였습니다.');
-        }
-    }
 
 
     componentDidMount() {
@@ -79,12 +57,12 @@ class EventDetail extends Component{
                                 <div className='notice_info_box'>
                                     <div className='notice-info-box-titleBox'>
                                         <div className='notice-info-box-titleBox-title'>제목</div>
-                                        <div className='notice-info-box-titleBox-text'> </div>
+                                        <div className='notice-info-box-titleBox-text'>{this.state.eventInfo.title}</div>
                                     </div>
                                     <div className='notice-info-box-subBox'>
                                         <div className='notice-info-box-subBox-date'>
                                             <div className='notice-info-box-subBox-title'>기간</div>
-                                            <div className='notice-info-box-subBox-text'> </div>
+                                            <div className='notice-info-box-subBox-text'>{this.state.eventInfo.start_date} ~ {this.state.eventInfo.end_date}</div>
                                         </div>
                                         <div className='notice-info-box-subBox-views'>
                                             <div className='notice-info-box-subBox-title'>조회수</div>
@@ -92,7 +70,9 @@ class EventDetail extends Component{
                                         </div>
                                     </div>
                                     <div className='notice-info-box-main'>
-
+                                        <img src={this.state.eventInfo.image} width='500px' height='500px' />
+                                        <br/>
+                                        {this.state.eventInfo.content}
                                     </div>
                                     <button className='notice-info-box-btn'>목록으로</button>
                                 </div>

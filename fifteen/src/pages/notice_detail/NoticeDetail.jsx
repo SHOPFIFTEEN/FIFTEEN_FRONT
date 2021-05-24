@@ -10,6 +10,31 @@ import axios from "axios";
 
 
 class NoticeDetail extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            noticeInfo : []
+        }
+    }
+
+    getNoticeInfo = async function() {
+        let result =await axios ({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/notice/${this.props.match.params.noticeSeq}`,
+            data: { },
+            headers : {
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({noticeInfo : result.data[0]});
+        console.log(this.state.noticeInfo);
+        console.log(this.props.match.params.noticeSeq);
+    }
+
+    componentDidMount() {
+        this.getNoticeInfo();
+    }
+
     render(){
         return(
             <div>
@@ -31,12 +56,12 @@ class NoticeDetail extends Component{
                                 <div className='notice_info_box'>
                                     <div className='notice-info-box-titleBox'>
                                         <div className='notice-info-box-titleBox-title'>제목</div>
-                                        <div className='notice-info-box-titleBox-text'> </div>
+                                        <div className='notice-info-box-titleBox-text'>{this.state.noticeInfo.title}</div>
                                     </div>
                                     <div className='notice-info-box-subBox'>
                                         <div className='notice-info-box-subBox-date'>
                                             <div className='notice-info-box-subBox-title'>작성일</div>
-                                            <div className='notice-info-box-subBox-text'> </div>
+                                            <div className='notice-info-box-subBox-text'>{this.state.noticeInfo.start_date} ~ {this.state.noticeInfo.end_date}</div>
                                         </div>
                                         <div className='notice-info-box-subBox-views'>
                                             <div className='notice-info-box-subBox-title'>조회수</div>
@@ -44,9 +69,11 @@ class NoticeDetail extends Component{
                                         </div>
                                     </div>
                                     <div className='notice-info-box-main'>
-
+                                        <img src={this.state.noticeInfo.image} width='500px' height='500px' />
+                                        <br/>
+                                        {this.state.noticeInfo.content}
                                     </div>
-                                    <button className='notice-info-box-btn'>목록으로</button>
+                                    <Link to='/notice'><button className='notice-info-box-btn'>목록으로</button></Link>
                                 </div>
                             </div>
                         </div>
