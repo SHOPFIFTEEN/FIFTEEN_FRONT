@@ -18,7 +18,7 @@ class AdminNoticeEditPage extends Component {
         this.state = {
             title : '',
             content : '',
-            image : '',
+            selectedFile: null,
             start_date : '',
             end_date : '',
             prevURL : ''
@@ -59,7 +59,6 @@ class AdminNoticeEditPage extends Component {
             data : {
                 title : this.state.title,
                 content : this.state.content,
-                image  : this.state.image,
                 start_date : this.state.start_date,
                 end_date : this.state.end_date
             },
@@ -77,7 +76,6 @@ class AdminNoticeEditPage extends Component {
             data : {
                 title : this.state.title,
                 content : this.state.content,
-                image  : this.state.image,
                 start_date : this.state.start_date,
                 end_date : this.state.end_date
             },
@@ -85,6 +83,27 @@ class AdminNoticeEditPage extends Component {
                 "Content-Type" : 'application/json',
                 'x-access-token' : getCookie("accessToken")
             },
+        })
+    }
+    handlePost=()=>{
+        const image = new FormData();
+        image.append('file', this.state.selectedFile);
+        console.log(image);
+        return axios.post("http://52.79.196.94:3001/image/notice/upload", image).then(res => {
+            alert('성공')
+        }).catch(err => {
+            alert('실패')
+        })
+    }
+
+    rehandlePost=()=>{
+        const image = new FormData();
+        image.append('file', this.state.selectedFile);
+        console.log(image);
+        return axios.post(`http://52.79.196.94:3001/image/notice/re/${this.props.match.params.noticeSeq}`, image).then(res => {
+            alert('성공')
+        }).catch(err => {
+            alert('실패')
         })
     }
 
@@ -100,17 +119,10 @@ class AdminNoticeEditPage extends Component {
         });
     }
 
-    handleChangeImage = (e) => {
-        e.preventDefault();
-        let reader = new FileReader();
-        let file = e.target.files[0];
-        reader.onloadend = () => {
-            this.setState({
-                prevURL : reader.result,
-                image : file
-            })
-        }
-        reader.readAsDataURL(file);
+    handleFileInput(e){
+        this.setState({
+            selectedFile : e.target.files[0],
+        })
     }
 
     handleChangeStartDate = (e) => {
@@ -171,8 +183,14 @@ class AdminNoticeEditPage extends Component {
                                             <div className='admin-info-box-main-title'>내용</div>
                                         </div>
                                         <div className='admin-info-box-main-content'>
-                                            <input type='file' onChange={this.handleChangeImage}/>
+                                            <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
                                             {profile_preview}
+                                            {!(this.props.match.params.noticeSeq==='0') ?
+                                                    <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit'>이미지 수정</button>
+                                                :
+                                                    <button type="button" onClick={this.handlePost} className='admin-info-box-btn-submit'>이미지 등록</button>
+                                            }
+
                                             <br/>
                                             <input type='text' onChange={this.handleChangeContent} value={this.state.content}/>
                                         </div>
@@ -188,7 +206,8 @@ class AdminNoticeEditPage extends Component {
                                                 </Link>
                                                 :
                                                 <Link to={`/admin/notice`}>
-                                                    <button onClick={this.addNoticeInfo} className='admin-info-box-btn-submit'>등록</button>
+                                                    <button type="button" onClick={this.addNoticeInfo} className='admin-info-box-btn-submit'>등록</button>
+
                                                 </Link>
                                             }
                                         </div>
