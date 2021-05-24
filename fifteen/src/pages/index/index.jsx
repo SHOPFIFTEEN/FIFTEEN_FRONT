@@ -37,7 +37,6 @@ class Index extends Component {
             },
         })
         this.setState({slideEventImage: result.data});
-        console.log(this.state.slideEventImage);
     }
 
     getNotice= async function() {
@@ -48,9 +47,8 @@ class Index extends Component {
             headers : {
                 "Content-Type" : 'application/json'
             },
-        })
+        });
         this.setState({slideNoticeImage: result.data});
-        console.log(this.state.slideNoticeImage);
     }
 
     fieldProducts(f) {
@@ -94,17 +92,35 @@ class Index extends Component {
             <div className="indexBox">
                 <Header/>
                 <div className="field">
-                    <Link to="/list"><div className="index-fieldBox">
-                        <div onClick={()=>this.fieldProducts('전체')} >전체</div>
-                        <div onClick={()=>this.fieldProducts('소설')}>소설</div>
-                        <div onClick={()=>this.fieldProducts('시/에세이')}>시/에세이</div>
-                        <div onClick={()=>this.fieldProducts('경제/경영')}>경제/경영</div>
-                        <div onClick={()=>this.fieldProducts('역사/문화')}>역사/문화</div>
-                        <div onClick={()=>this.fieldProducts('컴퓨터/IT')}>컴퓨터/IT</div>
-                        <div onClick={()=>this.fieldProducts('외국어')}>외국어</div>
-                        <div onClick={()=>this.fieldProducts('여행')}>여행</div>
-                        <div onClick={()=>this.fieldProducts('만화')}>만화</div>
-                    </div></Link>
+                    <div className="index-fieldBox">
+                        <Link to={`/list/${'전체'}`}>
+                            <div onClick={()=>this.fieldProducts('전체')} >전체</div>
+                        </Link>
+                        <Link to={`/list/${'소설'}`}>
+                            <div onClick={()=>this.fieldProducts('소설')}>소설</div>
+                        </Link>
+                        <Link to={`/list/${`시/에세이`}`}>
+                           <div onClick={()=>this.fieldProducts('시/에세이')}>시/에세이</div>
+                        </Link>
+                        <Link to={`/list/${'경제/경영'}`}>
+                            <div onClick={()=>this.fieldProducts('경제/경영')}>경제/경영</div>
+                        </Link>
+                        <Link to={`/list/${'역사/문화'}`}>
+                            <div onClick={()=>this.fieldProducts('역사/문화')}>역사/문화</div>
+                        </Link>
+                        <Link to={`/list/${'컴퓨터/IT'}`}>
+                            <div onClick={()=>this.fieldProducts('컴퓨터/IT')}>컴퓨터/IT</div>
+                        </Link>
+                        <Link to={`/list/${'외국어'}`}>
+                            <div onClick={()=>this.fieldProducts('외국어')}>외국어</div>
+                        </Link>
+                        <Link to={`/list/${'여행'}`}>
+                            <div onClick={()=>this.fieldProducts('여행')}>여행</div>
+                        </Link>
+                        <Link to={`/list/${'만화'}`}>
+                            <div onClick={()=>this.fieldProducts('만화')}>만화</div>
+                        </Link>
+                    </div>
                 </div>
                 <div className='slider-box'>
                     <Slider {...settingsE}>

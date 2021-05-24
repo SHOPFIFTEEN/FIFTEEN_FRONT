@@ -48,7 +48,7 @@ class App extends Component{
                 <Route path='/profile' component={Profile}/>
                 <Route path='/wishlist' component={Wishlist}/>
                 <Route path='/coupon' component={Coupon}/>
-                <Route path='/list' component={ListPage}/>
+                <Route path='/list/:field' component={ListPage}/>
                 <Route path='/admin/product' component={AdminProduct}/>
                 <Route path='/admin/event' component={admin_event}/>
                 <Route path='/admin/notice' component={admin_notice}/>
