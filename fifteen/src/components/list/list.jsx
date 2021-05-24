@@ -117,43 +117,6 @@ class List extends Component {
     }
 
     render() {
-<<<<<<< HEAD
-        return (
-            <div>
-                <div className="list">
-                    <div className="list-fieldBox">
-                        <div onClick={()=>this.fieldProducts('전체')}  >전체</div>
-                        <div onClick={()=>this.fieldProducts('소설')}>소설</div>
-                        <div onClick={()=>this.fieldProducts('시/에세이')}>시/에세이</div>
-                        <div onClick={()=>this.fieldProducts('경제/경영')}>경제/경영</div>
-                        <div onClick={()=>this.fieldProducts('역사/문화')}>역사/문화</div>
-                        <div onClick={()=>this.fieldProducts('컴퓨터/IT')}>컴퓨터/IT</div>
-                        <div onClick={()=>this.fieldProducts('외국어')}>외국어</div>
-                        <div onClick={()=>this.fieldProducts('여행')}>여행</div>
-                        <div onClick={()=>this.fieldProducts('만화')}>만화</div>
-                    </div>
-                    <div className="list-sortBox">
-                        <button className="list-sortBox-sort">sort</button>
-                        <div className="list-sortBox-bar"/>
-                        <button className="list-sortBox-sale" onClick={() => this.sortByRecent()}>최신등록순</button>
-                        <button className="list-sortBox-lowPrice" onClick={()=> this.sortByRowPrice()}>낮은 가격순</button>
-                        <button className="list-sortBox-highPrice" onClick={()=> this.sortByHighPrice()}>높은 가격순</button>
-                        <button className="list-sortBox-highPrice" onClick={()=> this.sortByName()}>이름순</button>
-                    </div>
-                    <div className="list-product">
-                        {this.state.fieldProducts.map(arr => (
-                            <div key={arr.productSeq}>
-                                <Link to={`/product/${arr.productSeq}/${this.state.keyword}`}>
-                                    <div className="list-product-item">
-                                        <div className="list-product-item-imageBox">
-                                            <img className="list-product-item-imageBox-img" src={arr.image} />
-                                        </div>
-                                        <div className="list-product-item-title">{arr.title}</div>
-                                        <div className="list-product-item-sub">지은이 : {arr.author} | 출판사 : {arr.publisher}</div>
-                                        <div className="list-product-item-price">{arr.price}원</div>
-                                    </div>
-                                </Link>
-=======
         const classes = makeStyles((theme)=>({
             root: {
                 width: 500,
@@ -201,7 +164,6 @@ class List extends Component {
                                         marks
                                     />
                                 </Typography>
->>>>>>> aa4b38a1d4a04792f556dbd28884e9b0da2e0250
                             </div>
                         </div>
                         <div className="list-product">
