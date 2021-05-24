@@ -17,8 +17,9 @@
     margin-right: 20px;
     font-size: 17px;
     cursor: pointer;
+    text-decoration: none;
 }
-.pageNav-category-text:hover .pageNav-category-box{
+.pageNav-category-text:hover .pageNav-category-box {
     margin-top: 10px;
 }
 .pageNav-category-address{

@@ -9,16 +9,36 @@
     flex-direction: row;
     box-sizing: border-box;
     width: 1000px;
-    height: 50px;
-    padding: 10px 0 0 0 ;
-    margin-bottom: 30px;
+    padding: 10px 0 10px 0 ;
+    margin-bottom: 20px;
     justify-content: space-around;
-    border-top : solid black 2px;
-    border-bottom: solid black 2px;
+    border-top: 1px solid #585858;
+    border-bottom: 1px solid #585858;
 }
 
 .list-fieldBox div {
     cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    padding: 6px 12px;
+}
+.list-fieldBox div:visited {
+    color: #385AD6;
+}
+.list-fieldBox div::after{
+    content : "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: #eec72d;
+    border-radius: 5px;
+    transition: all .5s ease-out;
+}
+.list-fieldBox div:hover::after{
+    width: 100%;
 }
 
 .list-sortBox{
@@ -56,7 +76,7 @@
 .list-product-item {
     display: flex;
     flex-direction: column;
-    width: 170px;
+    width: 180px;
     height: 270px;
     align-items: flex-start;
     margin-bottom: 40px;
@@ -91,8 +111,8 @@
 
 .list-product-item-imageBox {
     background-color: #ECEBE8;
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +120,7 @@
     padding: 20px;
 }
 .list-product-item-imageBox-img{
-    height: 150px;
+    height: 145px;
 }
 
 .select {
