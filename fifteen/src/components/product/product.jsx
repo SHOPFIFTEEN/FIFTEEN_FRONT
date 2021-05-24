@@ -47,7 +47,6 @@ class Product extends Component {
             }
         }).then((result) => {
             if (result.status < 400) {
-                alert('담았습니다.');
             }
         })
     }
@@ -99,7 +98,7 @@ class Product extends Component {
                                     <div className="product-main-box-purchase-btn" onClick={this.plusCount}>+</div>
                                 </div>
                                 <div className="product-main-box-button">
-                                    <Link to='/purchase'><button className="product-main-box-button-buy">BUY NOW</button></Link>
+                                    <Link to={`/purchase/${this.state.productInfo.productSeq}`}><button className="product-main-box-button-buy">BUY NOW</button></Link>
                                     <div className='product-main-box-button-popupBtn'>
                                    <a href='#cart_popup'> <button className="product-main-box-button-cart" onClick={this.addCart}>ADD TO
                                         CART

@@ -4,6 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import {withRouter, Link, Switch} from "react-router-dom";
 import {getCookie} from "../../cookies";
+import DaumPostcode from 'react-daum-postcode';
 import Modal from 'react-awesome-modal';
 
 class Address extends Component {

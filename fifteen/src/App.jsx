@@ -66,7 +66,7 @@ class App extends Component{
                 <Route path='/admin/event_edit_page/:eventSeq' component={AdminEventEditPage}/>
                 <Route path='/admin/product_edit/:productSeq' component={AdminProductEdit}/>
                 <Route path='/admin/product_post/:productSeq' component={AdminProductPost}/>
-                <Route path='/purchase' component={PurchasePage} />
+                <Route path='/purchase/:productSeq' component={PurchasePage} />
                 <Route path='/address' component={AddressPage}/>
                 <Route path='/address_post' component={AddressPost}/>
                 <Route path='/address_edit/:delSeq' component={AddressEdit}/>

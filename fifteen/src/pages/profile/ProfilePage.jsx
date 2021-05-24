@@ -91,8 +91,8 @@ class ProfilePage extends Component{
                                             <input type="text" className="profile_box_info_input_box_value" value={this.state.userInfo.phoneNum} onChange={this.handleChangePhoneNum}/>
                                         </div>
                                         <div className="profile_box_info_input_box">
-                                            <div className="profile_box_info_input_box_name">비밀번호 확인</div>
-                                            <input type="text" className="profile_box_info_input_box_value" />
+                                            <div className="profile_box_info_input_box_name">비밀번호</div>
+                                            <input type="password" className="profile_box_info_input_box_value" value={this.state.userInfo.passwd}/>
                                         </div>
                                     </div>
                                 </div>
