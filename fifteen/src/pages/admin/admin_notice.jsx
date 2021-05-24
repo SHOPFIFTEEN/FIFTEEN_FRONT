@@ -16,7 +16,9 @@ class AdminNotice extends Component {
             products : [{'productSeq' : '1'}],
             notices : [{'noticeSeq': '1'}],
             noticeSeq : 0,
-            change : 0
+            change : 0,
+            keyword : '',
+
         }
     }
 
@@ -55,6 +57,10 @@ class AdminNotice extends Component {
         })
     }
 
+    alert=()=> {
+        alert('검색어를 입력해주세요');
+    }
+
     componentDidMount() {
         this.getNotice();
     }
@@ -85,16 +91,13 @@ class AdminNotice extends Component {
                             <div className='admin-searchBox'>
                                 <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
                                 {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
-                                    <Link to={`/search/${this.state.keyword}`}>
                                         <img src={Search} className='admin-searchBox-img'/>
-                                    </Link>}
+                                }
                             </div>
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">공지 관리</div>
                                 <div className='admin-event-title-btn'>
                                     <button className="admin-event-title-recent">최신순</button>
-                                    <button className='admin-event-title-recent'>활성화</button>
-                                    <button className='admin-event-title-recent'>비활성화</button>
                                     <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
                                     <button className="admin-event-title-submit">등록</button>
                                 </Link>
