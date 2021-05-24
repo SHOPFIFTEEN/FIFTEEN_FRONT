@@ -17,7 +17,8 @@ class AdminEvent extends Component {
         this.state = {
             events : [{'eventSeq':'1'}],
             eventSeq : 0,
-            change : 0
+            change : 0,
+            keyword : null
         }
     }
 
@@ -57,13 +58,41 @@ class AdminEvent extends Component {
         })
     }
 
+    alert=()=> {
+        alert('검색어를 입력해주세요');
+    }
+
+    search =()=> {
+        let result = axios({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/search/event/${this.state.keyword}`,
+            data: {},
+            headers : {
+                "Content-Type" : 'application/json',
+            },
+        }).then((response)=> {
+            if(response.status<400){
+                this.setState({events : result.data});
+                console.log(result.data);
+                console.log(result);
+            }else{
+                console.log('error!')
+            }
+        })
+        alert('search');
+    }
+
+    handleChangeKeyword = (e) => {
+        this.setState({keyword: e.target.value})
+    }
+
     componentDidMount() {
         this.getEvent();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevState.change!==this.state.change){
-            this.getNotice();
+            this.getEvent();
             this.setState({change : 0})
         }
     }
@@ -85,18 +114,15 @@ class AdminEvent extends Component {
                         <AdminNav />
                         <div className="admin-event">
                             <div className='admin-searchBox'>
-                                <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
+                                <input type="text" name='search' onChange={this.handleChangeKeyword} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
                                 {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
-                                    <Link to={`/search/${this.state.keyword}`}>
-                                        <img src={Search} className='admin-searchBox-img'/>
-                                    </Link>}
+                                        <img src={Search} onClick={()=>this.search()} className='admin-searchBox-img'/>
+                                }
                             </div>
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">이벤트 관리</div>
                                 <div className='admin-event-title-btn'>
                                     <button className="admin-event-title-recent">최신순</button>
-                                    <button className='admin-event-title-recent'>활성화</button>
-                                    <button className='admin-event-title-recent'>비활성화</button>
                                     <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
                                         <button className="admin-event-title-submit">등록</button>
                                     </Link>
