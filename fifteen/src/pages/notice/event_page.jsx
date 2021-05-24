@@ -13,6 +13,7 @@ class EventPage extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            products : [{'productSeq' : '1'}],
             events : [{'eventSeq':'1'}],
             eventSeq : 0
         }

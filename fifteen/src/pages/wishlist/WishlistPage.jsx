@@ -127,6 +127,7 @@ class WishlistPage extends Component {
                         <MyPageSide/>
                         <div className="wishlist">
                             <div className="wishlist_theme">
+                                <div className="wishlist_theme_check"/>
                                 <div className="wishlist_theme_img">이미지</div>
                                 <div className="wishlist_theme_title">상품정보</div>
                                 <div className="wishlist_theme_count">수량</div>
