@@ -19,7 +19,7 @@ class AdminProduct extends Component {
             fieldProducts : [{'productSeq' : '1'}],
             sortProducts : [{}],
             field : '',
-            keyword : 'field',
+            keyword : '',
             range : [0,30000]
         }
     }
@@ -35,6 +35,23 @@ class AdminProduct extends Component {
             },
         })
         this.setState({products : result.data, fieldProducts: result.data});
+    }
+
+    search = async ()=> {
+        let result =await axios ({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/search/${this.state.keyword}`,
+            data: { },
+            headers : {
+                "Content-Type" : 'application/json'
+            },
+        })
+        this.setState({fieldProducts : result.data});
+        console.log(this.state.fieldProducts);
+    }
+
+    handleChangeKeyword = (e) => {
+        this.setState({keyword: e.target.value});
     }
 
     fieldProducts(f) {
@@ -96,6 +113,11 @@ class AdminProduct extends Component {
         this.setState({fieldProducts : filterSort});
     }
 
+    alert=()=> {
+        alert('검색어를 입력해주세요');
+    }
+
+
     componentDidMount() {
         this.getBookList();
     }
@@ -135,11 +157,9 @@ class AdminProduct extends Component {
                             <div className="admin-manage-head">
                             <div className="admin-manage-title">상품 관리</div>
                             <div className='admin-searchBox-product'>
-                                <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
+                                <input type="text" name='search' onChange={this.handleChangeKeyword} className='admin-searchBox-box'/>
                                 {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
-                                    <Link to={`/search/${this.state.keyword}`}>
-                                        <img src={Search} className='admin-searchBox-img'/>
-                                    </Link>}
+                                        <img src={Search} onClick={()=>this.search()} className='admin-searchBox-img'/>}
                             </div>
                             </div>
                             <div className="product-fieldBox">

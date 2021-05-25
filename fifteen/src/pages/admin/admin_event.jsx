@@ -18,7 +18,7 @@ class AdminEvent extends Component {
             events : [{'eventSeq':'1'}],
             eventSeq : 0,
             change : 0,
-            keyword : null
+            keyword : ''
         }
     }
 
@@ -62,24 +62,17 @@ class AdminEvent extends Component {
         alert('검색어를 입력해주세요');
     }
 
-    search =()=> {
-        let result = axios({
+    search = async ()=> {
+        let result = await axios({
             method : 'GET',
             url : `http://52.79.196.94:3001/search/event/${this.state.keyword}`,
             data: {},
             headers : {
                 "Content-Type" : 'application/json',
             },
-        }).then((response)=> {
-            if(response.status<400){
-                this.setState({events : result.data});
-                console.log(result.data);
-                console.log(result);
-            }else{
-                console.log('error!')
-            }
         })
-        alert('search');
+
+        this.setState({events : result.data});
     }
 
     handleChangeKeyword = (e) => {
@@ -114,7 +107,7 @@ class AdminEvent extends Component {
                         <AdminNav />
                         <div className="admin-event">
                             <div className='admin-searchBox'>
-                                <input type="text" name='search' onChange={this.handleChangeKeyword} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
+                                <input type="text" name='search' onChange={this.handleChangeKeyword} className='admin-searchBox-box'/>
                                 {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
                                         <img src={Search} onClick={()=>this.search()} className='admin-searchBox-img'/>
                                 }
