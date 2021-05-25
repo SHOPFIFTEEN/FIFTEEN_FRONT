@@ -97,7 +97,7 @@ class AdminNotice extends Component {
                             <div className="admin-event-title">
                                 <div className="admin-event-title-text">공지 관리</div>
                                 <div className='admin-event-title-btn'>
-                                    <button className="admin-event-title-recent">최신순</button>
+                                    <button className="admin-event-title-recent">진행기간</button>
                                     <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
                                     <button className="admin-event-title-submit">등록</button>
                                 </Link>
