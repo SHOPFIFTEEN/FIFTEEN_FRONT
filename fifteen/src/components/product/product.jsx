@@ -65,6 +65,7 @@ class Product extends Component {
         }
     }
 
+
     componentDidMount() {
         this.setState({keyword : this.props.match.params.keyword})
         this.getProductInfoList();
@@ -82,7 +83,13 @@ class Product extends Component {
                             <div className='breadCrumb'>{this.state.productInfo.field} > {this.state.productInfo.title}</div>}
                         <div className="product-main">
                             <div className="product-main-imgBox">
-                                <img className="product-main-imgBox-img" src={this.state.productInfo.image}/></div>
+                                <a href='#image'><img className="product-main-imgBox-img" src={this.state.productInfo.image}/></a>
+                                <a href='#none'><div id="image" className='product-main-imgBox-popup'>
+                                    <div className='product-main-imgBox-popup-box'>
+                                        <img className="product-main-imgBox-popup-box-img" src={this.state.productInfo.image}/>
+                                    </div>
+                                </div></a>
+                            </div>
                             <div className="product-main-box">
                                 <div className="product-main-box-category">{this.state.productInfo.field}</div>
                                 <div className="product-main-box-title">{this.state.productInfo.title}</div>
@@ -104,14 +111,14 @@ class Product extends Component {
                                         CART
                                    </button></a>
                                     </div>
-                                    <div id="cart_popup" className='product-main-box-button-popup'>
+                                    <a href='#none'><div id="cart_popup" className='product-main-box-button-popup'>
                                         <div className='product-main-box-button-popup-box'>
                                             <div className='product-main-box-button-popup-box-text'>{this.state.productInfo.title}</div>
                                             <div className='product-main-box-button-popup-box-text'>{this.state.count} 개를 장바구니에 담았습니다!</div>
                                             <Link to="/wishlist"><button className='product-main-box-button-popup-box-btn'>장바구니 가기 </button></Link>
                                             <a href='#none' className='product-main-box-button-popup-box-btn'>계속 쇼핑하기 </a>
                                         </div>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
                         </div>
