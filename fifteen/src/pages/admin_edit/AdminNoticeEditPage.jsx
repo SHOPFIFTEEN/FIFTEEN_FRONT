@@ -19,9 +19,12 @@ class AdminNoticeEditPage extends Component {
             title : '',
             content : '',
             selectedFile: null,
+            image: null,
+            imageURL : null,
             start_date : '',
             end_date : '',
-            prevURL : ''
+            prevURL : '',
+            isUpload : false
         }
     }
 
@@ -52,56 +55,78 @@ class AdminNoticeEditPage extends Component {
         }
     }
 
-    reNoticeInfo =() =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/notice/re/${this.props.match.params.noticeSeq}`,
-            data : {
-                title : this.state.title,
-                content : this.state.content,
-                start_date : this.state.start_date,
-                end_date : this.state.end_date
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
-        })
+    reNoticeInfo =async () =>{
+        let {isUpload} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else{
+            const {history} = this.props;
+            let result = await axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/notice/re/${this.props.match.params.noticeSeq}`,
+                data : {
+                    title : this.state.title,
+                    content : this.state.content,
+                    image : this.state.imageURL,
+                    start_date : this.state.start_date,
+                    end_date : this.state.end_date
+                },
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            })
+            history.push('/admin/notice')
+        }
     }
 
-    addNoticeInfo = () =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/notice/add`,
-            data : {
-                title : this.state.title,
-                content : this.state.content,
-                start_date : this.state.start_date,
-                end_date : this.state.end_date
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
-        })
+    addNoticeInfo = async () =>{
+        let {isUpload,title,content,start_date,end_date} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else if(!title || !content || !start_date|| !end_date){
+            alert("필수정보를 입력해 주세요")
+        }else{
+            const {history} = this.props;
+            let result = await axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/notice/add`,
+                data : {
+                    title : this.state.title,
+                    content : this.state.content,
+                    image : this.state.imageURL,
+                    start_date : this.state.start_date,
+                    end_date : this.state.end_date
+                },
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            })
+            history.push('/admin/notice')
+        }
     }
     handlePost=()=>{
         const image = new FormData();
         image.append('file', this.state.selectedFile);
-        console.log(image);
-        return axios.post("http://52.79.196.94:3001/image/notice/upload", image).then(res => {
-            alert('성공')
+        return axios.post("http://52.79.196.94:3001/image/upload", image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
         }).catch(err => {
-            alert('실패')
+            alert('실패');
         })
     }
 
     rehandlePost=()=>{
         const image = new FormData();
         image.append('file', this.state.selectedFile);
-        console.log(image);
-        return axios.post(`http://52.79.196.94:3001/image/notice/re/${this.props.match.params.noticeSeq}`, image).then(res => {
-            alert('성공')
+        return axios.post(`http://52.79.196.94:3001/image/upload`, image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
         }).catch(err => {
             alert('실패')
         })
@@ -164,7 +189,11 @@ class AdminNoticeEditPage extends Component {
                         <AdminNav />
                         <div className="admin-event">
                             <div className="admin-event-title">
-                                <div className="admin-event-title-text">공지 수정</div>
+                                {!(this.props.match.params.noticeSeq==='0') ?
+                                    <div className="admin-event-title-text">공지 수정</div>
+                                    :
+                                    <div className="admin-event-title-text">공지 등록</div>
+                                }
                             </div>
                             {/*adminNoticePost.css*/}
                             <div className='admin-info'>
@@ -199,19 +228,16 @@ class AdminNoticeEditPage extends Component {
                                         </div>
                                     </div>
                                     <div className='admin-info-box-button'>
-                                        <Link to={`/admin/notice_edit/${this.props.match.params.noticeSeq}`}>
-                                            <button className='admin-info-box-btn-cancel'>취소</button>
-                                        </Link>
+                                        {(this.props.match.params.noticeSeq==='0') ?
+                                            <Link to={'/admin/notice'}><button className='admin-info-box-btn-cancel'>취소</button></Link>
+                                            :
+                                            <Link to={`/admin/notice_edit/${this.props.match.params.noticeSeq}`}><button className='admin-info-box-btn-cancel'>취소</button></Link>
+                                        }
                                         <div>
                                             {!(this.props.match.params.noticeSeq==='0') ?
-                                                <Link to={`/admin/notice`}>
                                                     <button onClick={this.reNoticeInfo} className='admin-info-box-btn-submit'>수정</button>
-                                                </Link>
                                                 :
-                                                <Link to={`/admin/notice`}>
                                                     <button type="button" onClick={this.addNoticeInfo} className='admin-info-box-btn-submit'>등록</button>
-
-                                                </Link>
                                             }
                                         </div>
                                     </div>
