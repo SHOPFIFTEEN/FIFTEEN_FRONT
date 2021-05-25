@@ -16,8 +16,22 @@ class List extends Component {
             fieldProducts: [{'productSeq': '1'}],
             field: '',
             keyword: 'field',
-            range : [0,30000]
+            range: [0, 30000],
+            currentPage: 1,
+            postsPerPage: 10,
+            pageNumbers: [],
+            pN : []
+
         }
+    }
+
+    currentPosts(tmp) {
+        var indexOfLast = this.state.currentPage * this.state.postsPerPage;
+        var indexOfFirst = indexOfLast - this.state.postsPerPage;
+        let currentPosts = 0;
+        currentPosts = _.slice(tmp,indexOfFirst, indexOfLast);
+        console.log(currentPosts);
+        return currentPosts;
     }
 
     getBookList = async function () {
@@ -44,7 +58,10 @@ class List extends Component {
             })
             this.setState({fieldProducts: result1.data});
         }
-
+        for(let i =1; i<=Math.ceil(this.state.fieldProducts.length/this.state.postsPerPage); i++){
+            this.state.pageNumbers.push({'num' : i});
+        }
+        this.setState ({pN : this.state.pageNumbers});
     }
 
     fieldProducts(f) {
@@ -105,14 +122,20 @@ class List extends Component {
         });
         this.setState({fieldProducts : filterSort});
     }
+
+    pagination=(e)=> {
+       this.setState({currentPage : e});
+    }
     
     componentDidMount() {
         this.getBookList();
+        this.currentPosts();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevState.range!==this.state.range){
             this.sortByFilter();
+            this.currentPosts();
         }
     }
 
@@ -127,6 +150,7 @@ class List extends Component {
                 range: newValue
             })
         };
+
             return (
                 <div>
                     <div className="list">
@@ -167,7 +191,7 @@ class List extends Component {
                             </div>
                         </div>
                         <div className="list-product">
-                            {this.state.fieldProducts.map(arr => (
+                            {this.currentPosts(this.state.fieldProducts).map(arr => (
                                 <div key={arr.productSeq}>
                                     <Link to={`/product/${arr.productSeq}/${this.state.keyword}`}>
                                         <div className="list-product-item">
@@ -181,6 +205,11 @@ class List extends Component {
                                         </div>
                                     </Link>
                                 </div>
+                            ))}
+                        </div>
+                        <div className='page-num-box'>
+                            {this.state.pN.map(arr=> (
+                                <button className='page-num' key={arr.num} onClick={()=>this.pagination(arr.num)}>{arr.num}</button>
                             ))}
                         </div>
                     </div>
