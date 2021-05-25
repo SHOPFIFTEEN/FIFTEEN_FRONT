@@ -58,18 +58,30 @@ class List extends Component {
             })
             this.setState({fieldProducts: result1.data});
         }
+        var pageNumbers= [];
         for(let i =1; i<=Math.ceil(this.state.fieldProducts.length/this.state.postsPerPage); i++){
-            this.state.pageNumbers.push({'num' : i});
+            pageNumbers.push({'num' : i});
         }
-        this.setState ({pN : this.state.pageNumbers});
+        this.setState ({pN : pageNumbers});
     }
 
     fieldProducts(f) {
         if (f === '전체') {
             this.setState({fieldProducts: this.state.products});
+            var pageNumbers= [];
+            for(let i =1; i<=Math.ceil(this.state.products.length/this.state.postsPerPage); i++){
+                pageNumbers.push({'num' : i});
+            }
+            this.setState ({pN : pageNumbers});
         } else {
             var filterProduct = _.filter(this.state.products, {'field': f});
             this.setState({fieldProducts: filterProduct});
+            this.setState({currentPage : 1});
+            var pageNumbers1= [];
+            for(let i =1; i<=Math.ceil(filterProduct.length/this.state.postsPerPage); i++){
+                pageNumbers1.push({'num' : i});
+            }
+            this.setState ({pN : pageNumbers1});
         }
 
         //클릭시 강조 표시 추가 필요
