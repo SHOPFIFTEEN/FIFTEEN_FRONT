@@ -123,7 +123,7 @@ class AdminEvent extends Component {
                                 <div className="admin-event-title-text">이벤트 관리</div>
                                 <div className='admin-event-title-btn'>
                                     <button className="admin-event-title-recent">최신순</button>
-                                    <Link to={`/admin/notice_edit_page/${this.state.noticeSeq}`}>
+                                    <Link to={`/admin/event_edit_page/${this.state.eventSeq}`}>
                                         <button className="admin-event-title-submit">등록</button>
                                     </Link>
                                 </div>

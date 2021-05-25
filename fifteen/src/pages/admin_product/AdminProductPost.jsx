@@ -258,7 +258,7 @@ class AdminProductPost extends Component {
                         </div>
                         <div className='admin-productEdit-info'>
                             <div className="admin-productEdit-info-titleBox">
-                                <div className="admin-productEdit-info-title-text">Information 수정/등록</div>
+                                <div className="admin-productEdit-info-title-text">Information 등록</div>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>카테고리</div>
