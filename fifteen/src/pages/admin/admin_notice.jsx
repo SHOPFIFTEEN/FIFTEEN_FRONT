@@ -22,6 +22,19 @@ class AdminNotice extends Component {
         }
     }
 
+    search = async ()=> {
+        let result = await axios({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/search/notice/${this.state.keyword}`,
+            data: {},
+            headers : {
+                "Content-Type" : 'application/json',
+            },
+        })
+
+        this.setState({notices : result.data});
+    }
+
     getNotice = async function() {
         let result =await axios ({
             method : 'GET',
@@ -61,6 +74,11 @@ class AdminNotice extends Component {
         alert('검색어를 입력해주세요');
     }
 
+
+    handleChangeKeyword = (e) => {
+        this.setState({keyword: e.target.value})
+    }
+
     componentDidMount() {
         this.getNotice();
     }
@@ -89,9 +107,9 @@ class AdminNotice extends Component {
                         <AdminNav />
                         <div className="admin-event">
                             <div className='admin-searchBox'>
-                                <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className='admin-searchBox-box'/>
+                                <input type="text" name='search' onChange={this.handleChangeKeyword} className='admin-searchBox-box'/>
                                 {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className='admin-searchBox-img'/>:
-                                        <img src={Search} className='admin-searchBox-img'/>
+                                        <img src={Search} onClick={()=>this.search()} className='admin-searchBox-img'/>
                                 }
                             </div>
                             <div className="admin-event-title">
