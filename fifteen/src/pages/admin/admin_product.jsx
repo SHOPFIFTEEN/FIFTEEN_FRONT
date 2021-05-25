@@ -34,7 +34,7 @@ class AdminProduct extends Component {
                 "Content-Type" : 'application/json'
             },
         })
-        this.setState({products : result.data});
+        this.setState({products : result.data, fieldProducts: result.data});
     }
 
     fieldProducts(f) {
