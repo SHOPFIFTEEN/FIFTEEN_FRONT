@@ -55,8 +55,13 @@ class Login_page extends Component {
                 id : id,
                 passwd : pw
             }
-        }).then((result)=>{
-            if(result.status<400){
+        }).then((result=>{
+            console.log(result.data.status)
+            if(result.data.status===0){
+                alert('아이디와 비밀번호를 다시 확인해주세요');
+                document.getElementById("login_id_box").value='';
+                document.getElementById("login_pw_box").value='';
+            }else{
                 const {history} = this.props;
                 this.state.token = result.data.accessToken;
                 this.state.userSeq = result.data.userSeq;
@@ -73,10 +78,8 @@ class Login_page extends Component {
                     history.push('/admin/product');
                     alert('관리자로 로그인 되었습니다.');
                 }
-            }else{
-                alert('로그인에 실패하였습니다.');
             }
-        });
+        }));
 
     }
     render() {
@@ -91,8 +94,8 @@ class Login_page extends Component {
                             <div className='login__box'>
                                 <div className='login__form__box'>
                                     <div className='login__form__content'>
-                                        <div className='id__box'><div className="login-form-box-size">ID</div> <input type="text" className='input' name='id' value={id} onChange={this.handleChangeId} required/> </div>
-                                        <div className='pw__box'><div className="login-form-box-size">Password</div><input type="password" className='input' name='pw' value={password} onChange={this.handleChangePwd} onKeyPress={this.onKeyPress}required/></div>
+                                        <div className='id__box'><div className="login-form-box-size">ID</div> <input type="text" className='input' name='id' id='login_id_box' value={id} onChange={this.handleChangeId} required/> </div>
+                                        <div className='pw__box'><div className="login-form-box-size">Password</div><input type="password" className='input' name='pw' id='login_pw_box' value={password} onChange={this.handleChangePwd} onKeyPress={this.onKeyPress} required/></div>
                                         <button className='login-join' onClick={this.handleGoJoin}>회원가입</button>
                                         <button className='login__btn' onClick={this.login}>Log in</button>
                                     </div>
