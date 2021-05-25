@@ -29,6 +29,8 @@
 .admin-info-box-titleBox-text{
     padding-top: 7px;
     margin-left: 15px;
+    border: 0;
+    word-break: break-all;
 }
 
 /*admin-edit event, notice*/
@@ -56,6 +58,7 @@
 .admin-info-box-subBox-text{
     padding-top: 7px;
     margin-left: 15px;
+    word-break: break-all;
 
 }
 .admin-info-box-main-edit{
@@ -83,10 +86,20 @@
     margin-top: 10px;
 }
 .admin-info-box-main-content{
+    display: flex;
+    flex-direction: column;
     width: 650px ;
     text-align: left;
     word-break: break-all;
     padding: 10px 5px 10px 15px
+}
+.admin-info-box-main-content-text{
+    height: 200px;
+    margin: 0 10px 20px 0 ;
+}
+.admin-info-box-main-content-image{
+    display: flex;
+    flex-direction: row;
 }
 
 .admin-info-box-button{
@@ -94,6 +107,7 @@
     flex-direction: row;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 .admin-info-box-btn-cancel{
     width: 120px;
@@ -118,3 +132,15 @@
     border: 2px solid #2A4478;
 }
 
+.admin-info-box-main-content-image-submit{
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+}
+.admin-style-columns{
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 10px;
+}

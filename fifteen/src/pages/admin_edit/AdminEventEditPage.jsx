@@ -138,6 +138,7 @@ class AdminEventEditPage extends Component {
         })
     }
 
+
     componentDidMount() {
         this.getEventInfo();
     }
@@ -146,7 +147,7 @@ class AdminEventEditPage extends Component {
     render(){
         let profile_preview = null;
         if(this.state.file !== ''){
-            profile_preview = <img src={this.state.prevURL} width='500px' height='500px'/>
+            profile_preview = <img src={this.state.prevURL} width='250px' height='250px'/>
         }
 
         return(
@@ -177,7 +178,8 @@ class AdminEventEditPage extends Component {
                                     </div>
                                     <div className='admin-info-box-titleBox'>
                                         <div className='admin-info-box-titleBox-title'>기간</div>
-                                        <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/> ~
+                                        <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/>
+                                        <div className='admin-info-box-titleBox-text'>~</div>
                                         <input type='date' onChange={(e)=>this.handleChangeEndDate(e)} className='admin-info-box-titleBox-text' value={this.state.end_date}/>
                                     </div>
                                     <div className='admin-info-box-main-post'>
@@ -185,23 +187,29 @@ class AdminEventEditPage extends Component {
                                             <div className='admin-info-box-main-title'>내용</div>
                                         </div>
                                         <div className='admin-info-box-main-content'>
-                                            <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
-                                            {profile_preview}
-                                            {!(this.props.match.params.eventSeq==='0') ?
-                                                <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit'>이미지 수정</button>
-                                                :
-                                                <button type="button" onClick={this.handlePost} className='admin-info-box-btn-submit'>이미지 등록</button>
-                                            }
-                                            <br/>
-                                            <input type='text' onChange={this.handleChangeContent} value={this.state.content}/>
+                                            <input type='text' className='admin-info-box-main-content-text' onChange={this.handleChangeContent} value={this.state.content}/>
+                                            <div className='admin-info-box-main-content-image'>
+                                                {profile_preview}
+                                                <div className='admin-style-columns'>
+                                                    <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
+                                                    {!(this.props.match.params.eventSeq==='0') ?
+                                                        <button type="button" onClick={this.rehandlePost} className='admin-info-box-main-content-image-submit'>이미지 수정</button>
+                                                        :
+                                                        <button type="button" onClick={this.handlePost} className='admin-info-box-main-content-image-submit'>이미지 등록</button>
+                                                    }
+                                                    <br/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='admin-info-box-button'>
-                                        <Link to={`/admin/event_edit/${this.props.match.params.eventSeq}`}>
-                                            <button className='admin-info-box-btn-cancel'>취소</button>
-                                        </Link>
+                                        {(this.props.match.params.eventSeq==='0') ?
+                                            <Link to={'/admin/notice'}><button className='admin-info-box-btn-cancel'>취소</button></Link>
+                                            :
+                                            <Link to={`/admin/event_edit/${this.props.match.params.eventSeq}`}><button className='admin-info-box-btn-cancel'>취소</button></Link>
+                                        }
                                             <div>
-                                                {!(this.props.match.params.eventSeq==='0') ?
+                                                {(this.props.match.params.eventSeq==='0') ?
                                                     <Link to={`/admin/event`}>
                                                         <button onClick={this.reEventInfo} className='admin-info-box-btn-submit'>수정</button>
                                                     </Link>
