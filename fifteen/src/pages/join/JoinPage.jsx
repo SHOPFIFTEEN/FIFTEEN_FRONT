@@ -42,7 +42,7 @@ class JoinPage extends Component {
             alert("비밀번호가 일치하지 않습니다")
         }else if(isValidEmail===false){
             alert("이메일 중복확인을 해주세요")
-        }else if(!id || !pwd || !name|| !name || !phoneNumber || !email){
+        }else if(!id || !pwd || !name || !phoneNumber || !email){
             alert("필수 항목을 작성해주세요")
         }else if(checked===false) {
             alert("이용약관에 동의해주세요")
