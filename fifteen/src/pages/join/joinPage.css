@@ -155,7 +155,7 @@
 .input__check{
     display: flex;
     flex-direction: row;
-    margin: 5px 0 30px 200px;
+    margin: -15px 0 10px 200px;
 }
 .input__check2{
     display: flex;
