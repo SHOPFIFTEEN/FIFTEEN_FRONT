@@ -118,7 +118,7 @@ class AddressEdit extends Component{
         this.setState({address_detail: e.target.value})
     }
     handleChangePhoneNum = (e) => {
-        this.setState({PhoneNum: e.target.value})
+        this.setState({phoneNum: e.target.value})
     }
     handleChangeDefault = (e) => {
         this.setState({is_default: e.target.checked})
