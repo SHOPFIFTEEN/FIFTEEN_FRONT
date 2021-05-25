@@ -37,21 +37,22 @@ class AdminProductInfo extends Component {
     deleteProductInfo =()=> {
         var response = window.confirm('삭제하시겠습니까?');
         if(response){
-            let result = axios ({
-                method : 'DELETE',
-                url : `http://52.79.196.94:3001/product/ki/${this.props.match.params.productSeq}`,
-                headers : {
-                    "Content-Type" : 'application/json',
-                    'x-access-token' : getCookie("accessToken")
-                },
-            }).then((result)=>{
-                if(result.status<400){
-                    const {history} = this.props;
-                    alert('삭제되었습니다.');
-                    history.push('/admin/product');
+            //let result = axios ({
+            //    method : 'DELETE',
+            //    url : `http://52.79.196.94:3001/product/ki/${this.props.match.params.productSeq}`,
+            //    headers : {
+            //        "Content-Type" : 'application/json',
+            //        'x-access-token' : getCookie("accessToken")
+            //    },
+            // }).then((result)=>{
+            //   if(result.status<400){
+            //       const {history} = this.props;
+            //       alert('삭제되었습니다.');
+            //       history.push('/admin/product');
 
-                }}
-            )
+            //   }}
+            // )
+            alert('삭제되었습니다.');
         }else{
             alert('삭제를 취소하였습니다.');
         }
