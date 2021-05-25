@@ -8,6 +8,7 @@ import {withRouter, Link} from "react-router-dom";
 import axios from "axios";
 import {getCookie} from "../../cookies";
 import DaumPostcode from 'react-daum-postcode';
+import Modal from 'react-awesome-modal';
 
 
 class AddressPost extends Component{
@@ -21,6 +22,9 @@ class AddressPost extends Component{
             address_mail : null,
             phoneNum : null,
             is_default : false,
+            visible : false,
+            is_possible : 0,
+            is_clicked : 0
         }
     }
 
@@ -54,6 +58,78 @@ class AddressPost extends Component{
                 alert('모든 칸을 입력해주세요');
             }
         });
+    }
+
+    initiate = (comp) => {
+        window.daum.Postcode.load(()=> {
+            const Postcode = new window.daum.Postcode({
+            })
+            Postcode.embed(this.wrap, { autoClose: this.props.autoClose });
+        })
+    }
+
+    handleComplete = (data) => {
+        var roadAddr = data.roadAddress; // 도로명 주소 변수
+        var extraRoadAddr = '';
+
+        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+            extraRoadAddr += data.bname;
+        }
+        // 건물명이 있고, 공동주택일 경우 추가한다.
+        if(data.buildingName !== '' && data.apartment === 'Y'){
+            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+        }
+
+        this.setState({
+            address_mail : data.zonecode,
+            address : roadAddr,
+            address_detail : '',
+            is_clicked : 1
+        })
+    }
+
+    closeModal= () => {
+        this.setState({
+            visible : false
+        })
+    }
+
+    openModal = () => {
+        this.setState({
+            visible : true
+        })
+    }
+
+    handleClose = (state) => {
+        if(state==='COMPLETE_CLOSE'){
+            this.setState({
+                visible : false
+            })
+        }
+    }
+
+    setPossible =()=> {
+        const {name, address, address_detail, address_mail, phoneNum, is_clicked} = this.state;
+        if(name!=='' && address!=='' && address_detail !=='' && address_mail!== '' && phoneNum!==''){
+            if(is_clicked===1){
+                var phone = phoneNum.split("-").join("");
+                const checkNum = Number.isInteger(Number(phone));
+                const checkStartNum = phone.slice(0,3) === '010';
+                const checkLength = phone.slice(3).length === 7 || phone.slice(3).length === 8;
+                if(checkNum && checkStartNum && checkLength){
+                    this.setState({is_possible : 1});
+                    const {history} = this.props;
+                    history.push('/address');
+                    this.addDelivery();
+                }else{
+                    alert('정확한 핸드폰 번호를 입력하여주세요.')
+                }
+            }else{
+                alert('배송지 입력 버튼으로 입력해주세요.');
+            }
+        }else{
+            alert('필수 정보를 모두 입력해주세요.');
+        }
     }
 
     handleChangeName = (e) => {
@@ -93,6 +169,10 @@ class AddressPost extends Component{
                                 <div className='address-name'>
                                     <div className='address-subject'>배송지 이름</div>
                                     <input type='text' className='address-address-inputBox' value={this.state.name} onChange={this.handleChangeName}/>
+                                    <div className='daum-address' onClick={this.openModal}>배송지 입력</div>
+                                    <Modal visible={this.state.visible} width="400" height="300" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+                                        <DaumPostcode onComplete={this.handleComplete} onClose={this.handleClose} autoClose={true}/>
+                                    </Modal>
                                 </div>
                                 <div className='address-receiver'>
                                     <div className='address-subject'>받는 사람</div>
@@ -111,7 +191,7 @@ class AddressPost extends Component{
                                     <input type='text' className='address-inputBox' value={this.state.phoneNum} onChange={this.handleChangePhoneNum}/>
                                 </div>
                             </div>
-                                <button className='addressPage-info-btn' onClick={this.addDelivery}>등록</button>
+                                <button className='addressPage-info-btn' onClick={this.setPossible}>등록</button>
                         </div>
                     </div>
                 </div>
