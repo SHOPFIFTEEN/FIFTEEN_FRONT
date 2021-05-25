@@ -34,6 +34,8 @@ import PurchasePage from "./pages/purchase/PurchasePage";
 import AddressPage from "./pages/addressPage/AddressPage";
 import AddressPost from "./pages/addressPage/AddressPost";
 import AddressEdit from "./pages/addressPage/AddressEdit";
+import Privacy from "./pages/privacy/Privacy";
+import Agreement from "./pages/privacy/Agreement";
 
 
 class App extends Component{
@@ -70,6 +72,8 @@ class App extends Component{
                 <Route path='/address' component={AddressPage}/>
                 <Route path='/address_post' component={AddressPost}/>
                 <Route path='/address_edit/:delSeq' component={AddressEdit}/>
+                <Route path='/privacy' component={Privacy}/>
+                <Route path='/agreement' component={Agreement} />
             </div>
         );
     }
