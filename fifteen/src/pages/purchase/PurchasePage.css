@@ -32,6 +32,14 @@ select {
 .purchase-address{
     width: 1000px;
 }
+
+.address-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1000px;
+}
 .purchase-orderer{
     display: flex;
     flex-direction: row;

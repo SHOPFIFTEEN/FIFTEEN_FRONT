@@ -2,13 +2,96 @@ import React, {Component} from 'react'
 import './PurchasePage.css'
 import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {getCookie} from "../../cookies";
 import Address from "../../components/address/Adress";
 
 class PurchasePage extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            productInfo: {productSeq: 12},
+            count: 1,
+            productSeq: '',
+            keyword : 'field',
+            delivery : [],
+            selectedDelSeq : ''
+        }
+    }
+
+    getProductInfoList = async function () {
+        let result = await axios({
+            method: 'GET',
+            url: `http://52.79.196.94:3001/product/${this.props.match.params.productSeq}`,
+            data: {},
+            headers: {
+                "Content-Type": 'application/json'
+            },
+        })
+        this.setState({productInfo: result.data[0], count : this.props.match.params.count})
+    }
+
+    plusCount = () => {
+        var c = this.state.count;
+        this.setState({count: ++c});
+    }
+    minusCount = () => {
+        var c = this.state.count;
+        c = c - 1;
+        if(c<=0){
+            alert('상품 수량은 1개 이상이어야 합니다.');
+        }else{
+            this.setState({count: --c});
+        }
+    }
+
+    getDelivery = async function () {
+        let result = await axios({
+            method: 'GET',
+            url: 'http://52.79.196.94:3001/delivery',
+            data: {},
+            headers: {
+                "Content-Type": 'application/json',
+                "x-access-token": getCookie("accessToken")
+            },
+        })
+        this.setState({delivery: result.data});
+        console.log(result.data);
+        console.log(this.state.delivery);
+    }
+
+    selectDel =(e)=> {
+        this.setState({selectedDelSeq : e});
+        console.log(this.state.selectedDelSeq);
+    }
+
+    renderDelivery = () => {
+        const {delivery} = this.state;
+        return delivery.map(arr => (
+                <div key={arr.delSeq}>
+                    <div className='addressPage-info-box'  style={{width:'300px', height : '110px'}}>
+                        <div className='addressPage-list'>
+                            <div className='address-modal-list-head'>
+                                <div className='address-list-name'>{arr.name}</div>
+                                {!(arr.is_default) ? <input type='checkbox' onChange={()=>this.selectDel(arr.delSeq)}/> : <input type='checkbox' onChange={()=>this.selectDel(arr.delSeq)} defaultChecked={true}/>}
+                            </div>
+                            <div className='address-list-address'>{arr.address}</div>
+                            <div className='address-list-default'>{!(arr.is_default) ? <div></div> : <div>기본배송지</div>}</div>
+                        </div>
+                    </div>
+                </div>
+        ))
+    }
+
+    componentDidMount() {
+        this.getProductInfoList();
+        this.getDelivery();
+    }
+
     render(){
+
+        const renderDelivery = this.renderDelivery();
         return(
             <div>
                 <Header/>
@@ -18,30 +101,34 @@ class PurchasePage extends Component{
                     </div>
                     <div className='purchase-orderer'>
                         <div className='purchase-orderer-title'>주문자</div>
-                        <div className='purchase-orderer-text'>이유진(rooproop1111@naver.com)</div>
+                        <div className='purchase-orderer-text'>{getCookie("userName")} 님</div>
                     </div>
                     <div className='purchase-address'>
-
+                            <div className='address-title'>배송지 목록</div>
+                        <Link to={`/address`}>
+                            <button>배송지 관리</button>
+                        </Link>
+                        <div className='address-content'>
+                            {renderDelivery}
+                        </div>
                     </div>
                     <div className='purchase-product'>
                         <div className='purchase-product-title'>주문상품</div>
                         <div className='purchase-product-box'>
-                            <input type='checkbox'/>
                             <div className='purchase-product-box-leftBox'>
-                                <img className='purchase-product-box-imageBox-img'/>
+                                <img className='purchase-product-box-imageBox-img' src={this.state.productInfo.image}/>
                             </div>
                             <div className='purchase-product-box-rightBox'>
-                                <div className='purchase-product-box-rightBox-title'>책 제목</div>
+                                <div className='purchase-product-box-rightBox-title'>{this.state.productInfo.title}</div>
                                 <div className='purchase-product-box-rightBox-price'>
                                     <div className='purchase-product-box-rightBox-count'>
-                                        <button className='purchase-product-box-rightBox-count-btn'>-</button>
-                                        <div className='purchase-product-box-rightBox-count-text'>1</div>
-                                        <button className='purchase-product-box-rightBox-count-btn'>+</button>
+                                        <button className='purchase-product-box-rightBox-count-btn' onClick={this.minusCount}>-</button>
+                                        <div className='purchase-product-box-rightBox-count-text'>{this.state.count}</div>
+                                        <button className='purchase-product-box-rightBox-count-btn' onClick={this.plusCount}>+</button>
                                     </div>
-                                    <div className='purchase-product-box-rightBox-price-text'>13000원</div>
+                                    <div className='purchase-product-box-rightBox-price-text'>{this.state.count*this.state.productInfo.price} 원</div>
                                 </div>
                             </div>
-                            <button className='purchase-product-button'>삭제</button>
                         </div>
                     </div>
                     <div className='purchase-discount'>
@@ -77,7 +164,7 @@ class PurchasePage extends Component{
                         <div className='purchase-discount-title'>결제 정보</div>
                         <div className='purchase-price-box'>
                             <div className='purchase-price-box-subject'>주문상품</div>
-                            <div className='purchase-price-box-text'>80000원</div>
+                            <div className='purchase-price-box-text'>{this.state.count*this.state.productInfo.price} 원</div>
                         </div>
                         <div className='purchase-price-box'>
                             <div className='purchase-price-box-subject'>할인/쿠폰</div>
@@ -85,7 +172,7 @@ class PurchasePage extends Component{
                         </div>
                         <div className='purchase-price-box'>
                             <div className='purchase-price-box-subject'>배송비</div>
-                            <div className='purchase-price-box-text'>+2500원</div>
+                            <div className='purchase-price-box-text'>{this.state.productInfo.delivery} 원</div>
                         </div>
                         <div className='purchase-discount-price'>
                             <div className='purchase-discount-price-subject'>결제금액</div>
