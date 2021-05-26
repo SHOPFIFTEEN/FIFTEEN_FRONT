@@ -74,7 +74,7 @@ class EventDetail extends Component{
                                         <br/>
                                         {this.state.eventInfo.content}
                                     </div>
-                                    <button className='notice-info-box-btn'>목록으로</button>
+                                    <Link to='/event'><button className='notice-info-box-btn'>목록으로</button></Link>
                                 </div>
                             </div>
                         </div>

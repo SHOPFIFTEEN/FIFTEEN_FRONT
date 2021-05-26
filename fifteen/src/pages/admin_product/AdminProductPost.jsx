@@ -284,7 +284,7 @@ class AdminProductPost extends Component {
     render(){
         let profile_preview = null;
         if(this.state.file !== ''){
-            profile_preview = <img src={this.state.prevURL} width='500px' height='500px'/>
+            profile_preview = <img src={this.state.prevURL} width='300px' height='300px'/>
         }
 
         return(
@@ -315,9 +315,8 @@ class AdminProductPost extends Component {
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>카테고리</div>
-                                <div className='admin-productEdit-info-category'>{this.state.field}</div>
-                                <label>
-                                <select onChange={this.handleChangeField} className='admin-productEdit-info-category' value={this.state.field}>
+                                <form>
+                                <select onChange={this.handleChangeField} className='admin-productEdit-info-category'>
                                     <option disabled >카테고리를 선택해 주세요</option>
                                     <option value="소설">소설</option>
                                     <option value="시/에세이">시/에세이</option>
@@ -327,7 +326,7 @@ class AdminProductPost extends Component {
                                     <option value="외국어">외국어</option>
                                     <option value="여행">여행</option>
                                     <option value="만화">만화</option>
-                                </select></label>
+                                </select></form>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>제목</div>
@@ -375,13 +374,14 @@ class AdminProductPost extends Component {
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>이미지</div>
+                                {profile_preview}
                                 <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
                                 {!(this.props.match.params.productSeq==='0') ?
-                                    <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit'>이미지 수정</button>
+                                    <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit2'>이미지 수정</button>
                                     :
-                                    <button type="button" onClick={this.handlePost} className='admin-info-box-btn-submit'>이미지 등록</button>
+                                    <button type="button" onClick={this.handlePost} className='admin-info-box-btn-submit2'>이미지 등록</button>
                                 }
-                                {profile_preview}
+
                             </div>
                             <div className='admin-info-box-button'>
                                 <Link to={`/admin/product`}>

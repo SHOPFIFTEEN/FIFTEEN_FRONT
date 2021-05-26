@@ -97,14 +97,18 @@
 }
 .product-main-box-comment{
     text-align: left;
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 25px;
+    height: 70px;
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 
 }
 .product-main-box-price-total{
-
     font-size: 14px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .product-main-box-price{
