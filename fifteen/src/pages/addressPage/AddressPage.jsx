@@ -93,9 +93,12 @@ class AddressPage extends Component {
                         <div className='addressPage-info'>
                             <div className='address-title'>배송지 목록</div>
                             {renderDelivery}
+                            <div className='address-addBox'>
+                                <Link to='/address_post'><div className='address-add'>+</div></Link>
+                            </div>
                         </div>
                     </div>
-                    <Link to='/address_post'><div className='address-add'>+</div></Link>
+
                 </div>
                 <Footer/>
             </div>

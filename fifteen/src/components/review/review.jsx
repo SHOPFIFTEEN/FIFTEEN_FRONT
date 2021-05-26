@@ -54,7 +54,7 @@ class Review extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="review-button" onClick={() => this._openModal()}>write
+                <div className="review-button">write
                     <Modal visible={this.state.AddressVisible} width="700" height='370' effect="fadeInDown" onClickAway={() => this._closeModal()}>
                         <div className='review-button-modal'>
                             <div className='review-button-modal-box'>

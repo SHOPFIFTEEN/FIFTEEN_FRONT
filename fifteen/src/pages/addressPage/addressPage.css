@@ -12,6 +12,8 @@
 }
 .addressPage-info{
     width: 820px;
+    height: 1300px;
+
 }
 .addressPage-info-box{
     display: flex;
@@ -61,4 +63,11 @@
     color: white;
     box-sizing: border-box;
     margin-top: 20px;
+
+}
+.address-addBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

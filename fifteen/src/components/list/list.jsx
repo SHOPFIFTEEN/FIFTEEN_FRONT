@@ -84,7 +84,9 @@ class List extends Component {
             this.setState ({pN : pageNumbers1});
         }
 
-        //클릭시 강조 표시 추가 필요
+        this.setState({
+            field : f
+        })
     }
 
     sortBySale() {
@@ -142,6 +144,7 @@ class List extends Component {
     componentDidMount() {
         this.getBookList();
         this.currentPosts();
+        this.setState({field:this.props.match.params.field})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -178,7 +181,7 @@ class List extends Component {
                             <div onClick={() => this.fieldProducts('만화')}>만화</div>
                         </div>
                         <div className="list-sortBox">
-                            <button className="list-sortBox-sort">sort</button>
+                            <button className="list-sortBox-sort">{this.state.field}</button>
                             <div className="list-sortBox-bar"/>
                             <button className="list-sortBox-sale" onClick={() => this.sortByRecent()}>최신등록순</button>
                             <button className="list-sortBox-lowPrice" onClick={() => this.sortByRowPrice()}>낮은 가격순

@@ -51,7 +51,9 @@
 }
 .list-sortBox-sort{
     font-size: 17px;
+    font-weight: bold;
     background-color: white;
+    color: #f97c2b;
 }
 .list-sortBox-bar{
     width: 50px;
