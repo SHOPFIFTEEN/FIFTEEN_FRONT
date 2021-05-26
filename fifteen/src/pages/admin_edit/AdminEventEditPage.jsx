@@ -19,9 +19,12 @@ class AdminEventEditPage extends Component {
             title : '',
             content : '',
             selectedFile: null,
+            image: null,
+            imageURL : null,
             start_date : '',
             end_date : '',
-            prevURL : ''
+            prevURL : '',
+            isUpload : false
         }
     }
 
@@ -52,46 +55,65 @@ class AdminEventEditPage extends Component {
             }
         }
 
-    reEventInfo =() =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/event/re/${this.props.match.params.eventSeq}`,
-            data : {
-                title : this.state.title,
-                content : this.state.content,
-                image  : this.state.image,
-                start_date : this.state.start_date,
-                end_date : this.state.end_date
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
-        })
+    reEventInfo =async () =>{
+        let {isUpload} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else{
+            const {history} = this.props;
+            let result = await axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/event/re/${this.props.match.params.eventSeq}`,
+                data : {
+                    title : this.state.title,
+                    content : this.state.content,
+                    image : this.state.imageURL,
+                    start_date : this.state.start_date,
+                    end_date : this.state.end_date
+                },
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            })
+            history.push('/admin/event')
+        }
     }
 
-    addEventInfo = () =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/event/add`,
-            data : {
-                title : this.state.title,
-                content : this.state.content,
-                start_date : this.state.start_date,
-                end_date : this.state.end_date
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
-        })
+    addEventInfo = async () =>{
+        let {isUpload,title,content,start_date,end_date} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else if(!title || !content || !start_date|| !end_date){
+            alert("필수정보를 입력해 주세요")
+        }else{
+            const {history} = this.props;
+            let result = await axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/event/add`,
+                data : {
+                    title : this.state.title,
+                    content : this.state.content,
+                    image : this.state.imageURL,
+                    start_date : this.state.start_date,
+                    end_date : this.state.end_date
+                },
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            })
+            history.push('/admin/event')
+        }
     }
     handlePost=()=>{
         const image = new FormData();
         image.append('file', this.state.selectedFile);
-        console.log(image);
-        return axios.post("http://52.79.196.94:3001/image/event/upload", image).then(res => {
-            alert('성공')
+        return axios.post("http://52.79.196.94:3001/image/upload", image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
         }).catch(err => {
             alert('실패')
         })
@@ -100,9 +122,11 @@ class AdminEventEditPage extends Component {
     rehandlePost=()=>{
         const image = new FormData();
         image.append('file', this.state.selectedFile);
-        console.log(image);
-        return axios.post(`http://52.79.196.94:3001/image/event/re/${this.props.match.params.eventSeq}`, image).then(res => {
-            alert('성공')
+        return axios.post(`http://52.79.196.94:3001/image/upload`, image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
         }).catch(err => {
             alert('실패')
         })
@@ -138,11 +162,9 @@ class AdminEventEditPage extends Component {
         })
     }
 
-
     componentDidMount() {
         this.getEventInfo();
     }
-
 
     render(){
         let profile_preview = null;
@@ -167,7 +189,11 @@ class AdminEventEditPage extends Component {
                         <AdminNav />
                         <div className="admin-event">
                             <div className="admin-event-title">
-                                <div className="admin-event-title-text">이벤트 수정</div>
+                                {!(this.props.match.params.eventSeq==='0') ?
+                                    <div className="admin-event-title-text">이벤트 수정</div>
+                                    :
+                                    <div className="admin-event-title-text">이벤트 등록</div>
+                                }
                             </div>
                             {/*adminNoticePost.css*/}
                             <div className='admin-info'>
@@ -178,8 +204,7 @@ class AdminEventEditPage extends Component {
                                     </div>
                                     <div className='admin-info-box-titleBox'>
                                         <div className='admin-info-box-titleBox-title'>기간</div>
-                                        <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/>
-                                        <div className='admin-info-box-titleBox-text'>~</div>
+                                        <input type='date' onChange={(e)=>this.handleChangeStartDate(e)} className='admin-info-box-titleBox-text' value={this.state.start_date}/> ~
                                         <input type='date' onChange={(e)=>this.handleChangeEndDate(e)} className='admin-info-box-titleBox-text' value={this.state.end_date}/>
                                     </div>
                                     <div className='admin-info-box-main-post'>
@@ -204,19 +229,15 @@ class AdminEventEditPage extends Component {
                                     </div>
                                     <div className='admin-info-box-button'>
                                         {(this.props.match.params.eventSeq==='0') ?
-                                            <Link to={'/admin/notice'}><button className='admin-info-box-btn-cancel'>취소</button></Link>
+                                            <Link to={'/admin/event'}><button className='admin-info-box-btn-cancel'>취소</button></Link>
                                             :
                                             <Link to={`/admin/event_edit/${this.props.match.params.eventSeq}`}><button className='admin-info-box-btn-cancel'>취소</button></Link>
                                         }
                                             <div>
-                                                {(this.props.match.params.eventSeq==='0') ?
-                                                    <Link to={`/admin/event`}>
-                                                        <button onClick={this.reEventInfo} className='admin-info-box-btn-submit'>수정</button>
-                                                    </Link>
-                                                :
-                                                    <Link to={`/admin/event`}>
-                                                        <button onClick={this.addEventInfo} className='admin-info-box-btn-submit'>등록</button>
-                                                    </Link>
+                                                {!(this.props.match.params.eventSeq==='0') ?
+                                                    <button onClick={this.reEventInfo} className='admin-info-box-btn-submit'>수정</button>
+                                                    :
+                                                    <button type="button" onClick={this.addEventInfo} className='admin-info-box-btn-submit'>등록</button>
                                                 }
                                             </div>
                                     </div>

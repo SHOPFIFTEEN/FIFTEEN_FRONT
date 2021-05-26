@@ -195,4 +195,6 @@ input[type='checkbox']{
     text-align: center;
     border-radius: 7px;
     margin-left: 10px;
+    cursor: pointer;
 }
+   

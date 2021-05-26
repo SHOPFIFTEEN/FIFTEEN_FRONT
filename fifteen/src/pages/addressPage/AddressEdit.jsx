@@ -22,7 +22,9 @@ class AddressEdit extends Component{
             address_mail : '',
             phoneNum : '',
             is_default : '',
-            visible : false
+            visible : false,
+            is_possible : 0,
+            is_clicked : 0
         }
     }
 
@@ -99,7 +101,8 @@ class AddressEdit extends Component{
         this.setState({
             address_mail : data.zonecode,
             address : roadAddr,
-            address_detail : ''
+            address_detail : '',
+            is_clicked : 1
         })
     }
 
@@ -118,7 +121,7 @@ class AddressEdit extends Component{
         this.setState({address_detail: e.target.value})
     }
     handleChangePhoneNum = (e) => {
-        this.setState({PhoneNum: e.target.value})
+        this.setState({phoneNum: e.target.value})
     }
     handleChangeDefault = (e) => {
         this.setState({is_default: e.target.checked})
@@ -134,6 +137,31 @@ class AddressEdit extends Component{
         this.setState({
             visible : true
         })
+    }
+
+
+    setPossible =()=> {
+        const {name, address, address_detail, address_mail, phoneNum, is_clicked} = this.state;
+        if(name!=='' && address!=='' && address_detail !=='' && address_mail!== '' && phoneNum!==''){
+            if(is_clicked===1){
+                var phone = phoneNum.split("-").join("");
+                const checkNum = Number.isInteger(Number(phone));
+                const checkStartNum = phone.slice(0,3) === '010';
+                const checkLength = phone.slice(3).length === 7 || phone.slice(3).length === 8;
+                if(checkNum && checkStartNum && checkLength){
+                    this.setState({is_possible : 1});
+                    const {history} = this.props;
+                    history.push('/address');
+                    this.reDelivery();
+                }else{
+                    alert('정확한 핸드폰 번호를 입력하여주세요.')
+                }
+            }else{
+                alert('배송지 입력 버튼으로 입력해주세요.');
+            }
+        }else{
+            alert('필수 정보를 모두 입력해주세요.');
+        }
     }
 
 
@@ -177,9 +205,7 @@ class AddressEdit extends Component{
                                         <div className='address-subject'>휴대전화</div>
                                         <input type='text' className='address-inputBox' value={this.state.phoneNum} onChange={this.handleChangePhoneNum}/>
                                     </div>
-                                    <Link to={`/address`}>
-                                        <button className='addressPage-info-btn' onClick={this.reDelivery}>적용</button>
-                                    </Link>
+                                    <button className='addressPage-info-btn' onClick={this.setPossible}>적용</button>
                                 </div>
                             </div>
                         </div>
