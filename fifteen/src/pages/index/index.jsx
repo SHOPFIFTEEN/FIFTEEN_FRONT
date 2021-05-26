@@ -125,7 +125,7 @@ class Index extends Component {
                 <div className='slider-box'>
                     <Slider {...settingsE}>
                         {this.state.slideEventImage.map(arr=>(
-                            <Link to={`/event/${arr.eventSeq}`}>
+                            <Link to={`/event_detail/${arr.eventSeq}`}>
                                 <div key={arr.eventSeq}>
                                     <img src={arr.image} width='100%' height='400px'/>
                                 </div>
@@ -138,7 +138,7 @@ class Index extends Component {
                 <div className='slider-box-n'>
                     <Slider {...settingsN}>
                         {this.state.slideNoticeImage.map(arr=>(
-                            <Link to={`/notice/${arr.noticetSeq}`}>
+                            <Link to={`/notice_detail/${arr.noticeSeq}`}>
                                 <div key={arr.noticetSeq}>
                                     <img src={arr.image} width='1000px' height='200px'/>
                                 </div>

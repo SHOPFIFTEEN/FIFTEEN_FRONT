@@ -24,6 +24,7 @@ class NoticePage extends Component{
             url : 'http://52.79.196.94:3001/notice',
             data: { },
             headers : {
+
                 "Content-Type" : 'application/json'
             },
         })
@@ -69,7 +70,7 @@ class NoticePage extends Component{
                                             <div key={arr.noticeSeq}>
                                                 <Link to={`/notice_detail/${arr.noticeSeq}`}>
                                                     <div className="notice-content">
-                                                        <div className="notice-seq">1</div>
+                                                        <div className="notice-seq">{arr.noticeSeq}</div>
                                                         <div className="notice-title">{arr.title}</div>
                                                         <div className="notice-date">{arr.start_date} ~ {arr.end_date}</div>
                                                     </div>

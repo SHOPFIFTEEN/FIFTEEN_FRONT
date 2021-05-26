@@ -33,10 +33,19 @@
     align-items: flex-start;
     padding-left: 10px;
 }
+.admin-productEdit-info-box2{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    margin: 10px 0 5px 0;
+    align-items: flex-start;
+    padding-left: 10px;
+}
 .admin-productEdit-info-subject{
     font-size: 17px;
     color: #8B8B8B;
     margin-bottom: 7px;
+    text-align: left;
 
 }
 .admin-productEdit-info-subBox{
@@ -47,36 +56,50 @@
     align-items: flex-start;
     padding-left: 10px;
 }
+select{
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+}
+select::-ms-expand{
+    display: none; /* IE 10, 11 */
+}
 .admin-productEdit-info-category{
     width: 800px;
-    height: 40px;
-    border: 1px solid #BBBBBB;
+    height: 45px;
     border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #BBBBBB;
+
 }
 .admin-productEdit-info-title{
     width: 800px;
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 3px;
-
+    padding-left: 20px;
 }
 .admin-productEdit-info-publisher{
     width: 800px;
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 3px;
+    padding-left: 20px;
 }
 .admin-productEdit-info-author{
     width: 800px;
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 3px;
+    padding-left: 20px;
 }
 .admin-productEdit-info-price{
     width: 800px;
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 3px;
+    padding-left: 20px;
 
 }
 .admin-productEdit-info-cnt{

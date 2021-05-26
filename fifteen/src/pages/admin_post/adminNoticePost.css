@@ -94,8 +94,10 @@
     padding: 10px 5px 10px 15px
 }
 .admin-info-box-main-content-text{
+    width: 650px;
     height: 200px;
     margin: 0 10px 20px 0 ;
+    word-break: break-all;
 }
 .admin-info-box-main-content-image{
     display: flex;
@@ -128,6 +130,14 @@
     border-radius: 5px;
     color: #2A4478;
 }
+.admin-info-box-btn-submit2{
+    width: 120px;
+    height: 35px;
+    border: 2px solid #2A4478;
+    border-radius: 5px;
+    color: #2A4478;
+    margin: 10px 0 10px 0;
+}
 .admin-info-box-btn-submit:focus{
     border: 2px solid #2A4478;
 }
@@ -141,6 +151,5 @@
 .admin-style-columns{
     display: flex;
     flex-direction: column;
-
     margin-left: 10px;
 }

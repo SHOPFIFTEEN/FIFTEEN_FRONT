@@ -70,7 +70,7 @@ class EventPage extends Component{
                                             <div key={arr.eventSeq}>
                                                 <Link to={`/event_detail/${arr.eventSeq}`}>
                                                     <div className="notice-content">
-                                                        <div className="notice-seq">1</div>
+                                                        <div className="notice-seq">{arr.eventSeq}</div>
                                                         <div className="notice-title">{arr.title}</div>
                                                         <div className="notice-date">{arr.start_date} ~ {arr.end_date}</div>
                                                     </div>

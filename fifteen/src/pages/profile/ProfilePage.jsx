@@ -100,6 +100,7 @@ class ProfilePage extends Component{
                                     <button className="profile_box_confirm">회원정보수정</button>
                                     <button className="profile_box_cancel">취소</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>

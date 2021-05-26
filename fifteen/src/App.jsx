@@ -59,7 +59,7 @@ class App extends Component{
                 <Route path='/notice' component={NoticePage} />
                 <Route path='/notice_detail/:noticeSeq' component={NoticeDetail} />
                 <Route path='/event' component={EventPage} />
-                <Route path='/event_detail' component={EventDetail} />
+                <Route path='/event_detail/:eventSeq' component={EventDetail} />
                 <Route path='/admin/event_post/:eventSeq' component={AdminEventPost}/>
                 <Route path='/admin/event_edit/:eventSeq' component={AdminEventEdit}/>
                 <Route path='/admin/notice_post/:noticeSeq' component={AdminNoticePost}/>
