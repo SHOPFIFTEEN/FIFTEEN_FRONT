@@ -131,7 +131,7 @@ class Product extends Component {
                             <div className="product-detail-box">
                                 <div id='info' className="product-detail-box-information">
                                     <div className="product-detail-box-information-box">
-                                        <div className="product-detail-box-information-title">저자 소개</div>
+                                        <div className="product-detail-box-information-title">한줄 소개</div>
                                         {this.state.productInfo.a_intro}
                                     </div>
                                     <div className="product-detail-box-information-box">

@@ -47,8 +47,8 @@
     display: flex;
     font-weight: bold;
     font-size: 15px;
-    width: 500px;
-    margin-top: 5px;
+    margin: 4px 0 0 0;
+    color: #385AD6;
 }
 
 .address-add {
