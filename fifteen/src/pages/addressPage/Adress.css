@@ -29,6 +29,7 @@ button{
 .address-check{
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
@@ -42,7 +43,9 @@ input[type='checkbox']{
     margin-top: 5px;
 
 }
-
+.address-check-text{
+    margin-left: -200px;
+}
 .address-check-text1{
     margin: 0 5px 0 0;
     line-height: 30px;

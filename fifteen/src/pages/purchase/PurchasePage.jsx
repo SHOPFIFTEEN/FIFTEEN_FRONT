@@ -70,16 +70,18 @@ class PurchasePage extends Component{
         const {delivery} = this.state;
         return delivery.map(arr => (
                 <div key={arr.delSeq}>
-                    <div className='addressPage-info-box'  style={{width:'300px', height : '110px'}}>
-                        <div className='addressPage-list'>
+                    <label>
+                    <div className='purchase-info-box'>
+                        <div className='purchase-list'>
                             <div className='address-modal-list-head'>
                                 <div className='address-list-name'>{arr.name}</div>
-                                {!(arr.is_default) ? <input type='checkbox' onChange={()=>this.selectDel(arr.delSeq)}/> : <input type='checkbox' onChange={()=>this.selectDel(arr.delSeq)} defaultChecked={true}/>}
+                                <div className='purchase-list-default'>{!(arr.is_default) ? <div> </div> : <div>기본배송지</div>}</div>
+                                {!(arr.is_default) ? <input type='radio'  name='address-btn' onChange={()=>this.selectDel(arr.delSeq)}/> : <input type='radio' name='address-btn' onChange={()=>this.selectDel(arr.delSeq)} defaultChecked={true}/>}
                             </div>
                             <div className='address-list-address'>{arr.address}</div>
-                            <div className='address-list-default'>{!(arr.is_default) ? <div></div> : <div>기본배송지</div>}</div>
                         </div>
                     </div>
+                    </label>
                 </div>
         ))
     }
@@ -104,10 +106,12 @@ class PurchasePage extends Component{
                         <div className='purchase-orderer-text'>{getCookie("userName")} 님</div>
                     </div>
                     <div className='purchase-address'>
-                            <div className='address-title'>배송지 목록</div>
+                        <div className='purchase-address-head'>
+                            <div className='purchase-address-title'>배송지 목록</div>
                         <Link to={`/address`}>
-                            <button>배송지 관리</button>
+                            <button className='purchase-address-manage'>배송지 추가/수정</button>
                         </Link>
+                        </div>
                         <div className='address-content'>
                             {renderDelivery}
                         </div>
