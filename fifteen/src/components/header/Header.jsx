@@ -39,10 +39,14 @@ class Header extends Component {
     }
 
     onKeyPress=(e)=>{
-        if(e.key==='Enter'){
-            this.setState({keyword : e.target.value })
-            const {history} = this.props;
-            history.push(`/search/${this.state.keyword}`);
+        if(this.state.keyword){
+            if(e.key==='Enter'){
+                this.setState({keyword : e.target.value })
+                const {history} = this.props;
+                history.push(`/search/${this.state.keyword}`);
+            }
+        }else{
+            alert('검색어를 입력해주세요')
         }
     }
 

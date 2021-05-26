@@ -52,7 +52,7 @@ class QnA extends Component{
                        <div className='review-dropdown-admin-text'>넵 저도요</div>
                    </div>
                </div>
-               <div className="review-button" onClick={() => this._openModal()}>write
+               <div className="review-button">write
                    <Modal visible={this.state.AddressVisible} width="700" height='340' effect="fadeInDown" onClickAway={() => this._closeModal()}>
                        <div className='review-button-modal'>
                            <div className='review-button-modal-box'>

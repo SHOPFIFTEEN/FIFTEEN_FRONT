@@ -137,7 +137,7 @@ class WishlistPage extends Component {
                             {renderProducts}
 
                             <div className="wishlist_bottom_box">
-                                <div className="wishlist_sum">Sum : {this.state.sum}</div>
+                                <div className="wishlist_sum">총 결제가격 : {this.state.sum}</div>
                                 <div className="wishlist_buy_btn">결제</div>
                             </div>
                             <div className="wishlist_button">

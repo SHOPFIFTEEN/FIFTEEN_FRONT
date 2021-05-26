@@ -64,10 +64,7 @@ class EventDetail extends Component{
                                             <div className='notice-info-box-subBox-title'>기간</div>
                                             <div className='notice-info-box-subBox-text'>{this.state.eventInfo.start_date} ~ {this.state.eventInfo.end_date}</div>
                                         </div>
-                                        <div className='notice-info-box-subBox-views'>
-                                            <div className='notice-info-box-subBox-title'>조회수</div>
-                                            <div className='notice-info-box-subBox-text'> </div>
-                                        </div>
+
                                     </div>
                                     <div className='notice-info-box-main'>
                                         <img src={this.state.eventInfo.image} width='500px' height='500px' />
