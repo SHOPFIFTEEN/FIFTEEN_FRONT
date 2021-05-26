@@ -20,7 +20,11 @@ class AdminProduct extends Component {
             sortProducts : [{}],
             field : '',
             keyword : '',
-            range : [0,30000]
+            range : [0,30000],
+            currentPage: 1,
+            postsPerPage: 12,
+            pageNumbers: [],
+            pN : []
         }
     }
 
@@ -35,6 +39,19 @@ class AdminProduct extends Component {
             },
         })
         this.setState({products : result.data, fieldProducts: result.data});
+        var pageNumbers= [];
+        for(let i =1; i<=Math.ceil(this.state.fieldProducts.length/this.state.postsPerPage); i++){
+            pageNumbers.push({'num' : i});
+        }
+        this.setState ({pN : pageNumbers});
+    }
+    currentPosts(tmp) {
+        var indexOfLast = this.state.currentPage * this.state.postsPerPage;
+        var indexOfFirst = indexOfLast - this.state.postsPerPage;
+        let currentPosts = 0;
+        currentPosts = _.slice(tmp,indexOfFirst, indexOfLast);
+        console.log(currentPosts);
+        return currentPosts;
     }
 
     search = async ()=> {
@@ -116,15 +133,20 @@ class AdminProduct extends Component {
     alert=()=> {
         alert('검색어를 입력해주세요');
     }
+    pagination=(e)=> {
+        this.setState({currentPage : e});
+    }
 
 
     componentDidMount() {
         this.getBookList();
+        this.currentPosts();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevState.range!==this.state.range){
             this.sortByFilter();
+            this.currentPosts();
         }
     }
 
@@ -198,7 +220,7 @@ class AdminProduct extends Component {
                             </div>
                             <div className="admin-manage-box">
                                 <div className="admin-manage-box-item">
-                                    {this.state.fieldProducts.map(arr => (
+                                    {this.currentPosts(this.state.fieldProducts).map(arr => (
                                         <div key={arr.productSeq}>
                                             <Link to={`/admin/product_edit/${arr.productSeq}`}>
                                                 <div className="bestSellerBookItem">
@@ -213,6 +235,11 @@ class AdminProduct extends Component {
                                         </div>
                                     ))}
                                 </div>
+                            </div>
+                            <div className='page-num-box-admin-product'>
+                                {this.state.pN.map(arr=> (
+                                    <button className='page-num' key={arr.num} onClick={()=>this.pagination(arr.num)}>{arr.num}</button>
+                                ))}
                             </div>
                         </div>
                     </div>
