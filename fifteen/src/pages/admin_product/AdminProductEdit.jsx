@@ -83,7 +83,7 @@ class AdminProductInfo extends Component {
                         </div>
                         <div className='admin-productEdit-info'>
                             <div className="admin-productEdit-info-titleBox">
-                                <div className="admin-productEdit-info-title-text">Information 수정</div>
+                                <div className="admin-productEdit-info-title-text">Information</div>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>카테고리</div>
@@ -106,10 +106,6 @@ class AdminProductInfo extends Component {
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>가격</div>
                                 <div className='admin-productEdit-info-price'>{this.state.productInfo.price}</div>
-                            </div>
-                            <div className='admin-productEdit-info-box'>
-                                <div className='admin-productEdit-info-subject'>수량</div>
-                                <div className='admin-productEdit-info-cnt'>{this.state.productInfo.count}</div>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>가제</div>

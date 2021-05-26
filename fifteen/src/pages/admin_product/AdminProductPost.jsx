@@ -24,7 +24,6 @@ class AdminProductPost extends Component {
             publisher : '',
             author : '',
             price : '',
-            count : '',
             a_intro : '',
             delivery : '',
             mileage : '',
@@ -33,12 +32,16 @@ class AdminProductPost extends Component {
             discount : '',
             image : '',
             content : '',
-            prevURL : ''
+            prevURL : '',
+            selectedFile: null,
+            imageURL : null,
+            isUpload : false
         }
+        this.handleChangeField = this.handleChangeField.bind(this);
+
     }
 
     getProductInfo = async function() {
-        alert('불러옴!');
         if(this.props.match.params.productSeq==='0'){
             this.state.productInfo = {
                 title : null,
@@ -46,7 +49,6 @@ class AdminProductPost extends Component {
                 publisher : null,
                 author : null,
                 price : null,
-                count : null,
                 a_intro : null,
                 delivery : null,
                 mileage : null,
@@ -70,7 +72,6 @@ class AdminProductPost extends Component {
                 publisher : result.data[0].publisher,
                 author : result.data[0].author,
                 price : result.data[0].price,
-                count : result.data[0].count,
                 a_intro : result.data[0].a_intro,
                 delivery : result.data[0].delivery,
                 mileage : result.data[0].mileage,
@@ -83,58 +84,100 @@ class AdminProductPost extends Component {
         }
     }
 
-    reProductInfo =() =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/product/re/${this.props.match.params.productSeq}`,
-            data : {
-                title : this.state.title,
-                field : this.state.field,
-                publisher : this.state.publisher,
-                author : this.state.author,
-                price : this.state.price,
-                count : this.state.count,
-                a_intro : this.state.a_intro,
-                delivery : this.state.delivery,
-                mileage : this.state.mileage,
-                page : this.state.page,
-                p_date : this.state.p_date,
-                discount : this.state.discount,
-                content : this.state.content,
-                image : this.state.image,
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
+    reProductInfo =async () =>{
+        let {isUpload} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else{
+            const {history} = this.props;
+            let result = await axios ({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/product/re/${this.props.match.params.productSeq}`,
+                data : {
+                    title : this.state.title,
+                    field : this.state.field,
+                    publisher : this.state.publisher,
+                    author : this.state.author,
+                    price : this.state.price,
+                    a_intro : this.state.a_intro,
+                    delivery : this.state.delivery,
+                    mileage : this.state.mileage,
+                    page : this.state.page,
+                    p_date : this.state.p_date,
+                    discount : this.state.discount,
+                    content : this.state.content,
+                    image : this.state.imageURL,
+                },
+                headers : {
+                    "Content-Type" : 'application/json',
+                    'x-access-token' : getCookie("accessToken")
+                },
+            })
+            history.push('/admin/product')
+        }
+
+    }
+    handlePost=()=>{
+        const image = new FormData();
+        image.append('file', this.state.selectedFile);
+        return axios.post("http://52.79.196.94:3001/image/upload", image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
+        }).catch(err => {
+            alert('실패');
         })
     }
 
-    addProductInfo = () =>{
-        let result = axios ({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/product/add`,
-            data : {
-                title : this.state.title,
-                field : this.state.field,
-                publisher : this.state.publisher,
-                author : this.state.author,
-                price : this.state.price,
-                count : this.state.count,
-                a_intro : this.state.a_intro,
-                delivery : this.state.delivery,
-                mileage : this.state.mileage,
-                page : this.state.page,
-                p_date : this.state.p_date,
-                discount : this.state.discount,
-                content : this.state.content,
-                image : this.state.image,
-            },
-            headers : {
-                "Content-Type" : 'application/json',
-                'x-access-token' : getCookie("accessToken")
-            },
+    rehandlePost=()=>{
+        const image = new FormData();
+        image.append('file', this.state.selectedFile);
+        return axios.post(`http://52.79.196.94:3001/image/upload`, image).then(res => {
+            alert('성공');
+            this.setState({imageURL : res.data.image});
+            this.setState({isUpload : true});
+            console.log(this.state.imageURL);
+        }).catch(err => {
+            alert('실패')
         })
+    }
+
+    addProductInfo = async () =>{
+        let {isUpload,title,content,field,publisher,author,price,a_intro,delivery,mileage,page,p_date,discount} = this.state;
+        if(isUpload===false){
+            alert("이미지를 업로드 해주세요");
+        }else if(!field){
+            alert("카테고리를 입력해 주세요")
+        }else if(!title || !content || !publisher|| !author|| !price|| !a_intro|| !delivery|| !mileage|| !page|| !p_date|| !discount){
+            alert("필수정보를 입력해 주세요")
+        }else {
+            const {history} = this.props;
+            let result = await axios({
+                method: 'POST',
+                url: `http://52.79.196.94:3001/product/add`,
+                data: {
+                    title: this.state.title,
+                    field: this.state.field,
+                    publisher: this.state.publisher,
+                    author: this.state.author,
+                    price: this.state.price,
+                    a_intro: this.state.a_intro,
+                    delivery: this.state.delivery,
+                    mileage: this.state.mileage,
+                    page: this.state.page,
+                    p_date: this.state.p_date,
+                    discount: this.state.discount,
+                    content: this.state.content,
+                    image: this.state.imageURL,
+                },
+                headers: {
+                    "Content-Type": 'application/json',
+                    'x-access-token': getCookie("accessToken")
+                },
+            })
+            history.push('admin/product')
+        }
     }
 
     handleChangeTitle = (e) => {
@@ -167,11 +210,6 @@ class AdminProductPost extends Component {
         })
     }
 
-    handleChangeCount = (e) => {
-        this.setState({
-            count : e.target.value,
-        })
-    }
 
     handleChangeAintro = (e) => {
         this.setState({
@@ -213,6 +251,17 @@ class AdminProductPost extends Component {
         this.setState({
             content : e.target.value,
         })
+    }
+    handleFileInput(e){
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.onloadend = () => {
+            this.setState({
+                prevURL : reader.result,
+                selectedFile : e.target.files[0]
+            })
+        }
+        reader.readAsDataURL(file);
     }
 
     handleChangeImage = (e) => {
@@ -258,11 +307,27 @@ class AdminProductPost extends Component {
                         </div>
                         <div className='admin-productEdit-info'>
                             <div className="admin-productEdit-info-titleBox">
-                                <div className="admin-productEdit-info-title-text">Information 등록</div>
+                                {!(this.props.match.params.productSeq==='0') ?
+                                    <div className="admin-productEdit-info-title-text">Information 수정</div>
+                                    :
+                                    <div className="admin-productEdit-info-title-text">Information 등록</div>
+                                }
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>카테고리</div>
-                                <input type='text' onChange={this.handleChangeField} className='admin-productEdit-info-category' value={this.state.field}/>
+                                <div className='admin-productEdit-info-category'>{this.state.field}</div>
+                                <label>
+                                <select onChange={this.handleChangeField} className='admin-productEdit-info-category' value={this.state.field}>
+                                    <option disabled >카테고리를 선택해 주세요</option>
+                                    <option value="소설">소설</option>
+                                    <option value="시/에세이">시/에세이</option>
+                                    <option value="경제/경영">경제/경영</option>
+                                    <option value="역사/문화">역사/문화</option>
+                                    <option value="컴퓨터/IT">컴퓨터/IT</option>
+                                    <option value="외국어">외국어</option>
+                                    <option value="여행">여행</option>
+                                    <option value="만화">만화</option>
+                                </select></label>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>제목</div>
@@ -279,10 +344,6 @@ class AdminProductPost extends Component {
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>가격</div>
                                 <input type='text' onChange={this.handleChangePrice} className='admin-productEdit-info-price' value={this.state.price}/>
-                            </div>
-                            <div className='admin-productEdit-info-box'>
-                                <div className='admin-productEdit-info-subject'>수량</div>
-                                <input type='text' onChange={this.handleChangeCount} className='admin-productEdit-info-cnt' value={this.state.count}/>
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>저자 소개</div>
@@ -309,8 +370,17 @@ class AdminProductPost extends Component {
                                 <input type='text' onChange={this.handleChangePdate} className='admin-productEdit-info-intro' value={this.state.p_date}/>
                             </div>
                             <div className='admin-productEdit-info-box'>
+                                <div className='admin-productEdit-info-subject'>할인율</div>
+                                <input type='text' onChange={this.handleChangeDiscount} className='admin-productEdit-info-intro' value={this.state.discount}/>
+                            </div>
+                            <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>이미지</div>
-                                <input type='file' onChange={this.handleChangeImage}/>
+                                <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
+                                {!(this.props.match.params.productSeq==='0') ?
+                                    <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit'>이미지 수정</button>
+                                    :
+                                    <button type="button" onClick={this.handlePost} className='admin-info-box-btn-submit'>이미지 등록</button>
+                                }
                                 {profile_preview}
                             </div>
                             <div className='admin-info-box-button'>
@@ -318,14 +388,10 @@ class AdminProductPost extends Component {
                                     <button className='admin-info-box-btn-cancel'>취소</button>
                                 </Link>
                                 <div>
-                                    {!(this.props.match.params.eventSeq==='0') ?
-                                        <Link to={`/admin/product`}>
-                                            <button onClick={this.reEventInfo} className='admin-info-box-btn-submit'>수정</button>
-                                        </Link>
+                                    {!(this.props.match.params.productSeq==='0') ?
+                                            <button onClick={this.reProductInfo} className='admin-info-box-btn-submit'>수정</button>
                                         :
-                                        <Link to={`/admin/product`}>
-                                            <button onClick={this.addEventInfo} className='admin-info-box-btn-submit'>등록</button>
-                                        </Link>
+                                            <button onClick={this.addProductInfo} className='admin-info-box-btn-submit'>등록</button>
                                     }
                                 </div>
                             </div>
