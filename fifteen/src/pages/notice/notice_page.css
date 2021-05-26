@@ -91,3 +91,18 @@
     background-color: black;
     border-radius: 5px;
 }
+.page-num-box-notice{
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.page-num-box-admin-notice{
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 50px 0;
+}

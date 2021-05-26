@@ -5,6 +5,7 @@ import Header from '../../../src/components/header/Header';
 import Footer from '../../components/footer/Footer';
 import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
+import _ from "lodash";
 
 
 
@@ -15,8 +16,23 @@ class EventPage extends Component{
         this.state = {
             products : [{'productSeq' : '1'}],
             events : [{'eventSeq':'1'}],
-            eventSeq : 0
+            eventSeq : 0,
+            currentPage: 1,
+            postsPerPage: 5,
+            pageNumbers: [],
+            pN : []
         }
+    }
+    currentPosts(tmp) {
+        var indexOfLast = this.state.currentPage * this.state.postsPerPage;
+        var indexOfFirst = indexOfLast - this.state.postsPerPage;
+        let currentPosts = 0;
+        currentPosts = _.slice(tmp,indexOfFirst, indexOfLast);
+        console.log(currentPosts);
+        return currentPosts;
+    }
+    pagination=(e)=> {
+        this.setState({currentPage : e});
     }
 
     getEvent= async function() {
@@ -30,6 +46,11 @@ class EventPage extends Component{
             },
         })
         this.setState({events: result.data});
+        var pageNumbers= [];
+        for(let i =1; i<=Math.ceil(this.state.events.length/this.state.postsPerPage); i++){
+            pageNumbers.push({'num' : i});
+        }
+        this.setState ({pN : pageNumbers});
     }
 
     componentDidMount() {
@@ -66,7 +87,7 @@ class EventPage extends Component{
                                             <div className="notice-title">제목</div>
                                             <div className="notice-date">기간</div>
                                         </div>
-                                        {this.state.events.map(arr=>(
+                                        {this.currentPosts(this.state.events).map(arr=>(
                                             <div key={arr.eventSeq}>
                                                 <Link to={`/event_detail/${arr.eventSeq}`}>
                                                     <div className="notice-content">
@@ -79,10 +100,10 @@ class EventPage extends Component{
                                         ))}
                                     </div>
                                 </div>
-                                <div className="order_paging">
-                                    <button className="order_paging_before">&lt;</button>
-                                    <button className="order_paging_this">1</button>
-                                    <button className="order_paging_after">&gt;</button>
+                                <div className='page-num-box-notice'>
+                                    {this.state.pN.map(arr=> (
+                                        <button className='page-num' key={arr.num} onClick={()=>this.pagination(arr.num)}>{arr.num}</button>
+                                    ))}
                                 </div>
                             </div>
                         </div>

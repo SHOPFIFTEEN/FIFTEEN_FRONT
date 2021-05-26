@@ -18,7 +18,11 @@ class AdminEvent extends Component {
             events : [{'eventSeq':'1'}],
             eventSeq : 0,
             change : 0,
-            keyword : ''
+            keyword : '',
+            currentPage: 1,
+            postsPerPage: 5,
+            pageNumbers: [],
+            pN : []
         }
     }
 
@@ -33,6 +37,22 @@ class AdminEvent extends Component {
             },
         })
         this.setState({events: result.data});
+        var pageNumbers= [];
+        for(let i =1; i<=Math.ceil(this.state.events.length/this.state.postsPerPage); i++){
+            pageNumbers.push({'num' : i});
+        }
+        this.setState ({pN : pageNumbers});
+    }
+    currentPosts(tmp) {
+        var indexOfLast = this.state.currentPage * this.state.postsPerPage;
+        var indexOfFirst = indexOfLast - this.state.postsPerPage;
+        let currentPosts = 0;
+        currentPosts = _.slice(tmp,indexOfFirst, indexOfLast);
+        console.log(currentPosts);
+        return currentPosts;
+    }
+    pagination=(e)=> {
+        this.setState({currentPage : e});
     }
 
     postActive=(e)=> {
@@ -127,7 +147,7 @@ class AdminEvent extends Component {
                                 <div className="admin-event-table-term">진행기간</div>
                                 <div className="admin-event-table-button" />
                             </div>
-                            {this.state.events.map(arr=>(
+                            {this.currentPosts(this.state.events).map(arr=>(
                                 <div key={arr.eventSeq}>
                                     <div className="admin-event-table">
                                         <div className='admin-event-table-btnBox'>
@@ -147,10 +167,10 @@ class AdminEvent extends Component {
                                     </div>
                                 </div>
                             ))}
-                            <div className="admin-event-button">
-                                <button className="admin-event-button-before">&lt;</button>
-                                <button className="admin-event-button-now">1</button>
-                                <button className="admin-event-button-after">&gt;</button>
+                            <div className='page-num-box-admin-notice'>
+                                {this.state.pN.map(arr=> (
+                                    <button className='page-num' key={arr.num} onClick={()=>this.pagination(arr.num)}>{arr.num}</button>
+                                ))}
                             </div>
                         </div>
                     </div>
