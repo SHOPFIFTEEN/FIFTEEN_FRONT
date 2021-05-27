@@ -62,7 +62,7 @@ class CartToPurchase extends Component {
         this.setState({products : result.data});
         let sum = _.sumBy(result.data, function(o){return o.count*o.price});
         this.setState({sum : sum});
-        let delPrice = _.sortBy(result.data, 'delivery');
+        let delPrice = _.sortBy(result.data, 'delivery').reverse();
         this.setState({delPrice : delPrice});
         console.log(delPrice);
     };
