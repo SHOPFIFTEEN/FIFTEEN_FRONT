@@ -3,8 +3,6 @@
     flex-direction: column;
     align-items: flex-start;
     width: 820px;
-    padding-top: 10px;
-    border-top : 1px solid #BBBBBB;
 }
 .review-title{
     font-weight: bold;
@@ -22,31 +20,35 @@
     flex-direction: column;
     margin-top: 10px;
 
-
 }
 .review-subject{
+    width: 820px;
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 10px;
     padding-bottom: 10px;
-    margin-bottom: 10px;
     border-bottom: 1px solid #585858;
+    padding-left: 10px;
+    justify-content: space-between;
 }
 .review-content{
+    width: 820px;
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
     border-bottom: 1px solid #BBBBBB;
-
+    background-color: white;
+    padding-left: 10px;
+    justify-content: space-between;
 }
 .review-subject-recommend{
-    width: 100px;
+    width: 110px;
 }
 .review-subject-delivery{
     width: 100px;
 }
 .review-subject-title{
-    width: 320px;
+    width: 300px;
 }
 .review-subject-author{
     width: 120px;
@@ -74,13 +76,14 @@
 }
 .review-dropdown{
     width: 820px;
+    height: 1000px;
     display: flex;
     flex-direction: column;
-    padding: 20px 70px 20px 70px;
+    padding: 0px 70px 0px 70px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #BBBBBB;
 }
 .review-dropdown-user{
+    padding-top: 20px;
     height: 40px;
     text-align: left;
 }
@@ -90,6 +93,7 @@
     height: 50px;
     text-align: left;
     margin-left: 30px;
+    margin-top: 20px;
 }
 .review-dropdown-admin-text{
     margin: 17px 0 0 20px;
@@ -112,7 +116,7 @@
     padding: 20px 20px 20px 20px;
     color: black;
     width: 700px;
-    height: 400px;
+    height: 550px;
 }
 .review-button-modal-box{
     display: flex;
@@ -134,7 +138,7 @@
 }
 .review-button-modal-box-input2{
     width: 500px;
-    height: 150px;
+    height: 170px;
     text-align: left;
     align-self: flex-start;
     word-break: break-all;
@@ -156,4 +160,32 @@
     height: 35px;
     margin: 0 5px 0 5px;
     font-weight: bold;
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+}
+
+details {
+    background: white;
+}
+details:not([open]) {
+    height: 40px;
+
+}
+details[open] {
+    height: 350px;
+}
+details > summary {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border-top: 1px solid #ddd;
+    background: #f4f4f4;
+    cursor: pointer;
+    display: block;
+}
+details > summary::-webkit-details-marker {
+    display: none;
 }

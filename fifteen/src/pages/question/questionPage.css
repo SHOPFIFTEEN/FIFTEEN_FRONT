@@ -1,0 +1,92 @@
+.questionPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+    height: 800px;
+}
+
+
+.question_info_box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    border-bottom: 1px solid #BBBBBB;
+    margin-bottom: 55px;
+}
+
+.review-dropdown-product{
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+    align-items: flex-start;
+    padding: 20px 0 10px 0;
+
+}
+.review-dropdown-product-box{
+    display: flex;
+    flex-direction: row;
+    width: 660px;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 5px 0 5px 0;
+}
+.review-dropdown-product-star{
+    width: 220px;
+}
+.review-dropdown-product-info{
+    display: flex;
+    flex-direction: row;
+    margin: 7px 0 7px 0;
+}
+.review-dropdown-product-title{
+    width: 520px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding-bottom: 10px;
+
+}
+.order-info-box-date2{
+    width: 100px;
+}
+.order-info-box-info2{
+    width: 270px;
+}
+.order-info-box-quantity2{
+    width: 50px;
+}
+.order-info-box-price2{
+    width: 100px;
+}
+.order-info-box-state2{
+    width: 130px;
+}
+.review-dropdown-product-star{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 140px;
+    height: 35px;
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    padding: 0 20px 0 20px;
+}
+.review-dropdown-product-star-starImg{
+    margin: 10px 0 10px 0 ;
+    width: 20px;
+
+}
+.review-dropdown-product-star-sub{
+    font-size: 16px;
+    color: #585858;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.review-dropdown-product-head{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #D0D0D0;
+
+}
