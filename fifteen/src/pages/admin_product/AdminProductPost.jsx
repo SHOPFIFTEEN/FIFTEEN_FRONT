@@ -80,6 +80,7 @@ class AdminProductPost extends Component {
                 discount : result.data[0].discount,
                 content : result.data[0].content,
                 image : result.data[0].image,
+                isUpload: result.data[0].image ? true : this.state.isUpload,
             });
         }
     }
@@ -282,9 +283,9 @@ class AdminProductPost extends Component {
     }
 
     render(){
-        let profile_preview = null;
+        let profilePreview = null;
         if(this.state.file !== ''){
-            profile_preview = <img src={this.state.prevURL} width='300px' height='300px'/>
+            profilePreview = <img src={this.state.image} width='300px' height='300px'/>
         }
 
         return(
@@ -374,7 +375,7 @@ class AdminProductPost extends Component {
                             </div>
                             <div className='admin-productEdit-info-box'>
                                 <div className='admin-productEdit-info-subject'>이미지</div>
-                                {profile_preview}
+                                {profilePreview}
                                 <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
                                 {!(this.props.match.params.productSeq==='0') ?
                                     <button type="button" onClick={this.rehandlePost} className='admin-info-box-btn-submit2'>이미지 수정</button>

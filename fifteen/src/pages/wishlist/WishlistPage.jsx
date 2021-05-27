@@ -14,6 +14,7 @@ class WishlistPage extends Component {
         this.state = {
             products: [{}],
             sum : 0,
+            countAll : 0,
             change : 0,
             keyword : 'field'
         }
@@ -73,7 +74,9 @@ class WishlistPage extends Component {
         });
         this.setState({products : result.data});
         let sum = _.sumBy(result.data, function(o){return o.count*o.price});
-        this.setState({sum : sum});
+        const count = _.sumBy(result.data, function(o){return o.count});
+
+        this.setState({sum : sum, countAll : count});
     };
 
     componentDidMount() {
@@ -81,7 +84,7 @@ class WishlistPage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.change===1){
+        if(this.state.change===1 && this.state.change !== prevState.change ){
             this.getCart();
             this.setState({change : 0});
         }
@@ -120,7 +123,7 @@ class WishlistPage extends Component {
         return (
             <div>
                 <div className="wishlistPage">
-                    <Header/>
+                    <Header count = {this.state.count}/>
                     <div className="wishlistPage_line"/>
                     <div className="wishlistPage_title">Cart</div>
                     <div className="wishlistPage_main">

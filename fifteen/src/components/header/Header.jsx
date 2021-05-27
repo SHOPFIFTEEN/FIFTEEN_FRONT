@@ -46,7 +46,7 @@ class Header extends Component {
                 history.push(`/search/${this.state.keyword}`);
             }
         }else{
-            alert('검색어를 입력해주세요')
+            alert('검색어를 입력해주세요');
         }
     }
 
@@ -62,7 +62,7 @@ class Header extends Component {
         history.push('/');
     }
 
-    alert=()=> {
+    alertSearch=()=> {
         alert('검색어를 입력해주세요');
     }
 
@@ -119,7 +119,7 @@ class Header extends Component {
                         </div>
                         <div className={styles.header__box__right}>
                             <input type="text" name='search' onChange={this.search} onKeyPress={this.onKeyPress} className={styles.header__box__right__search__click}/>
-                            {!(this.state.keyword)?  <img onClick={this.alert} src={Search} className={styles.header__box__right__search}/>:
+                            {!(this.state.keyword)?  <img onClick={this.alertSearch} src={Search} className={styles.header__box__right__search}/>:
                                 <Link to={`/search/${this.state.keyword}`}>
                                 <img src={Search} className={styles.header__box__right__search}/>
                             </Link>}
@@ -140,7 +140,7 @@ class Header extends Component {
                                                 <div></div>
                                                 {!(this.state.token) ? null : <Link to ="/wishlist"> <div className={styles.cart}>
                                                     <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
-                                                    {!(this.state.sum) ? null : <div className={styles.cart_sum}>{this.state.sum}</div>}
+                                                    {!(this.props.count || this.state.sum) ? null : <div className={styles.cart_sum}>{this.props.count || this.state.sum}</div>}
                                                 </div></Link>}
                                             </div>
                                             <div className={styles.header__box__right__menu__modal__hr}></div>
