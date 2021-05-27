@@ -79,7 +79,7 @@ class AdminProductPost extends Component {
                 p_date : result.data[0].p_date,
                 discount : result.data[0].discount,
                 content : result.data[0].content,
-                image : result.data[0].image,
+                imageURL : result.data[0].image,
                 isUpload: result.data[0].image ? true : this.state.isUpload,
             });
         }
@@ -258,7 +258,6 @@ class AdminProductPost extends Component {
         let file = e.target.files[0];
         reader.onloadend = () => {
             this.setState({
-                prevURL : reader.result,
                 selectedFile : e.target.files[0]
             })
         }
@@ -271,7 +270,6 @@ class AdminProductPost extends Component {
         let file = e.target.files[0];
         reader.onloadend = () => {
             this.setState({
-                prevURL : reader.result,
                 image : file
             })
         }
@@ -285,7 +283,7 @@ class AdminProductPost extends Component {
     render(){
         let profilePreview = null;
         if(this.state.file !== ''){
-            profilePreview = <img src={this.state.image} width='300px' height='300px'/>
+            profilePreview = <img src={this.state.imageURL} width='300px' height='300px'/>
         }
 
         return(

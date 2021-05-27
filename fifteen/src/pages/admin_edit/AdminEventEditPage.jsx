@@ -20,10 +20,9 @@ class AdminEventEditPage extends Component {
             content : '',
             selectedFile: null,
             image: null,
-            imageURL : null,
             start_date : '',
             end_date : '',
-            prevURL : '',
+            imageURL:null,
             isUpload : false
         }
     }
@@ -48,7 +47,7 @@ class AdminEventEditPage extends Component {
                 this.setState({
                     title : result.data[0].title,
                     content : result.data[0].content,
-                    image : result.data[0].image,
+                    imageURL : result.data[0].image,
                     start_date : result.data[0].start_date,
                     end_date : result.data[0].end_date,
                     isUpload: result.data[0].image ? true : this.state.isUpload,
@@ -114,7 +113,7 @@ class AdminEventEditPage extends Component {
             alert('성공');
             this.setState({imageURL : res.data.image});
             this.setState({isUpload : true});
-            console.log(this.state.imageURL);
+            console.log(this.state.image);
         }).catch(err => {
             alert('실패')
         })
@@ -127,7 +126,7 @@ class AdminEventEditPage extends Component {
             alert('성공');
             this.setState({imageURL : res.data.image});
             this.setState({isUpload : true});
-            console.log(this.state.imageURL);
+            console.log(this.state.image);
         }).catch(err => {
             alert('실패')
         })
@@ -170,7 +169,7 @@ class AdminEventEditPage extends Component {
     render(){
         let profilePreview = null;
         if(this.state.file !== ''){
-            profilePreview = <img src={this.state.image} width='250px' height='250px'/>
+            profilePreview = <img src={this.state.imageURL} width='250px' height='250px'/>
         }
 
         return(
