@@ -76,7 +76,7 @@ class List extends Component {
             this.setState ({pN : pageNumbers});
         } else {
             var filterProduct = _.filter(this.state.products, {'field': f});
-            this.setState({fieldProducts: filterProduct});
+            this.setState({fieldProducts: filterProduct, currentProducts: filterProduct});
             this.setState({currentPage : 1});
             var pageNumbers1= [];
             for(let i =1; i<=Math.ceil(filterProduct.length/this.state.postsPerPage); i++){
