@@ -37,7 +37,7 @@ import AddressEdit from "./pages/addressPage/AddressEdit";
 import Privacy from "./pages/privacy/Privacy";
 import Agreement from "./pages/privacy/Agreement";
 import CartToPurchase from "./pages/purchase/cartToPurchase";
-
+import PurchaseDone from "./pages/purchase/purchaseDone";
 
 class App extends Component{
     render() {
@@ -76,6 +76,7 @@ class App extends Component{
                 <Route path='/privacy' component={Privacy}/>
                 <Route path='/agreement' component={Agreement} />
                     <Route path='/cartPurchase' component={CartToPurchase}/>
+                    <Route path='/purchase_done' component={PurchaseDone}/>
             </div>
         );
     }

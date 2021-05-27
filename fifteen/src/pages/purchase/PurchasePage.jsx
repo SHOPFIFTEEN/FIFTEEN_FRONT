@@ -6,6 +6,7 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {getCookie} from "../../cookies";
 import Address from "../../components/address/Adress";
+import PayImage from "../../img/payment_icon_yellow_medium.png";
 
 class PurchasePage extends Component{
     constructor(props) {
@@ -18,6 +19,29 @@ class PurchasePage extends Component{
             delivery : [],
             selectedDelSeq : ''
         }
+    }
+
+    kakaoPay = async () =>{
+        let result = await axios({
+            method : 'POST',
+            url : `https://kapi.kakao.com/v1/payment/ready`,
+            headers : {
+                'Host' : 'kapi.kakao.com',
+                'Authorization': `KakaoAK {e53cf83a206af79d2c72f279b3c12654}`,
+                'Content-type' : 'application/x-www-form-urlencoded;charset=utf-8'
+            },
+            params : {
+                cid : 'TC0ONETIME',
+                partner_order_id : 0,
+                partner_user_id : 0,
+                item_name : `${this.state.productInfo.title}`,
+                quantity : this.state.count,
+                total_amount : this.state.count*this.state.productInfo.price-this.state.productInfo.delivery,
+                tax_free_amount : 0,
+                approval_url : `/purchase_done`,
+                cancel_url : `/purchase/${this.state.productInfo.productSeq}/${this.state.count}`,
+            }
+        })
     }
 
     getProductInfoList = async function () {
@@ -85,6 +109,7 @@ class PurchasePage extends Component{
                 </div>
         ))
     }
+
 
     componentDidMount() {
         this.getProductInfoList();
@@ -180,15 +205,16 @@ class PurchasePage extends Component{
                         </div>
                         <div className='purchase-discount-price'>
                             <div className='purchase-discount-price-subject'>결제금액</div>
-                            <div className='purchase-discount-price-text'>79500원</div>
+                            <div className='purchase-discount-price-text'>{this.state.count*this.state.productInfo.price-this.state.productInfo.delivery}</div>
                         </div>
                     </div>
                     <div className='purchase-payment'>
                         <div className='purchase-discount-title'>결제수단</div>
                         <div className='purchase-payment-box'>
+                            <img src={PayImage} width="121px" height="50px"/>
                         </div>
                     </div>
-                    <button className='purchase-button'>결제</button>
+                    <button className='purchase-button' onClick={this.kakaoPay}>결제</button>
                 </div>
                 <Footer/>
             </div>

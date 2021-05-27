@@ -6,6 +6,7 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {getCookie} from "../../cookies";
 import _ from "lodash";
+import PayImage from "../../img/payment_icon_yellow_medium.png";
 
 class CartToPurchase extends Component {
     constructor(props) {
@@ -195,6 +196,7 @@ class CartToPurchase extends Component {
                     <div className='purchase-payment'>
                         <div className='purchase-discount-title'>결제수단</div>
                         <div className='purchase-payment-box'>
+                            <img src={PayImage} width="121px" height="50px"/>
                         </div>
                     </div>
                     <button className='purchase-button'>결제</button>

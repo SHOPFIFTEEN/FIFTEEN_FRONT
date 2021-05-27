@@ -259,6 +259,11 @@ select {
     height: 200px;
     border: 1px solid #BBBBBB;
     margin: 20px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 70px;
 }
 
 .purchase-button{
