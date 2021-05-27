@@ -17,7 +17,7 @@ class List extends Component {
             currentProducts: [],
             field: '',
             keyword: 'field',
-            range: [0, 30000],
+            range: [0, 50000],
             currentPage: 1,
             postsPerPage: 10,
             pageNumbers: [],
@@ -86,7 +86,8 @@ class List extends Component {
         }
 
         this.setState({
-            field : f
+            field : f,
+            range: [0, 50000]
         })
     }
 
@@ -206,7 +207,7 @@ class List extends Component {
                                     onChangeCommitted={handleChangeAfter}
                                     valueLabelDisplay="auto"
                                     aria-labelledby="range-slider"
-                                    max={30000}
+                                    max={50000}
                                     min={0}
                                     step={1000}
                                     marks
