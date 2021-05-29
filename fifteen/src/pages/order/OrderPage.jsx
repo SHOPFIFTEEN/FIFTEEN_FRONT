@@ -25,7 +25,7 @@ class OrderPage extends Component{
                                         <div className="order-info-box-quantity">수량</div>
                                         <div className="order-info-box-price">금액 </div>
                                         <div className="order-info-box-state">주문처리현황</div>
-                                </div>
+                                    </div>
                                     <div className="order-info-box-product">
                                         <div className="order-info-box-date"></div>
                                         <div className="order-info-box-info"></div>

@@ -1,11 +1,15 @@
+.qna{
+    border-bottom: 1px solid #BBBBBB;
+}
 .qna-subject{
     width: 820px;
     display: flex;
     flex-direction: row;
     margin-top: 15px;
     padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-left: 10px;
     border-bottom: 1px solid #585858;
+
 }
 .qna-content{
     width: 820px;
@@ -13,6 +17,7 @@
     flex-direction: row;
     padding-bottom: 10px;
     border-bottom: 1px solid #BBBBBB;
+    background-color: white;
 }
 .qna-subject-num-kinds{
     width: 150px;
