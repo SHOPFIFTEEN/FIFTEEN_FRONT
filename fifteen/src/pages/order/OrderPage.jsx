@@ -14,7 +14,14 @@ class OrderPage extends Component{
         super(props);
         this.state = {
             Visible1: false,
-            Visible2: false
+            Visible2: false,
+            orderList : [],
+            title : '',
+            content : '',
+            score : '',
+            delivery : '',
+            recommend : '',
+            productSeq : ''
         }
     }
     _openModal1 = function() {
@@ -34,8 +41,60 @@ class OrderPage extends Component{
             AddressVisible : false
         });
     }
-            orderList : []
+
+    addReview = async  (e)=> {
+        const {title, content, score, delivery, recommend} = this.state;
+        console.log(title, content, score, delivery, recommend);
+        if(title==='' || content==='' || score==='' || delivery==='' || recommend===''){
+            alert('모든 칸을 입력하여주세요');
+        }else{
+            let result = await axios({
+                method: 'POST',
+                url: `http://52.79.196.94:3001/review/add`,
+                data: {
+                    title : title,
+                    content : content,
+                    score : score,
+                    delivery : delivery,
+                    recommend : recommend,
+                    productSeq : e
+                },
+                headers: {
+                    "Content-Type": 'application/json',
+                    "x-access-token" : getCookie("accessToken")
+                },
+            }).then((response)=> {
+                if(response.status===200){
+                    console.log('200!')
+                    console.log(e)
+                }
+            })
+            this.setState({
+                Visible1 : false,
+            })
         }
+    }
+
+    handleChangeTitle = (e) => {
+        this.setState({title: e.target.value})
+    }
+    handleChangeContent = (e) => {
+        this.setState({content: e.target.value})
+    }
+    handleChangeScore = (e1) => {
+        this.setState({score: e1})
+    }
+    handleChangeDelivery = (e1) => {
+        this.setState({delivery: e1})
+    }
+    handleChangeRecommend = (e1) => {
+        this.setState({recommend: e1})
+    }
+    handleChangeQnaTitle = (e1) => {
+        this.setState({qnaTitle: e1})
+    }
+    handleChangeQnaContent= (e1) => {
+        this.setState({qnaContent: e1})
     }
 
     order = async function() {
@@ -54,6 +113,27 @@ class OrderPage extends Component{
             orderList : result.data
         })
         console.log(this.state.orderList);
+    }
+
+    addQnA = async function (e) {
+        const {qnaTitle, qnaContent} = this.state;
+        console.log(e);
+        let result = await axios({
+            method: 'POST',
+            url: `http://52.79.196.94:3001/qna/add/question`,
+            data: {
+                title : qnaTitle,
+                content : qnaContent,
+                productSeq : e
+            },
+            headers: {
+                "Content-Type": 'application/json',
+                "x-access-token" : getCookie("accessToken")
+            },
+        })
+        this.setState({
+            Visible2:  false
+        })
     }
 
     componentDidMount() {
@@ -83,113 +163,105 @@ class OrderPage extends Component{
                                         <div className='order-info-box-qna'>문의하기</div>
                                     </div>
                                     <ul className="review-list">
-                                        <li>
-                                            <details>
-                                                <summary className="review-content2">
-                                                    <div className="order-info-box-date">a</div>
-                                                    <div className="order-info-box-info">a</div>
-                                                    <div className="order-info-box-price">a</div>
-                                                    <div className="order-info-box-state">a</div>
-                                                    <div className='order-info-box-qna'>
-                                                        <div className="review-button2" onClick={() => this._openModal1()}>등록
-                                                            <Modal visible={this.state.Visible1} width="700" height='410' effect="fadeInDown" onClickAway={() => this._closeModal()}>
-                                                                <div className='review-button-modal'>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>제목</div>
-                                                                        <input type='text' className='review-button-modal-box-input' />
+                                        {this.state.orderList.map(arr=>(
+                                            <li>
+                                                <details>
+                                                    <summary className="review-content2">
+                                                        <div className="order-info-box-date">{arr.date}</div>
+                                                        <div className="order-info-box-info">{arr.title}</div>
+                                                        <div className="order-info-box-price">{arr.price}</div>
+                                                        <div className="order-info-box-state">{arr.order_state}</div>
+                                                        <div className='order-info-box-qna'>
+                                                            <div className="review-button2" onClick={() => this._openModal1()}>등록
+                                                                <Modal visible={this.state.Visible1} width="700" height='410' effect="fadeInDown" onClickAway={() => this._closeModal()}>
+                                                                    <div className='review-button-modal'>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>제목</div>
+                                                                            <input type='text' className='review-button-modal-box-input' onChange={this.handleChangeTitle}/>
+                                                                        </div>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>추천</div>
+                                                                            <label><input type='radio' name='recommend' className='review-button-modal-box-check' onClick={()=>this.handleChangeRecommend('적극추천')}/>적극추천</label>
+                                                                            <label><input type='radio' name='recommend' className='review-button-modal-box-check' onClick={()=>this.handleChangeRecommend('추천')}/>추천</label>
+                                                                            <label><input type='radio' name='recommend' className='review-button-modal-box-check' onClick={()=>this.handleChangeRecommend('비추천')}/>비추천</label>
+                                                                        </div>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>배송</div>
+                                                                            <label><input type='radio' name='delivery' className='review-button-modal-box-check' onClick={()=>this.handleChangeDelivery('빠름')}/>빠름</label>
+                                                                            <label><input type='radio' name='delivery' className='review-button-modal-box-check' onClick={()=>this.handleChangeDelivery('보통')}/>보통</label>
+                                                                            <label><input type='radio' name='delivery' className='review-button-modal-box-check' onClick={()=>this.handleChangeDelivery('느림')}/>느림</label>
+                                                                        </div>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>별점</div>
+                                                                            <label><input type='radio' name='star' className='review-button-modal-box-check' onClick={()=>this.handleChangeScore(1)}/>1점</label>
+                                                                            <label><input type='radio' name='star' className='review-button-modal-box-check' onClick={()=>this.handleChangeScore(2)}/>2점</label>
+                                                                            <label><input type='radio' name='star' className='review-button-modal-box-check' onClick={()=>this.handleChangeScore(3)}/>3점</label>
+                                                                            <label><input type='radio' name='star' className='review-button-modal-box-check' onClick={()=>this.handleChangeScore(4)}/>4점</label>
+                                                                            <label><input type='radio' name='star' className='review-button-modal-box-check' onClick={()=>this.handleChangeScore(5)}/>5점</label>
+                                                                        </div>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>내용</div>
+                                                                            <input type='text' className='review-button-modal-box-input2' onChange={this.handleChangeContent}/>
+                                                                        </div>
+                                                                        <div className='review-modal-button'>
+                                                                            <input className='review-modal-cancel' value='취소' type='button' onClick={() => this._closeModal()}/>
+                                                                            <input className='review-modal-cancel' value='등록' type='button' onClick={() => this.addReview(arr.productSeq)}/>
+                                                                        </div>
                                                                     </div>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>추천</div>
-                                                                        <label><input type='radio' name='recommend' className='review-button-modal-box-check'/>적극추천</label>
-                                                                        <label><input type='radio' name='recommend' className='review-button-modal-box-check'/>추천</label>
-                                                                        <label><input type='radio' name='recommend' className='review-button-modal-box-check'/>비추천</label>
+                                                                </Modal>
+                                                            </div>
+                                                        </div>
+                                                        <div className='order-info-box-qna'>
+                                                            <div className="review-button2" onClick={()=>this._openModal2()}>문의
+                                                                <Modal visible={this.state.Visible2} width="700" height='310' effect="fadeInDown" onClickAway={() => this._closeModal()}>
+                                                                    <div className='review-button-modal'>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>제목</div>
+                                                                            <input type='text' className='review-button-modal-box-input' onChange={this.handleChangeQnaTitle} />
+                                                                        </div>
+                                                                        <div className='review-button-modal-box'>
+                                                                            <div className='review-button-modal-box-subject'>내용</div>
+                                                                            <input type='text' className='review-button-modal-box-input2' onChange={this.handleChangeQnaContent} />
+                                                                        </div>
+                                                                        <div className='review-modal-button'>
+                                                                            <input className='review-modal-cancel' value='취소' type='button' onClick={() => this._closeModal()}/>
+                                                                            <input className='review-modal-cancel' value='등록' type='button' onClick={() => this.addQnA(arr.productSeq)}/>
+                                                                        </div>
                                                                     </div>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>배송</div>
-                                                                        <label><input type='radio' name='delivery' className='review-button-modal-box-check'/>빠름</label>
-                                                                        <label><input type='radio' name='delivery' className='review-button-modal-box-check'/>보통</label>
-                                                                        <label><input type='radio' name='delivery' className='review-button-modal-box-check'/>느림</label>
-                                                                    </div>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>별점</div>
-                                                                        <label><input type='radio' name='star' className='review-button-modal-box-check'/>1점</label>
-                                                                        <label><input type='radio' name='star' className='review-button-modal-box-check'/>2점</label>
-                                                                        <label><input type='radio' name='star' className='review-button-modal-box-check'/>3점</label>
-                                                                        <label><input type='radio' name='star' className='review-button-modal-box-check'/>4점</label>
-                                                                        <label><input type='radio' name='star' className='review-button-modal-box-check'/>5점</label>
-                                                                    </div>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>내용</div>
-                                                                        <input type='text' className='review-button-modal-box-input2' />
-                                                                    </div>
-                                                                    <div className='review-modal-button'>
-                                                                        <input className='review-modal-cancel' value='취소' type='button' onClick={() => this._closeModal()}/>
-                                                                        <input className='review-modal-cancel' value='등록' type='button' onClick={() => this._closeModal()}/>
-                                                                    </div>
-                                                                </div>
-                                                            </Modal>
+                                                                </Modal>
+                                                            </div>
+                                                        </div>
+                                                    </summary>
+                                                    <div className='review-dropdown2'>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>주문일자</div>
+                                                            <div className='order-dropdown-text'>{arr.date}</div>
+                                                        </div>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>배송지</div>
+                                                            <div className='order-dropdown-text'>{arr.delivery}</div>
+                                                        </div>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>상품명</div>
+                                                            <div className='order-dropdown-text'>{arr.title}</div>
+                                                        </div>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>수량</div>
+                                                            <div className='order-dropdown-text'>{arr.count}</div>
+                                                        </div>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>금액</div>
+                                                            <div className='order-dropdown-text'>{arr.price}</div>
+                                                        </div>
+                                                        <div className='review-dropdown-box'>
+                                                            <div className='order-dropdown-subject'>총 금액</div>
+                                                            <div className='order-dropdown-text'>{arr.price}</div>
                                                         </div>
                                                     </div>
-                                                    <div className='order-info-box-qna'>
-                                                        <div className="review-button2" onClick={()=>this._openModal2()}>문의
-                                                            <Modal visible={this.state.Visible2} width="700" height='310' effect="fadeInDown" onClickAway={() => this._closeModal()}>
-                                                                <div className='review-button-modal'>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>제목</div>
-                                                                        <input type='text' className='review-button-modal-box-input' />
-                                                                    </div>
-                                                                    <div className='review-button-modal-box'>
-                                                                        <div className='review-button-modal-box-subject'>내용</div>
-                                                                        <input type='text' className='review-button-modal-box-input2' />
-                                                                    </div>
-                                                                    <div className='review-modal-button'>
-                                                                        <input className='review-modal-cancel' value='취소' type='button' onClick={() => this._closeModal()}/>
-                                                                        <input className='review-modal-cancel' value='등록' type='button' onClick={() => this._closeModal()}/>
-                                                                    </div>
-                                                                </div>
-                                                            </Modal>
-                                                        </div>
-                                                    </div>
-                                                </summary>
-                                                <div className='review-dropdown2'>
-                                                    <div className='review-dropdown-box'>
-                                                    <div className='order-dropdown-subject'>주문일자</div>
-                                                    <div className='order-dropdown-text'>00</div>
-                                                    </div>
-                                                    <div className='review-dropdown-box'>
-                                                        <div className='order-dropdown-subject'>배송지</div>
-                                                        <div className='order-dropdown-text'>eeeeeeeeeeee</div>
-                                                    </div>
-                                                    <div className='review-dropdown-box'>
-                                                        <div className='order-dropdown-subject'>상품명</div>
-                                                        <div className='order-dropdown-text'>eeeeeeeeeeeee</div>
-                                                    </div>
-                                                    <div className='review-dropdown-box'>
-                                                        <div className='order-dropdown-subject'>수량</div>
-                                                        <div className='order-dropdown-text'>eeeeeeee</div>
-                                                    </div>
-                                                    <div className='review-dropdown-box'>
-                                                        <div className='order-dropdown-subject'>금액</div>
-                                                        <div className='order-dropdown-text'>eeeeeeee</div>
-                                                    </div>
-                                                    <div className='review-dropdown-box'>
-                                                        <div className='order-dropdown-subject'>총 금액</div>
-                                                        <div className='order-dropdown-text'>eeeeeeeeeee</div>
-                                                    </div>
-                                                </div>
-                                            </details>
-                                        </li>
+                                                </details>
+                                            </li>
+                                        ))}
                                     </ul>
-                                    {this.state.orderList.map(arr=>(
-                                        <div className="order-info-box-product">
-                                            <div className="order-info-box-date">{arr.date}</div>
-                                            <div className="order-info-box-info">{arr.title}</div>
-                                            <div className="order-info-box-quantity">{arr.count}</div>
-                                            <div className="order-info-box-price">{arr.price}</div>
-                                            <div className='order-info-box-price'>{arr.delivery}</div>
-                                            <div className="order-info-box-state">{arr.order_state}</div>
-                                        </div>
-                                    ))}
                                 </div>
                                 <div className="order_paging">
                                     <button className="order_paging_before">&lt;</button>

@@ -7,9 +7,6 @@ import axios from "axios";
 import _ from "lodash";
 
 class QnA extends Component{
-    render(){
-        return(
-           <div className="qna">
     constructor(props) {
         super(props);
         this.state = {
