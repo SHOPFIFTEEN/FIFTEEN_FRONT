@@ -218,7 +218,7 @@ class PurchasePage extends Component{
                         <div className='purchase-payment-box'>
                         </div>
                     </div>
-                        <button className='purchase-button' onClick={()=>this.orderBtn()}>결제</button>
+                        <button className='purchase-button' onClick={this.orderBtn}>결제</button>
                 </div>
                 <Footer/>
             </div>
