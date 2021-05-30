@@ -9,6 +9,7 @@ import Footer from '../../../src/components/footer/Footer';
 import {getCookie, setCookie} from "../../cookies";
 import {Link, withRouter} from "react-router-dom";
 import Star from '../../img/star.svg';
+import Modal from "react-awesome-modal";
 import _ from "lodash";
 
 class Product extends Component {
@@ -20,6 +21,7 @@ class Product extends Component {
             count: 0,
             productSeq: '',
             keyword : 'field',
+            AddressVisible: false,
             scoreAverage : 0
         }
     }
@@ -80,6 +82,17 @@ class Product extends Component {
         }else{
             this.setState({count: --c});
         }
+    }
+    _openModal = function() {
+        this.setState({
+            AddressVisible : true
+        });
+    }
+
+    _closeModal = function() {
+        this.setState({
+            AddressVisible : false
+        });
     }
 
 
@@ -144,7 +157,6 @@ class Product extends Component {
                             <div className="product-detail-sidenav">
                                 <a href='#info'> <div className="product-detail-sidenav-information">information</div></a>
                                 <a href="#review"> <div className="product-detail-sidenav-review">review</div></a>
-                                <a href='#qna'> <div className="product-detail-sidenav-qna">Q&A</div></a>
                             </div>
                             <div className="product-detail-box">
                                 <div id='info' className="product-detail-box-information">
@@ -169,7 +181,7 @@ class Product extends Component {
                                         -교환/반품비는 제품에 따라 상이 하오니 이점 유의하시기 바랍니다.<br/>
                                     </div>
                                 </div>
-                                <div id='review' className='product-detail-box-summary'>
+                                <div className='product-detail-box-summary'>
                                     <div className='product-detail-box-summary-imgBox'>
                                         <img className='product-detail-box-summary-imgBox-img' src={this.state.productInfo.image} />
                                     </div>
@@ -185,7 +197,7 @@ class Product extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="product-detail-box-review">
+                                <div id="review" className="product-detail-box-review">
                                     <div className="review-title">Review</div>
                                     <div className="review-text">감상평을 남겨주세요</div>
                                     <Review productSeq={this.props.match.params.productSeq}/>

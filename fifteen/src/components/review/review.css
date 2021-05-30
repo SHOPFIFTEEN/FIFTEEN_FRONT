@@ -41,6 +41,18 @@
     padding-left: 10px;
     justify-content: space-between;
 }
+.review-content2{
+    width: 820px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #BBBBBB;
+    background-color: white;
+    padding-left: 10px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 .review-subject-recommend{
     width: 110px;
 }
@@ -109,6 +121,40 @@
     margin-bottom: 20px;
     padding-top: 2px;
 }
+.review-button2{
+    width: 80px;
+    height: 27px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    background: #000000;
+    padding-top: 2px;
+    margin: 0px 0 0 17px;
+    border-radius: 3px;
+ }
+.review-button3{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    background: #000000;
+    padding-top: 2px;
+    margin: 10px 0 0 640px;
+    border-radius: 3px;
+}
+.review-button4{
+    width: 80px;
+    height: 27px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    background: #000000;
+    padding-top: 2px;
+    margin: 0px 0 0 50px;
+    border-radius: 3px;
+}
+
 
 .review-button-modal{
     display: flex;
@@ -122,7 +168,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 7px;
 }
 .review-button-modal-box-subject{
@@ -145,6 +191,14 @@
     white-space:normal;
 
 }
+.review-button-modal-box-question{
+    width: 500px;
+    text-align: left;
+    align-self: flex-start;
+    word-break: break-all;
+    white-space:normal;
+    height: 120px;
+}
 .review-button-modal-box-check{
     margin: 10px 5px 0 10px;
 }
@@ -165,6 +219,7 @@
 .review-list {
     list-style: none;
     padding: 0;
+    border-bottom: 1px solid #BBBBBB;
 }
 
 details {

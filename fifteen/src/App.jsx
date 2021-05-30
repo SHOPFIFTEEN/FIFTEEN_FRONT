@@ -38,6 +38,8 @@ import Privacy from "./pages/privacy/Privacy";
 import Agreement from "./pages/privacy/Agreement";
 import CartToPurchase from "./pages/purchase/cartToPurchase";
 import QuestionPage from "./pages/question/QuestionPage";
+import AdminReview from "./pages/admin_qna/AdminReview";
+import AdminQna from "./pages/admin_qna/AdminQna";
 
 
 class App extends Component{
@@ -78,6 +80,8 @@ class App extends Component{
                 <Route path='/agreement' component={Agreement} />
                 <Route path='/cartPurchase' component={CartToPurchase}/>
                 <Route path='/question' component={QuestionPage} />
+                <Route path='/admin/product_review' component={AdminReview}/>
+                <Route path='/admin/qna' component={AdminQna}/>
             </div>
         );
     }

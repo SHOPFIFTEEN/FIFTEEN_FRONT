@@ -75,6 +75,7 @@ class AdminNav extends Component {
                         </div>
                         <Link to='/admin/notice'><div className="pageNav-category-text">공지 관리</div></Link>
                         <Link to='/admin/event'><div className="pageNav-category-text">이벤트 관리</div></Link>
+                        <Link to='/admin/qna'><div className="pageNav-category-text">문의 관리</div></Link>
                         <div className="pageNav-category-text" onClick={this.logout}>로그아웃</div>
                     </div>
                 </div>

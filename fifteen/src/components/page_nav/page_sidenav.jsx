@@ -12,7 +12,7 @@ class PageSideNav extends Component {
                         <Link to='/profile'><div className="pageNav-category-text">회원정보</div></Link>
                         <div className='pageNav-category-text'><Link to='/address'>배송지 관리</Link>
                         </div>
-                        <Link to='/question'><div className="pageNav-category-text">문의하기</div></Link>
+                        <Link to='/question'><div className="pageNav-category-text">문의내역</div></Link>
                         <Link to='/wishlist'><div className="pageNav-category-text">장바구니</div></Link>
                         <Link to='/coupon'><div className="pageNav-category-text">쿠폰</div></Link>
                     </div>
