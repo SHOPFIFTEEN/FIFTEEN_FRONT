@@ -6,6 +6,7 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {getCookie} from "../../cookies";
 import Address from "../../components/address/Adress";
+import Modal from "react-awesome-modal";
 
 class PurchasePage extends Component{
     constructor(props) {
@@ -16,7 +17,8 @@ class PurchasePage extends Component{
             productSeq: '',
             keyword : 'field',
             delivery : [],
-            selectedDelSeq : ''
+            visible : false,
+            selectedDel : ''
         }
     }
 
@@ -61,10 +63,12 @@ class PurchasePage extends Component{
         console.log(this.state.delivery);
     }
 
-    selectDel =(e)=> {
-        this.setState({selectedDelSeq : e});
-        console.log(this.state.selectedDelSeq);
+    selectDelivery =(e)=>{
+        this.setState({
+            selectedDel : e
+        })
     }
+
 
     renderDelivery = () => {
         const {delivery} = this.state;
@@ -76,7 +80,7 @@ class PurchasePage extends Component{
                             <div className='address-modal-list-head'>
                                 <div className='address-list-name'>{arr.name}</div>
                                 <div className='purchase-list-default'>{!(arr.is_default) ? <div> </div> : <div>기본배송지</div>}</div>
-                                {!(arr.is_default) ? <input type='radio'  name='address-btn' onChange={()=>this.selectDel(arr.delSeq)}/> : <input type='radio' name='address-btn' onChange={()=>this.selectDel(arr.delSeq)} defaultChecked={true}/>}
+                                {!(arr.is_default) ? <input type='radio'  name='address-btn' onChange={()=>this.selectDelivery(arr.name)}/> : <input type='radio' name='address-btn' onChange={()=>this.selectDelivery(arr.name)} defaultChecked={true}/>}
                             </div>
                             <div className='address-list-address'>{arr.address}</div>
                         </div>
@@ -84,6 +88,32 @@ class PurchasePage extends Component{
                     </label>
                 </div>
         ))
+    }
+
+    orderBtn = async () => {
+        if(window.confirm("결제하시겠습니까?")){
+            let result = await axios({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/order/add/${this.props.match.params.productSeq}`,
+                data: {
+                    count : this.state.count,
+                    delivery : this.state.selectedDel,
+                    price : this.state.productInfo.price,
+                    pay_price : this.state.count*this.state.productInfo.price-this.state.productInfo.delivery
+                },
+                headers: {
+                    "Content-Type": 'application/json',
+                    "x-access-token": getCookie("accessToken")
+                },
+            });
+            alert('결제되었습니다.');
+            const {history} = this.props;
+            history.push('/order_page');
+        }else{
+            alert('취소되었습니다.');
+            const {history} = this.props;
+            history.push(`/product/${this.props.match.params.productSeq}/field`);
+        }
     }
 
     componentDidMount() {
@@ -180,7 +210,7 @@ class PurchasePage extends Component{
                         </div>
                         <div className='purchase-discount-price'>
                             <div className='purchase-discount-price-subject'>결제금액</div>
-                            <div className='purchase-discount-price-text'>79500원</div>
+                            <div className='purchase-discount-price-text'>{this.state.count*this.state.productInfo.price-this.state.productInfo.delivery}원</div>
                         </div>
                     </div>
                     <div className='purchase-payment'>
@@ -188,7 +218,7 @@ class PurchasePage extends Component{
                         <div className='purchase-payment-box'>
                         </div>
                     </div>
-                    <button className='purchase-button'>결제</button>
+                        <button className='purchase-button' onClick={this.orderBtn}>결제</button>
                 </div>
                 <Footer/>
             </div>

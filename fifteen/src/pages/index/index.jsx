@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import axios from "axios";
 import {Container} from "reactstrap";
+import {getNowDate, nowDate} from "../../Utils/commonUtils";
 
 class Index extends Component {
     constructor(props) {
@@ -36,7 +37,20 @@ class Index extends Component {
                 "Content-Type" : 'application/json'
             },
         })
-        this.setState({slideEventImage: result.data});
+        const nowDate = getNowDate();
+
+        const newSlide = result.data.map((slide)=>{
+            if(slide.start_date < nowDate && slide.end_date > nowDate){
+                return slide;
+            }else {
+                return null;
+            }
+        }).filter(el => {
+            return el != null;
+        });
+        console.log(result.data);
+        console.log(newSlide);
+        this.setState({slideEventImage: newSlide});
     }
 
     getNotice= async function() {
@@ -48,7 +62,19 @@ class Index extends Component {
                 "Content-Type" : 'application/json'
             },
         });
-        this.setState({slideNoticeImage: result.data});
+
+        const nowDate = getNowDate();
+
+        const newSlide = result.data.map((slide)=>{
+            if(slide.start_date < nowDate && slide.end_date > nowDate){
+                return slide;
+            }else {
+                return null;
+            }
+        }).filter(el => {
+            return el != null;
+        });
+        this.setState({slideNoticeImage: newSlide});
     }
 
     fieldProducts(f) {
@@ -125,6 +151,7 @@ class Index extends Component {
                 <div className='slider-box'>
                     <Slider {...settingsE}>
                         {this.state.slideEventImage.map(arr=>(
+                            arr === null ? <></> :
                             <Link to={`/event_detail/${arr.eventSeq}`}>
                                 <div key={arr.eventSeq}>
                                     <img src={arr.image} width='100%' height='400px'/>
@@ -138,6 +165,7 @@ class Index extends Component {
                 <div className='slider-box-n'>
                     <Slider {...settingsN}>
                         {this.state.slideNoticeImage.map(arr=>(
+                            arr === null ? null :
                             <Link to={`/notice_detail/${arr.noticeSeq}`}>
                                 <div key={arr.noticetSeq}>
                                     <img src={arr.image} width='1000px' height='200px'/>

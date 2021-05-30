@@ -6,6 +6,8 @@ import Footer from '../../components/footer/Footer';
 import PageSideNav from '../../components/page_nav/page_sidenav';
 import {withRouter} from "react-router-dom";
 import Modal from "react-awesome-modal";
+import axios from "axios";
+import {getCookie} from "../../cookies";
 
 class OrderPage extends Component{
     constructor(props) {
@@ -32,6 +34,32 @@ class OrderPage extends Component{
             AddressVisible : false
         });
     }
+            orderList : []
+        }
+    }
+
+    order = async function() {
+        var userSeq = getCookie("userSeq");
+        let result = await axios({
+            method : 'GET',
+            url : `http://52.79.196.94:3001/order/${userSeq}`,
+            data: {
+            },
+            headers: {
+                "Content-Type": 'application/json',
+                "x-access-token": getCookie("accessToken")
+            },
+        })
+        this.setState({
+            orderList : result.data
+        })
+        console.log(this.state.orderList);
+    }
+
+    componentDidMount() {
+        this.order();
+    }
+
     render(){
         return(
             <div>
@@ -49,6 +77,7 @@ class OrderPage extends Component{
                                         <div className="order-info-box-date">주문일자</div>
                                         <div className="order-info-box-info">상품 정보</div>
                                         <div className="order-info-box-price">금액 </div>
+                                        <div>배송지</div>
                                         <div className="order-info-box-state">주문처리현황</div>
                                         <div className='order-info-box-qna'>리뷰</div>
                                         <div className='order-info-box-qna'>문의하기</div>
@@ -151,6 +180,16 @@ class OrderPage extends Component{
                                             </details>
                                         </li>
                                     </ul>
+                                    {this.state.orderList.map(arr=>(
+                                        <div className="order-info-box-product">
+                                            <div className="order-info-box-date">{arr.date}</div>
+                                            <div className="order-info-box-info">{arr.title}</div>
+                                            <div className="order-info-box-quantity">{arr.count}</div>
+                                            <div className="order-info-box-price">{arr.price}</div>
+                                            <div className='order-info-box-price'>{arr.delivery}</div>
+                                            <div className="order-info-box-state">{arr.order_state}</div>
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className="order_paging">
                                     <button className="order_paging_before">&lt;</button>
