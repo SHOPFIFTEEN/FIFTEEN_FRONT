@@ -11,8 +11,7 @@ class AdminNavProduct extends Component {
                 <div className="pageNav">
                     <div className="pageNav-category">
                         <div className="pageNav-category-text">Information 수정</div>
-                       <div className="pageNav-category-text">Review 관리</div>
-                        <div className="pageNav-category-text">Q&A 관리</div>
+                        <Link to='/admin/product_review'><div className="pageNav-category-text">Review 관리</div></Link>
                     </div>
                 </div>
             </div>

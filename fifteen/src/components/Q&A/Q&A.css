@@ -19,18 +19,19 @@
     border-bottom: 1px solid #BBBBBB;
     background-color: white;
 }
-.qna-subject-num-kinds{
-    width: 150px;
-}
-.qna-subject-num-title{
-    width: 370px;
-}
-.qna-subject-num-date{
+.qna-subject-num-product{
     width: 200px;
 }
-.qna-subject-num-answer{
-    width: 150px;
+.qna-subject-num-title{
+    width: 250px;
 }
+.qna-subject-num-date{
+    width: 220px;
+}
+.qna-subject-num-answer{
+    width: 180px;
+}
+
 .qna-subject-num-kinds-text{
     width: 60px;
     height: 25px;

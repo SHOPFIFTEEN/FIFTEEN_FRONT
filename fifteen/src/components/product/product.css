@@ -293,7 +293,6 @@
 .product-detail-box-summary{
     display: flex;
     flex-direction: row;
-    border-top: 1px solid  #BBBBBB;;
     padding: 30px 40px 30px 40px;
     justify-content: space-evenly;
 
