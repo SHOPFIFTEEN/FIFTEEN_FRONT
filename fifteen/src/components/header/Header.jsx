@@ -103,7 +103,7 @@ class Header extends Component {
                             <div className={styles.header_top_wish_text}>{!(this.state.token) ? null : <Link to ="/wishlist">
                                 <div className={styles.cart}>
                                     <img src={Bucket} className={styles.header__box__right__menu__modal__bucket__header}/>
-                                    {!(this.state.sum) ? null : <div className={styles.cart_sum}>{this.state.sum}</div>}
+                                    {!(this.props.count || this.state.sum) ? null : <div className={styles.cart_sum}>{this.props.count || this.state.sum}</div>}
                                 </div></Link>}</div>
 
                         </div>

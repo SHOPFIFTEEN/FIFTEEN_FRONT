@@ -119,11 +119,10 @@ class WishlistPage extends Component {
     render() {
 
         const renderProducts = this.renderProducts();
-
         return (
             <div>
                 <div className="wishlistPage">
-                    <Header count = {this.state.count}/>
+                    <Header count = {this.state.countAll}/>
                     <div className="wishlistPage_line"/>
                     <div className="wishlistPage_title">Cart</div>
                     <div className="wishlistPage_main">
