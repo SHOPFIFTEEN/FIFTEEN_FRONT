@@ -84,7 +84,8 @@ class AddressPost extends Component{
             address_mail : data.zonecode,
             address : roadAddr,
             address_detail : '',
-            is_clicked : 1
+            is_clicked : 1,
+            visible : false
         })
     }
 

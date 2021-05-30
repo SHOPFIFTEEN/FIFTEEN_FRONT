@@ -168,9 +168,13 @@ class Product extends Component {
                                     </div>
                                 </div>
                                 <div className="product-detail-box-review">
+                                    <div className="review-title">Review</div>
+                                    <div className="review-text">감상평을 남겨주세요</div>
                                     <Review/>
                                 </div>
-                                <div id='qna' className="product-detail-box-qna">
+                                <div id='qna' className="product-detail-box-review">
+                                    <div className="review-title">Q&A</div>
+                                    <div className="review-text">질문을 남겨주세요</div>
                                     <QnA/>
                                 </div>
                             </div>

@@ -25,8 +25,6 @@ class QnA extends Component{
     render(){
         return(
            <div className="qna">
-               <div className="review-title">Q&A</div>
-               <div className="review-text">질문을 남겨주세요</div>
                <div className="review-box">
                    <div className="qna-subject">
                        <div className="qna-subject-num-kinds">종류</div>
@@ -34,25 +32,31 @@ class QnA extends Component{
                        <div className="qna-subject-num-date">등록일</div>
                        <div className="qna-subject-num-answer">답변</div>
                    </div>
-                   <div className="qna-content">
-                       <div className="qna-subject-num-kinds">
-                           <div className="qna-subject-num-kinds-text">종류</div>
-                       </div>
-                       <div className="qna-subject-num-title">내용</div>
-                       <div className="qna-subject-num-date">등록일</div>
-                       <div className="qna-subject-num-answer">
-                           <div className="qna-subject-num-answer-text">답변</div>
-                       </div>
-                   </div>
+                   <ul className="review-list">
+                       <li>
+                           <details>
+                               <summary className="qna-content">
+                                   <div className="qna-subject-num-kinds">
+                                       <div className="qna-subject-num-kinds-text">종류</div>
+                                   </div>
+                                   <div className="qna-subject-num-title">내용</div>
+                                   <div className="qna-subject-num-date">등록일</div>
+                                   <div className="qna-subject-num-answer">
+                                       <div className="qna-subject-num-answer-text">답변</div>
+                                   </div>
+                               </summary>
+                               <div className='review-dropdown'>
+                                   <div className='review-dropdown-user'>모르겠어요</div>
+                                   <div className='review-dropdown-admin'>
+                                       <img src={Arrow}/>
+                                       <div className='review-dropdown-admin-text'>넵 저도요</div>
+                                   </div>
+                               </div>
+                           </details>
+                       </li>
+                   </ul>
                </div>
-               <div className='review-dropdown'>
-                   <div className='review-dropdown-user'>모르겠어요</div>
-                   <div className='review-dropdown-admin'>
-                       <img src={Arrow}/>
-                       <div className='review-dropdown-admin-text'>넵 저도요</div>
-                   </div>
-               </div>
-               <div className="review-button">write
+               <div className="review-button" onClick={()=>this._openModal}>write
                    <Modal visible={this.state.AddressVisible} width="700" height='340' effect="fadeInDown" onClickAway={() => this._closeModal()}>
                        <div className='review-button-modal'>
                            <div className='review-button-modal-box'>

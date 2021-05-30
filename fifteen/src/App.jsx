@@ -36,6 +36,8 @@ import AddressPost from "./pages/addressPage/AddressPost";
 import AddressEdit from "./pages/addressPage/AddressEdit";
 import Privacy from "./pages/privacy/Privacy";
 import Agreement from "./pages/privacy/Agreement";
+import CartToPurchase from "./pages/purchase/cartToPurchase";
+import QuestionPage from "./pages/question/QuestionPage";
 
 
 class App extends Component{
@@ -74,6 +76,8 @@ class App extends Component{
                 <Route path='/address_edit/:delSeq' component={AddressEdit}/>
                 <Route path='/privacy' component={Privacy}/>
                 <Route path='/agreement' component={Agreement} />
+                <Route path='/cartPurchase' component={CartToPurchase}/>
+                <Route path='/question' component={QuestionPage} />
             </div>
         );
     }
