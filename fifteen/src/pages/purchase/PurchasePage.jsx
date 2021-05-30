@@ -63,23 +63,6 @@ class PurchasePage extends Component{
         console.log(this.state.delivery);
     }
 
-    order = async function() {
-        let result = await axios({
-            method : 'POST',
-            url : `http://52.79.196.94:3001/order/add/${this.props.match.params.productSeq}`,
-            data: {
-                count : this.state.count,
-                delivery : this.state.selectedDel,
-                price : this.state.productInfo.price,
-                pay_price : this.state.count*this.state.productInfo.price-this.state.productInfo.delivery
-            },
-            headers: {
-                "Content-Type": 'application/json',
-                "x-access-token": getCookie("accessToken")
-            },
-        })
-    }
-
     selectDelivery =(e)=>{
         this.setState({
             selectedDel : e
@@ -105,6 +88,32 @@ class PurchasePage extends Component{
                     </label>
                 </div>
         ))
+    }
+
+    orderBtn = async () => {
+        if(window.confirm("결제하시겠습니까?")){
+            let result = await axios({
+                method : 'POST',
+                url : `http://52.79.196.94:3001/order/add/${this.props.match.params.productSeq}`,
+                data: {
+                    count : this.state.count,
+                    delivery : this.state.selectedDel,
+                    price : this.state.productInfo.price,
+                    pay_price : this.state.count*this.state.productInfo.price-this.state.productInfo.delivery
+                },
+                headers: {
+                    "Content-Type": 'application/json',
+                    "x-access-token": getCookie("accessToken")
+                },
+            });
+            alert('결제되었습니다.');
+            const {history} = this.props;
+            history.push('/order_page');
+        }else{
+            alert('취소되었습니다.');
+            const {history} = this.props;
+            history.push(`/product/${this.props.match.params.productSeq}/field`);
+        }
     }
 
     componentDidMount() {
@@ -209,7 +218,7 @@ class PurchasePage extends Component{
                         <div className='purchase-payment-box'>
                         </div>
                     </div>
-                        <button className='purchase-button' onClick={()=>this.order()}>결제</button>
+                        <button className='purchase-button' onClick={()=>this.orderBtn()}>결제</button>
                 </div>
                 <Footer/>
             </div>
