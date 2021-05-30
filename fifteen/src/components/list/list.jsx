@@ -46,7 +46,7 @@ class List extends Component {
         });
         this.setState({products: result.data});
         if (this.props.match.params.field === '전체') {
-            this.setState({fieldProducts: this.state.products});
+            this.setState({fieldProducts: this.state.products, currentProducts: this.state.products});
         } else {
             console.log(this.props.match.params.field);
             let result1 = await axios({
@@ -68,7 +68,7 @@ class List extends Component {
 
     fieldProducts(f) {
         if (f === '전체') {
-            this.setState({fieldProducts: this.state.products});
+            this.setState({fieldProducts: this.state.products, currentProducts: this.state.products});
             var pageNumbers= [];
             for(let i =1; i<=Math.ceil(this.state.products.length/this.state.postsPerPage); i++){
                 pageNumbers.push({'num' : i});
