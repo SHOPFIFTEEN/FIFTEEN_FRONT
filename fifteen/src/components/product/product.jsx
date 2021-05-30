@@ -9,6 +9,7 @@ import Footer from '../../../src/components/footer/Footer';
 import {getCookie, setCookie} from "../../cookies";
 import {Link, withRouter} from "react-router-dom";
 import Star from '../../img/star.svg';
+import _ from "lodash";
 
 class Product extends Component {
 
@@ -19,6 +20,7 @@ class Product extends Component {
             count: 0,
             productSeq: '',
             keyword : 'field',
+            scoreAverage : 0
         }
     }
 
@@ -51,6 +53,21 @@ class Product extends Component {
         })
     }
 
+    getReview = async function () {
+        let result = await axios({
+            method: 'GET',
+            url: `http://52.79.196.94:3001/review/${this.props.match.params.productSeq}`,
+            data: {},
+            headers: {
+                "Content-Type": 'application/json',
+            },
+        })
+        var ave = _.meanBy(result.data, 'score');
+        this.setState({
+            scoreAverage: ave
+        })
+    }
+
     plusCount = () => {
         var c = this.state.count;
         this.setState({count: ++c});
@@ -69,6 +86,7 @@ class Product extends Component {
     componentDidMount() {
         this.setState({keyword : this.props.match.params.keyword})
         this.getProductInfoList();
+        this.getReview();
     }
 
 
@@ -163,19 +181,19 @@ class Product extends Component {
                                     <div className='product-detail-box-summary-info2'>
                                         <div className='product-detail-box-summary-info-score'>
                                             <img className='product-detail-box-summary-info-starImg' src={Star}/>
-                                            <div className='product-detail-box-summary-info-sub'>4.4 / 5.0 </div>
+                                            <div className='product-detail-box-summary-info-sub'>{this.state.scoreAverage} / 5.0 </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="product-detail-box-review">
                                     <div className="review-title">Review</div>
                                     <div className="review-text">감상평을 남겨주세요</div>
-                                    <Review/>
+                                    <Review productSeq={this.props.match.params.productSeq}/>
                                 </div>
                                 <div id='qna' className="product-detail-box-review">
                                     <div className="review-title">Q&A</div>
                                     <div className="review-text">질문을 남겨주세요</div>
-                                    <QnA/>
+                                    <QnA productSeq={this.props.match.params.productSeq} />
                                 </div>
                             </div>
                         </div>
