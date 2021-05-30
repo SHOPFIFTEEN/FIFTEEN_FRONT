@@ -20,10 +20,9 @@ class AdminNoticeEditPage extends Component {
             content : '',
             selectedFile: null,
             image: null,
-            imageURL : null,
             start_date : '',
             end_date : '',
-            prevURL : '',
+            imageURL: null,
             isUpload : false
         }
     }
@@ -45,12 +44,14 @@ class AdminNoticeEditPage extends Component {
                     "Content-Type" : 'application/json'
                 },
             })
+            console.log(result.data[0]);
             this.setState({
                 title : result.data[0].title,
                 content : result.data[0].content,
-                image : result.data[0].image,
+                imageURL : result.data[0].image,
                 start_date : result.data[0].start_date,
-                end_date : result.data[0].end_date
+                end_date : result.data[0].end_date,
+                isUpload: result.data[0].image ? true : this.state.isUpload
             });
         }
     }
@@ -167,9 +168,9 @@ class AdminNoticeEditPage extends Component {
     }
 
     render(){
-        let profile_preview = null;
+        let profilePreview = null;
         if(this.state.file !== ''){
-            profile_preview = <img src={this.state.prevURL} width='250px' height='250px'/>
+            profilePreview = <img src={this.state.imageURL} width='250px' height='250px'/>
         }
 
         return(
@@ -214,7 +215,7 @@ class AdminNoticeEditPage extends Component {
                                         <div className='admin-info-box-main-content'>
                                             <input type='text' className='admin-info-box-main-content-text' onChange={this.handleChangeContent} value={this.state.content}/>
                                             <div className='admin-info-box-main-content-image'>
-                                                {profile_preview}
+                                                {profilePreview}
                                                 <div className='admin-style-columns'>
                                                     <input type='file' name="file" onChange={e => this.handleFileInput(e)}/>
                                                     {!(this.props.match.params.noticeSeq==='0') ?
